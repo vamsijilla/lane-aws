@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>.s{fill:#17212b}.m{fill:#fff;stroke:#fff}@media (prefers-color-scheme:dark){.s{fill:#e8ecee}.m{fill:#17212b;stroke:#17212b}}</style>
+  <path class="s" d="M5 5C9 6.5 12 6.5 16 4C20 6.5 23 6.5 27 5C29.5 12 29 21 16 29C3 21 2.5 12 5 5Z"/>
+  <path class="m" d="M10 13V10h3M19 10h3v3M22 18v3h-3M13 21h-3v-3" fill="none" stroke-width="1.8"/>
+  <rect class="m" x="14.8" y="13" width="2.4" height="5" stroke="none"/>
+</svg>

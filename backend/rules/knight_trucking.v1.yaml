@@ -1,0 +1,385 @@
+# Knight Specialty Insurance Company, Trucking Program (case-study mockup guideline).
+# Source: data/guideline/Knight_Guideline(Mockup).docx. Every rule quotes the line it enforces.
+# Logic lives in typed predicates (lane/rules/predicates.py); everything tunable lives here.
+
+ruleset: knight_trucking
+version: 1.1.0
+guideline: Knight_Guideline(Mockup).docx
+
+params:
+  # Which date the guideline's windows count back from: application_date | effective_date.
+  # Assumption A02. The other anchor is evaluated too and shown when it changes an outcome.
+  anchor: application_date
+  available_states: [AL, AZ, AR, CA, SC, SD, TN, TX, UT, VA, WV, WI, WY]
+  selective_states: [IL]
+  texas_north_of: I-10
+  loss_run_max_age_days: 60
+  loss_run_prior_years: 3
+  ifta_quarters: 4
+  ifta_filing_lag_days: 31   # a quarter is "most recent" once its return is due
+  mvr_max_age_days: 90
+  min_cdl_years: 2
+  min_driver_age: 23
+  medical_exam_age: 65
+  max_points_3y: 6
+  max_points_12m: 4
+  continuous_years: 3
+  max_lapse_days: 30
+  small_fleet_max_units: 10
+  # A03: share of IFTA miles allowed in states outside the program list before the
+  # "where the trucks run" reading of "non-listed states" declines.
+  non_listed_miles_max_share: 0.05
+  min_premium_per_unit: 13000
+  min_units_below_premium: 20
+  ineligible_units: [straight truck, box truck, tow, wrecker, dump, mixer, concrete, pump, crane, mobile equipment, forklift]
+  prohibited_commodities: [hazardous, hazmat, lithium, battery, intermodal, container, waste, garbage, refuse, towing, recovery]
+  unacceptable_history:
+    - {label: DUI or DWI, pattern: "\\bDUI\\b|\\bDWI\\b|\\bOWI\\b|under the influence|impaired", years: 5}
+    - {label: Vehicular homicide or assault, pattern: "vehicular (homicide|manslaughter|assault)"}
+    - {label: Negligent or reckless driving, pattern: "reckless|negligent driving|careless"}
+    # A number of mph *over the limit* (e.g. "35 MPH OVER", "31+ over"). "OVER 55 MPH" is a truck
+    # speed-limit code, not 55 over, so the number must come before "over".
+    - {label: Speeding more than 30 mph over, pattern: "\\b(3[1-9]|[4-9]\\d|\\d{3})\\+?\\s*(mph)?\\s*(over|above)\\b|\\b30\\+\\s*(mph)?\\s*over"}
+    - {label: Hit and run, pattern: "hit and run|leaving the scene|fail(ed|ure)? to stop"}
+    - {label: Fleeing or eluding, pattern: "flee|elud"}
+    - {label: Felony with a motor vehicle, pattern: "felony"}
+    - {label: Passing a stopped school bus, pattern: "school bus"}
+
+# Agent request: rules with a `request` ask for it when they refer (or flag with items).
+# request_group: before_quote (default) | before_binding | inform. Rules sharing a request_key
+# become one item. covers: missing-item codes (prefixes) this request already asks for.
+request_groups:
+  before_quote: Needed before we can quote
+  before_binding: Needed before binding
+  inform: For your information
+
+# Interpretive calls where the guideline is silent or ambiguous. Each rule cites the ones it
+# depends on; docs/ASSUMPTIONS.md explains them and docs/QUESTIONS.md asks Knight to confirm.
+assumptions:
+  A01: The account's state is the garaging state, or the mailing state when no garaging address is given.
+  A02: Time windows (loss run age, MVR age, IFTA quarters, lapses) count back from the application date; the effective date is checked too and any change is noted.
+  A03: '"Non-listed states" under prohibited exposures is read two ways: where the account is based (primary) and where the trucks run, by IFTA miles. Only a plausible reading can make a potential decline; the IFTA-miles reading is not plausible here, so when it would decline the rule notes it and asks where trucks are dispatched and garaged.'
+  A04: Appliances and household goods can include lithium batteries, so they are marked for confirmation; only declared lithium or hazmat cargo declines.
+  A05: CDL experience is taken from stated experience or the CDL issue date; where it was gained (U.S. or Canada) cannot be checked from the documents.
+  A06: An owner listed on a driver schedule is treated as driving, which conflicts with an application answer that says otherwise; the conflict is shown, not resolved.
+  A07: Checks that need outside data (SAFER, premium) cannot run at intake. They stay unknown and are listed as checks at quote; they do not by themselves make a clean submission refer. Any other unknown refers.
+  A08: A loss history letter is not a loss run; it covers paid losses only and does not satisfy "losses reported for every prior term".
+  A09: An IFTA quarter counts as "most recent" once its return is due, 31 days after the quarter ends.
+  A10: License validity comes from the MVR only; a newer MVR showing a valid CDL supersedes an expired license card.
+  A11: Driver points count from the violation date, not the conviction date.
+  A12: The newest dated record of the same kind supersedes older copies (for example an older MVR for the same driver).
+
+teams:
+  small_fleet: Small Fleet underwriting
+  fleet: Fleet underwriting
+
+rules:
+  - id: APP-01
+    title: Application has a FEIN or SSN
+    name: "FEIN or SSN"
+    explain: "The signed application must give the business's federal tax number (FEIN), or an SSN for a sole proprietor."
+    section: Submission requirements
+    quote: "application with FEIN/SSN and MC/Docket number"
+    predicate: has_fein
+    sources: [application, quote_form, email_body]
+    request: FEIN (or SSN for a sole proprietor) on the signed application
+    covers: [APP_FEIN]
+
+  - id: APP-02
+    title: Application has an MC or docket number
+    name: "MC or docket number"
+    explain: "The application must give the carrier's MC or docket number, its federal operating authority."
+    section: Submission requirements
+    quote: "application with FEIN/SSN and MC/Docket number"
+    predicate: has_mc
+    sources: [application, quote_form, email_body]
+    request: MC or docket number
+
+  - id: DOC-01
+    title: Loss runs are current
+    name: "Loss run age"
+    explain: "Loss runs must be recent enough that no new claims could be missing from them."
+    section: Submission requirements
+    quote: "current loss runs valued within 60 days"
+    predicate: loss_runs_current
+    sources: [loss_run, loss_history_letter]
+    assumptions: [A02]
+    request: Loss runs valued within the last 60 days
+    request_group: before_binding
+
+  - id: DOC-02
+    title: Loss runs cover the expiring term and three prior years
+    name: "Loss run history"
+    explain: "Loss runs must cover the current policy and the prior years the guideline asks for, for each line of coverage."
+    section: Submission requirements
+    quote: "including expiring year and at least 3 prior years"
+    predicate: loss_run_years
+    sources: [loss_run, loss_history_letter]
+    assumptions: [A08]
+    request: Loss runs for the expiring term and the three prior years
+    request_key: loss_runs
+    covers: [LOSS_TERM]
+
+  - id: DOC-03
+    title: Four most recent quarters of IFTA
+    name: "IFTA returns"
+    explain: "Fuel tax (IFTA) returns for the latest quarters show where and how far the trucks actually run."
+    section: Submission requirements
+    quote: "most recent 4 quarters of IFTA reports"
+    predicate: ifta_quarters
+    sources: [ifta_return]
+    assumptions: [A02, A09]
+    request: The four most recent quarterly IFTA returns
+
+  - id: DOC-04
+    title: Current MVR for every scheduled driver
+    name: "Driver MVRs"
+    explain: "Every scheduled driver needs a recent motor vehicle record, so tickets and accidents are current."
+    section: Submission requirements
+    quote: "driver schedule with MVRs dated within 90 days of the application"
+    predicate: mvrs_current
+    sources: [mvr, drivers_license, driver_schedule, application]
+    missing: [DRV_UNLISTED]
+    assumptions: [A02, A12]
+    request: MVRs dated within 90 days for every scheduled driver
+
+  - id: DOC-05
+    title: Vehicle schedule is complete
+    name: "Vehicle schedule"
+    explain: "Each unit on the vehicle schedule needs a year, make, a valid VIN and a stated value to be rated."
+    section: Submission requirements
+    quote: "vehicle schedule with year, make, 17-character VIN and stated value"
+    predicate: vehicle_schedule_complete
+    sources: [vehicle_schedule, application, quote_form]
+    request: Vehicle schedule with year, make, a 17-character VIN and stated value for every unit
+    covers: [VEH_STATED_VALUE, VEH_VIN]
+
+  - id: ELIG-01
+    title: Units are semi-tractors
+    name: "Unit types"
+    explain: "The program writes semi-tractors; straight trucks, tow trucks, dump trucks, mixers, cranes and mobile equipment are not eligible."
+    section: Program appetite
+    quote: "Target risk: Semi-trucks hauling general freight across state lines. Not eligible: Straight trucks, tow trucks, dump trucks, concrete mixers/pumpers, cranes, or mobile equipment regardless of GVW."
+    predicate: eligible_units
+    decline: true
+    missing: [VEH_UNLISTED]  # a unit found only in claims is asked about there, with its type
+
+  - id: ELIG-02
+    title: Account is based in an available state
+    name: "Home state"
+    explain: "The account must be based in a state the program writes; some states are written selectively."
+    section: Available states
+    quote: "AL, AZ, AR, CA, SC, SD, TN, TX*, UT, VA, WV, WI, WY ... Illinois-based accounts on selective basis."
+    predicate: available_state
+    assumptions: [A01]
+    reading: Where the account is based
+    readings:
+      - id: operations
+        label: Where the trucks run, by IFTA miles
+        predicate: operations_in_listed_states
+        assumption: A03
+        plausible: false
+        question: Confirm where trucks are dispatched and garaged.
+    decline: true
+
+  - id: ELIG-03
+    title: Texas accounts operate north of I-10
+    name: "Texas, north of I-10"
+    explain: "A Texas account must operate north of Interstate 10."
+    section: Available states
+    quote: "TX: Accounts must operate north of Interstate 10 (I-10)."
+    predicate: texas_north_of_i10
+    assumptions: [A01]
+    decline: true
+
+  - id: ELIG-04
+    title: No prohibited cargo or operations
+    name: "Prohibited cargo and operations"
+    explain: "Some cargo and operations are excluded outright, such as hazardous materials, lithium batteries, towing, intermodal containers and waste."
+    section: Quick decline / escalation flags
+    quote: "Hazardous materials, lithium battery cargo, ... towing/recovery, intermodal/container, and waste disposal."
+    predicate: prohibited_operations
+    assumptions: [A04]
+    decline: true
+    request: Confirm the cargo hauled
+
+  - id: ELIG-05
+    title: No operations within 50 miles of the Mexico border
+    name: "Distance from the Mexico border"
+    explain: "Operations close to the Mexico border are excluded, so the garaging address and routes must be known."
+    section: Quick decline / escalation flags
+    quote: "operations within 50 miles of the USA/Mexico border"
+    predicate: border_distance
+    assumptions: [A01]
+    decline: true
+    request: Garaging address and the routes or terminals used near the Mexico border, if any
+    covers: [APP_GARAGING]
+
+  - id: ELIG-06
+    title: No serious SAFER violations
+    name: "SAFER record"
+    explain: "Serious violations on the carrier's federal SAFER record exclude it; this needs a lookup at quote."
+    section: Quick decline / escalation flags
+    quote: "serious SAFER violations"
+    predicate: safer_record
+    assumptions: [A07]
+    external: true
+    check: SAFER record
+    decline: true
+
+  - id: ELIG-07
+    title: New venture requirements
+    name: "New venture"
+    explain: "A new business has extra requirements that depend on its legal form and the owners' driving experience."
+    section: Program appetite
+    quote: "New ventures: Sole proprietors, partnerships, and LLCs acceptable with 2 years documented CDL experience and resume/letter of experience; corporations subject to underwriter review."
+    predicate: new_venture
+
+  - id: COV-01
+    title: No auto liability deductible
+    name: "Liability deductible"
+    explain: "The program does not write auto liability with a deductible."
+    section: Coverage snapshot
+    quote: "Auto liability deductibles: Not allowed."
+    predicate: no_liability_deductible
+    request: Confirm the account does not need an auto liability deductible
+
+  - id: COV-02
+    title: Physical damage is not offered
+    name: "Physical damage"
+    explain: "The program does not offer physical damage cover; a request for it must be placed elsewhere."
+    section: Coverage snapshot
+    quote: "Auto physical damage: Not available."
+    predicate: no_physical_damage
+    request: Physical damage is not available in this program; place it elsewhere if needed
+    request_group: inform
+    request_details: false
+
+  - id: DRV-01
+    title: Every driver holds a valid CDL
+    name: "Driver CDLs"
+    explain: "Every driver must hold a valid commercial driver license; an owner who drives counts as a driver."
+    section: Safe driver criteria
+    quote: "Valid U.S. driver license and CDL"
+    predicate: drivers_hold_cdl
+    assumptions: [A06, A10]
+    decline: true
+    request: Confirm who drives; a driver without a CDL must be excluded by name
+
+  - id: DRV-02
+    title: Two years of CDL experience
+    name: "CDL experience"
+    explain: "Every driver needs at least the guideline's years of commercial driving experience."
+    section: Safe driver criteria
+    quote: "minimum 2 years CDL driving experience in the U.S. or Canada"
+    predicate: driver_experience
+    assumptions: [A05]
+    request: Documented CDL experience for each driver
+
+  - id: DRV-03
+    title: Drivers are at least 23
+    name: "Driver age"
+    explain: "Every driver must be at least the guideline's minimum age."
+    section: Safe driver criteria
+    quote: "age 23+"
+    predicate: driver_age
+
+  - id: DRV-04
+    title: DOT medical exam for drivers 65 and older
+    name: "Medical exam, 65 and older"
+    explain: "Older drivers must provide a DOT medical exam report."
+    section: Safe driver criteria
+    quote: "drivers age 65+ must provide acceptable DOT medical examination report"
+    predicate: senior_medical
+    request: DOT medical examination reports for drivers 65 and older
+
+  - id: DRV-05
+    title: Driver points within limits
+    name: "Driver points"
+    explain: "A driver's points on the motor vehicle record must stay within the guideline's limits."
+    section: Quick decline / escalation flags
+    quote: "Generally no more than 6 points in 3 years or 4 points in 12 months."
+    predicate: driver_points
+    assumptions: [A11]
+
+  - id: DRV-06
+    title: No unacceptable driving history
+    name: "Driving history"
+    explain: "Certain violations, such as DUI or reckless driving, make a driver unacceptable."
+    section: Quick decline / escalation flags
+    quote: "DUI/DWI in past 5 years; vehicular homicide/assault; negligent or reckless driving; speeding over 30 mph above limit; hit-and-run; fleeing/eluding; felony involving a motor vehicle; passing a stopped school bus."
+    predicate: unacceptable_history
+    decline: true
+
+  - id: INS-01
+    title: Three years of continuous coverage
+    name: "Continuous coverage"
+    explain: "The account needs continuous commercial auto coverage for recent years; a long lapse must be explained."
+    section: Prior insurance
+    quote: "Continuous commercial auto coverage for the most recent 3 years; any lapse over 30 days must be explained before quoting."
+    predicate: continuous_coverage
+    sources: [loss_run, loss_history_letter, application, quote_form]
+    assumptions: [A02]
+    request: Explanation of every lapse in coverage over 30 days
+    covers: [LAPSE]
+
+  - id: INS-02
+    title: Losses reported for every prior term
+    name: "Losses for every term"
+    explain: "Every prior policy term listed must have its losses reported on a loss run."
+    section: Prior insurance
+    quote: "Losses must be reported for every prior term listed on the application."
+    predicate: losses_for_every_term
+    sources: [loss_run, loss_history_letter]
+    assumptions: [A08]
+    request: Loss runs (not letters) for every prior term listed
+    request_key: loss_runs
+    covers: [LOSS_TERM, LOSS_PARTIAL]
+
+  - id: SEL-01
+    title: Premium per unit or fleet size
+    name: "Premium per unit"
+    explain: "A low premium per truck is only acceptable for larger fleets; the premium is known only at quote."
+    section: Selective exposures
+    quote: "accounts seeking less than $13,000 per power unit must have at least 20 power units"
+    predicate: premium_per_unit
+    assumptions: [A07]
+    external: true
+    check: premium per unit
+
+  - id: SEL-02
+    title: Auto haulers and box trucks
+    name: "Auto haulers and box trucks"
+    explain: "Auto haulers and box trucks are written only above a minimum premium."
+    section: Selective exposures
+    quote: "Automobile haulers; box trucks/transit vans with minimum premium $250,000"
+    predicate: selective_units
+
+  - id: DATA-01
+    title: Documents agree with each other
+    name: "Documents agree"
+    explain: "When documents disagree on a fact that matters, an underwriter decides which value is right."
+    section: Routing and referral
+    quote: "Missing required documents, conflicting information or any other flag above: refer to an underwriter for manual review."
+    predicate: no_open_conflicts
+    request: Clarification of the conflicting information listed
+    request_source: conflicts
+
+  - id: ROUTE-01
+    title: Route to the team for the fleet size
+    name: "Team for the fleet size"
+    explain: "The fleet size decides which underwriting team takes the account."
+    section: Routing and referral
+    quote: "1-10 power units: Small Fleet underwriting; 11+ power units: Fleet underwriting."
+    predicate: route_team
+    request: Confirm the number of power units
+
+  - id: ROUTE-02
+    title: Final route
+    name: "Final route"
+    explain: "Sums up every rule: any decline declines; anything else that is not clean refers, except checks that need outside data, which wait for the quote."
+    section: Routing and referral
+    quote: "Any prohibited exposure or unacceptable driver: decline. Missing required documents, conflicting information or any other flag above: refer to an underwriter for manual review."
+    predicate: final_route
+    assumptions: [A07]
+    request_details: false

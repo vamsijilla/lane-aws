@@ -1,0 +1,9 @@
+name: north_star
+what: A clean two-truck Wisconsin carrier Lane has never seen, in different document layouts (scripts/make_synthetic_packet.py).
+email: var/synthetic/north_star.eml
+expect:
+  route: [ready, small_fleet, false]   # SAFER and premium are checks at quote (A07)
+  only_unknown: [ELIG-06, SEL-01]      # every other rule passes or does not apply
+  conflicts: 0
+  missing: 0
+  documents: 18                        # 17 attachments plus the email body

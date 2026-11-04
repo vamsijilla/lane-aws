@@ -1,0 +1,7 @@
+name: renamed
+what: Every file is sent under another file's name (the brief's own example of misnamed files).
+expect:
+  same_route: true
+  same_rules_except: []
+  documents: 24
+  min_filename_mismatches: 10

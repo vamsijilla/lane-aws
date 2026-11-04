@@ -1,0 +1,1 @@
+Document type: a letter that states loss history in prose instead of a loss run report. scope must say exactly what the statement covers in the letter's own words (for example "paid losses"), because a statement about paid losses says nothing about open claims or reserves.

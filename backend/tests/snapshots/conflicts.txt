@@ -1,0 +1,67 @@
+Agency identity [identity]
+  Bayline Insurance Agency Inc: Commercial auto insurance application, Cobalt Mesa Transport Inc
+  Bayline Insurance Services Inc: Quick quote form, Cobalt Mesa Transport Inc
+  hint: Likely the same agency. Confirm the legal name for the producer record.
+  note: Agency phone on file: (925) 555-0164, (925) 555-0172
+  note: Agency email on file: dokafor@baylineinsurance.example
+
+Carrier: Cargo 2023-2024 [value]
+  Granite Peak Specialty: Quick quote form, Cobalt Mesa Transport Inc
+  Midwest Freight Owners Association Inc: Loss history letter, no paid losses, 12/15/23-12/15/24
+  hint: The carrier's own loss document names the carrier that wrote the policy.
+
+Date of birth: Luis Morales [value]
+  Oct 3, 1991: Driver list, Cobalt Mesa Transport Inc.
+  Oct 30, 1991: MVR, California driver record, Morales, Luis E
+  hint: The MVR is the state's record of the driver; schedules are typed by the agency.
+
+Farthest territory (stated) [value]
+  TX: Commercial auto insurance application, Cobalt Mesa Transport Inc
+  NJ: IFTA return, Q1 2026; IFTA return, Q2 2026; IFTA return, Q3 2025; IFTA return, Q4 2025
+  hint: Fuel tax returns record where the trucks actually ran.
+
+Has vehicles not listed on the application [value]
+  No: Quick quote form, Cobalt Mesa Transport Inc
+  Yes: Auto liability loss run, Granite Peak Specialty, 2024-25
+  hint: A vehicle in a recent claim is not on the schedule.
+
+Legal entity form [identity]
+  Corporation: Commercial auto insurance application, Cobalt Mesa Transport Inc; IFTA return, Q1 2026; IFTA return, Q2 2026; IFTA return, Q3 2025; Quick quote form, Cobalt Mesa Transport Inc
+  LLC: IFTA return, Q4 2025
+  hint: Verify the legal entity against state business records and the FMCSA registration before quoting.
+  note: Inferred from the legal entity conflict: the application answers No to "changed ownership, management or name", but the documents name the business with different entity forms, so ownership, management or the name may have changed
+
+Make: 2020 Volvo (248615) [reference]
+  Freightliner: Auto liability loss run, Granite Peak Specialty, 2024-25
+  Volvo: Auto liability loss run, Granite Peak Specialty, 2024-25; Vehicle schedule, Cobalt Mesa Transport Inc.
+  hint: The VIN itself decodes to VOLVO.
+
+Owner drives [value] blocks DRV-01
+  No: Commercial auto insurance application, Cobalt Mesa Transport Inc
+  Yes: Commercial auto insurance application, Cobalt Mesa Transport Inc; Driver list, Cobalt Mesa Transport Inc.; Quick quote form, Cobalt Mesa Transport Inc
+  hint: If the owner drives, they must meet the driver criteria or be excluded by name.
+
+Physical damage carried before [value]
+  Yes: Quick quote form, Cobalt Mesa Transport Inc
+  No: Auto liability loss run, Granite Peak Specialty, 2023-24; Auto liability loss run, Granite Peak Specialty, 2024-25; Auto liability loss run, Granite Peak Specialty, 2025-26
+  hint: Physical damage may have been written on a separate policy; ask for it.
+
+Power units [cardinality]
+  5: Quick quote form, Cobalt Mesa Transport Inc
+  4: Vehicle schedule, Cobalt Mesa Transport Inc.
+  hint: Ask the agent for a complete schedule; vehicles in claims but not on the schedule suggest it is incomplete.
+
+Refrigerated operations [value]
+  No: Commercial auto insurance application, Cobalt Mesa Transport Inc
+  Yes: Quick quote form, Cobalt Mesa Transport Inc
+  hint: Reefer breakdown cover only matters for refrigerated trailers; confirm reefer units.
+
+Uninsured motorist limit [value]
+  State Minimum: Commercial auto insurance application, Cobalt Mesa Transport Inc
+  $30,000 / 60,000: Quick quote form, Cobalt Mesa Transport Inc
+  hint: Likely the same: the California minimum is 30,000/60,000. Confirm the limit to quote.
+
+Years of prior insurance [value]
+  5: Commercial auto insurance application, Cobalt Mesa Transport Inc; Quick quote form, Cobalt Mesa Transport Inc
+  3.8: Auto liability loss run, Granite Peak Specialty, 2023-24; Auto liability loss run, Granite Peak Specialty, 2024-25; Auto liability loss run, Granite Peak Specialty, 2025-26; Cargo loss run, Granite Peak Specialty, 2024-25; Cargo loss run, Granite Peak Specialty, 2025-26; Loss history letter, no paid losses, 12/15/23-12/15/24; Quick quote form, Cobalt Mesa Transport Inc
+  hint: Documented terms come from the prior insurance table and loss runs.

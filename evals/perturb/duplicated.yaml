@@ -1,0 +1,6 @@
+name: duplicated
+what: The agent attaches the whole packet twice, plus the zip.
+expect:
+  same_route: true
+  same_rules_except: []
+  documents: 24

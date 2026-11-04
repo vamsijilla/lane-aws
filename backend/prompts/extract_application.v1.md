@@ -1,0 +1,4 @@
+Document type: a commercial auto application in a workbook. Answer with cell references. For fields that are a checkbox or an X under one of several options (entity type, yes or no answers), point `cell` at the marked cell and put the chosen option in `value`. For true or false cells, point at the cell. Leave a field null when the form has a label but the value cell is empty, unless the label itself is the only place to point; in that case leave it null.
+- radius and commodities: one entry per row of those tables that has a percentage or value filled in.
+- questions: every yes or no operational question with the cell of its answer (null cell when unanswered).
+- drivers_table and vehicles_table: the driver and fleet tables (often on another worksheet). Rows that only say a list is attached are not data rows; set last_data_row so they are excluded.

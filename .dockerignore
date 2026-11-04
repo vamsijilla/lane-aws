@@ -1,0 +1,20 @@
+# Images build from the repo root; only what the services read at runtime goes in.
+**/.venv
+**/node_modules
+**/.next
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/*.tsbuildinfo
+.git
+.env
+.env.*
+!.env.example
+deploy/.env
+docs
+backups
+var/*
+!var/sample
+evals/baseline
+frontend/test-results
+frontend/playwright-report

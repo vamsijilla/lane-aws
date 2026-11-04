@@ -1,0 +1,3382 @@
+# Decision-tier facts of the sample submission, one entry per value a rule or conflict reads.
+# Pre-filled from an extraction v2 run (lane.evals.decision_gold write), NOT yet reviewed.
+# To review: check each value against the document; correct `value` if it is wrong; set
+# `reviewed: true`. Entries already reviewed are kept when the file is rewritten.
+facts:
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: carrier
+  value: GRANITE PEAK SPECIALTY INSURANCE COMPANY
+  where: page 1
+  quote: 'Insurance Co: GRANITE PEAK SPECIALTY INSURANCE COMPANY'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: coverage_totals[0].coverage
+  value: AUTO LIABLITY
+  where: page 1
+  quote: AUTO LIABLITY $0.00 TOTAL LOSSES PAID $0.00
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: coverage_totals[1].coverage
+  value: PHYSICAL DAMAGE
+  where: page 1
+  quote: PHYSICAL DAMAGE No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: coverage_totals[1].covered
+  value: No Coverage
+  where: page 1
+  quote: PHYSICAL DAMAGE No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: coverage_totals[2].coverage
+  value: CARGO
+  where: page 1
+  quote: CARGO No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: coverage_totals[2].covered
+  value: No Coverage
+  where: page 1
+  quote: CARGO No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: period_end
+  value: 12/15/2024
+  where: page 1
+  quote: 'Policy Period: 12/15/2023 to 12/15/2024'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: period_start
+  value: 12/15/2023
+  where: page 1
+  quote: 'Policy Period: 12/15/2023 to 12/15/2024'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: policy_number
+  value: GAL7102318
+  where: page 1
+  quote: 'Policy Number: GAL7102318'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2023-24
+  path: run_date
+  value: 10/06/2026
+  where: page 1
+  quote: 'Run Date: 10/06/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: carrier
+  value: GRANITE PEAK SPECIALTY INSURANCE COMPANY
+  where: page 1
+  quote: 'Insurance Co: GRANITE PEAK SPECIALTY INSURANCE COMPANY'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: claims[0].driver_name
+  value: KEVIN BRANDT
+  where: page 1
+  quote: 'Claim Number: GA1093318'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: claims[0].vin
+  value: 1XPBD49X5MD735204
+  where: page 1
+  quote: 'Claim Number: GA1093318'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: claims[1].driver_name
+  value: ALEKSANDR P VOLKOV
+  where: page 1
+  quote: 'Claim Number: GA1092764'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: claims[1].vin
+  value: 4V4NC9EH9LN248615
+  where: page 1
+  quote: 'Claim Number: GA1092764'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[0].coverage
+  value: AUTO LIABLITY
+  where: page 1
+  quote: TOTAL LOSSES PAID
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[1].coverage
+  value: PHYSICAL DAMAGE
+  where: page 1
+  quote: COVERAGE PHYSICAL DAMAGE No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[1].covered
+  value: No Coverage
+  where: page 1
+  quote: COVERAGE PHYSICAL DAMAGE No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[2].coverage
+  value: CARGO
+  where: page 1
+  quote: COVERAGE CARGO No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[2].covered
+  value: No Coverage
+  where: page 1
+  quote: COVERAGE CARGO No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: period_end
+  value: 12/15/2025
+  where: page 1
+  quote: 'Policy Period: 12/15/2024 to 12/15/2025'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: period_start
+  value: 12/15/2024
+  where: page 1
+  quote: 'Policy Period: 12/15/2024 to 12/15/2025'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: policy_number
+  value: GAL8100457
+  where: page 1
+  quote: 'Policy Number: GAL8100457'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2024-25
+  path: run_date
+  value: 10/06/2026
+  where: page 1
+  quote: 'Run Date: 10/06/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: carrier
+  value: GRANITE PEAK SPECIALTY INSURANCE COMPANY
+  where: page 1
+  quote: 'Insurance Co: GRANITE PEAK SPECIALTY INSURANCE COMPANY'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[0].coverage
+  value: AUTO LIABLITY
+  where: page 1
+  quote: TOTAL LOSSES PAID $0.00
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[1].coverage
+  value: PHYSICAL DAMAGE
+  where: page 1
+  quote: PHYSICAL DAMAGE No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[1].covered
+  value: No Coverage
+  where: page 1
+  quote: PHYSICAL DAMAGE No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[2].coverage
+  value: CARGO
+  where: page 1
+  quote: CARGO No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[2].covered
+  value: No Coverage
+  where: page 1
+  quote: CARGO No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: period_end
+  value: 12/15/2026
+  where: page 1
+  quote: 'Policy Period: 12/15/2025 to 12/15/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: period_start
+  value: 12/15/2025
+  where: page 1
+  quote: 'Policy Period: 12/15/2025 to 12/15/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: policy_number
+  value: GAL9100219
+  where: page 1
+  quote: 'Policy Number: GAL9100219'
+  verified_by_v2: true
+  reviewed: false
+- document: Auto liability loss run, Granite Peak Specialty, 2025-26
+  path: run_date
+  value: 10/06/2026
+  where: page 1
+  quote: 'Run Date: 10/06/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: application_date
+  value: '2026-10-22T00:00:00'
+  where: cell 'Application Info'!E7
+  quote: '2026-10-22T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: auto_liability_deductible
+  value: Do not offer
+  where: cell 'Application Info'!G48
+  quote: Do not offer
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: commodities[0].label
+  value: Produce/Groceries/Canned Goods
+  where: cell 'Application Info'!C63
+  quote: Produce/Groceries/Canned Goods
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: commodities[1].label
+  value: Paper/Plastic/ HOUSEHOLD GOODS / APPLIANCES
+  where: cell 'Application Info'!C64
+  quote: Paper/Plastic/ HOUSEHOLD GOODS / APPLIANCES
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: commodities[2].label
+  value: Beverages/Beer/Wine
+  where: cell 'Application Info'!C65
+  quote: Beverages/Beer/Wine
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: description_of_operation
+  value: TRUCKING FOR HIRE
+  where: cell 'Application Info'!H36
+  quote: TRUCKING FOR HIRE
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: dot_number
+  value: '9481307'
+  where: cell 'Application Info'!F34
+  quote: '9481307'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: effective_date
+  value: 12/15/2026.
+  where: cell 'Application Info'!K7
+  quote: 12/15/2026.
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: mailing_state
+  value: CA
+  where: cell 'Application Info'!I30
+  quote: CA
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: mc_number
+  value: '1987405'
+  where: cell 'Application Info'!H34
+  quote: '1987405'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: new_venture
+  value: 'False'
+  where: cell 'Application Info'!L57
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: owner_is_driver
+  value: 'False'
+  where: cell 'Application Info'!L58
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: questions[0].answer
+  value: 'False'
+  where: cell 'Application Info'!K85
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: questions[1].answer
+  value: 'False'
+  where: cell 'Application Info'!K88
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: questions[2].answer
+  value: 'False'
+  where: cell 'Application Info'!K89
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: questions[3].answer
+  value: 'False'
+  where: cell 'Application Info'!K90
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: questions[4].answer
+  value: 'False'
+  where: cell 'Application Info'!K91
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: questions[5].answer
+  value: 'False'
+  where: cell 'Application Info'!K92
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: questions[6].answer
+  value: 'False'
+  where: cell 'Application Info'!K93
+  quote: 'False'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto insurance application
+  path: years_experience
+  value: '5'
+  where: cell 'Application Info'!K83
+  quote: '5'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto application, drivers and vehicles
+  path: rows[0].date_of_birth
+  value: '1979-09-14T00:00:00'
+  where: cell 'Drivers and Vehicles'!E4
+  quote: '1979-09-14T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto application, drivers and vehicles
+  path: rows[0].driver_type
+  value: Owner
+  where: cell 'Drivers and Vehicles'!J4
+  quote: Owner
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto application, drivers and vehicles
+  path: rows[0].experience
+  value: CLASS C
+  where: cell 'Drivers and Vehicles'!K4
+  quote: CLASS C
+  verified_by_v2: true
+  reviewed: false
+- document: Commercial auto application, drivers and vehicles
+  path: rows[0].license_number
+  value: C4471925
+  where: cell 'Drivers and Vehicles'!H4
+  quote: C4471925
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: commodities[0].label
+  value: FRESH PRODUCE / FROZEN FO
+  where: page 1
+  quote: FRESH PRODUCE / FROZEN FO
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: commodities[1].label
+  value: BOTTLED WATER / BEVERAGES
+  where: page 1
+  quote: BOTTLED WATER / BEVERAGES
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: commodities[2].label
+  value: HOUSEHOLD GOODS / APPLIANCE
+  where: page 1
+  quote: HOUSEHOLD GOODS / APPLIANCE
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: commodities[3].label
+  value: DRY GROCERIES / CANNED
+  where: page 1
+  quote: DRY GROCERIES / CANNED
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: commodities[4].label
+  value: PAPER & PACKAGING
+  where: page 1
+  quote: PAPER & PACKAGING
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: commodities[5].label
+  value: BEER / WINE
+  where: page 1
+  quote: BEER / WINE
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: dot_number
+  value: '9481307'
+  where: page 1
+  quote: 'DOT # 9481307'
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: drivers[0].date_of_birth
+  value: 09/14/79
+  where: page 1
+  quote: 1 DEVRAJ SANDHU C4471925 CA 09/14/79
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: drivers[0].experience
+  value: CLASS C
+  where: page 1
+  quote: 1 DEVRAJ SANDHU C4471925 CA 09/14/79
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: drivers[0].license_number
+  value: C4471925
+  where: page 1
+  quote: 1 DEVRAJ SANDHU C4471925 CA 09/14/79
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: drivers[0].role
+  value: OWNER
+  where: page 1
+  quote: 1 DEVRAJ SANDHU C4471925 CA 09/14/79
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: mc_number
+  value: '1987405'
+  where: page 1
+  quote: 'MC # 1987405'
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: physical_damage_requested
+  value: 'Yes'
+  where: page 1
+  quote: Do you need a quote for Physical Damage? I Yes
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[0].carrier
+  value: GRANITE PEAK SPECIALTY
+  where: page 1
+  quote: 12/15/2025 To 12/15/2026 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[0].coverage
+  value: (LIAB/PHD/MTC)
+  where: page 1
+  quote: 12/15/2025 To 12/15/2026 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[0].end
+  value: 12/15/2026
+  where: page 1
+  quote: 12/15/2025 To 12/15/2026 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[0].start
+  value: 12/15/2025
+  where: page 1
+  quote: 12/15/2025 To 12/15/2026 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[0].units
+  value: '5'
+  where: page 1
+  quote: 12/15/2025 To 12/15/2026 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[1].carrier
+  value: GRANITE PEAK SPECIALTY
+  where: page 1
+  quote: 12/15/2024 To 12/15/2025 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[1].coverage
+  value: (LIAB/PHD/MTC)
+  where: page 1
+  quote: 12/15/2024 To 12/15/2025 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[1].end
+  value: 12/15/2025
+  where: page 1
+  quote: 12/15/2024 To 12/15/2025 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[1].start
+  value: 12/15/2024
+  where: page 1
+  quote: 12/15/2024 To 12/15/2025 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[1].units
+  value: '3'
+  where: page 1
+  quote: 12/15/2024 To 12/15/2025 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[2].carrier
+  value: GRANITE PEAK SPECIALTY
+  where: page 1
+  quote: 12/15/2023 To 12/15/2024 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[2].coverage
+  value: (LIAB/PHD/MTC)
+  where: page 1
+  quote: 12/15/2023 To 12/15/2024 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[2].end
+  value: 12/15/2024
+  where: page 1
+  quote: 12/15/2023 To 12/15/2024 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[2].start
+  value: 12/15/2023
+  where: page 1
+  quote: 12/15/2023 To 12/15/2024 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[2].units
+  value: '2'
+  where: page 1
+  quote: 12/15/2023 To 12/15/2024 GRANITE PEAK SPECIALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[3].carrier
+  value: LAKESHORE MUTUAL CASUALTY
+  where: page 1
+  quote: 03/08/2022 To 02/10/2023 LAKESHORE MUTUAL CASUALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[3].coverage
+  value: (LIAB/PHD/MTC)
+  where: page 1
+  quote: 03/08/2022 To 02/10/2023 LAKESHORE MUTUAL CASUALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[3].end
+  value: 02/10/2023
+  where: page 1
+  quote: 03/08/2022 To 02/10/2023 LAKESHORE MUTUAL CASUALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[3].start
+  value: 03/08/2022
+  where: page 1
+  quote: 03/08/2022 To 02/10/2023 LAKESHORE MUTUAL CASUALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: prior_insurance[3].units
+  value: '1'
+  where: page 1
+  quote: 03/08/2022 To 02/10/2023 LAKESHORE MUTUAL CASUALTY
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[0].answer
+  value: 'Yes'
+  where: page 1
+  quote: '1 Are Filings Required? If Yes Please Provide:'
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[10].answer
+  value: 'No'
+  where: page 1
+  quote: 11 Does/has the applicant had an ownership or interest in any other trucking company in the past five (5) years?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[11].answer
+  value: 'No'
+  where: page 1
+  quote: 12 Does the applicant carry Workers Compensation Coverage?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[12].answer
+  value: 'Yes'
+  where: page 1
+  quote: 13 Does the applicant comply with all DOT regulations concerning driver employment, files and regulations?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[13].answer
+  value: 'No'
+  where: page 1
+  quote: 14 Does the applicant pull doubles, triples, oversized or overweight loads?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[14].answer
+  value: 'No'
+  where: page 1
+  quote: 15 Does the applicant pull flatbed trailers or haul any flatbed commodities?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[15].answer
+  value: 'No'
+  where: page 1
+  quote: 16 Does the applicant haul any hazardous materials?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[1].answer
+  value: 'No'
+  where: page 1
+  quote: 2 Are there any vehicles owned or operated by the applicant (including non-operational units) NOT listed on the application?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[2].answer
+  value: 'No'
+  where: page 1
+  quote: 3 Does the applicant lease to others?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[3].answer
+  value: 'No'
+  where: page 1
+  quote: 4 Does the applicant hire Sub-Haulers?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[4].answer
+  value: 'No'
+  where: page 1
+  quote: 5 Does the applicant loan, lease or rent trucks, tractors or trailers to others with or without drivers?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[5].answer
+  value: 'No'
+  where: page 1
+  quote: 6 Does the applicant utilize team driving?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[6].answer
+  value: 'No'
+  where: page 1
+  quote: 7 Does the applicant allow passengers to occupy your vehicles or use vehicles to transport employees?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[7].answer
+  value: 'No'
+  where: page 1
+  quote: 8 Does the applicant have any other businesses related to the trucking industry?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[8].answer
+  value: 'No'
+  where: page 1
+  quote: 9 Does the applicant act as a freight forwarder, freight broker or arrange loads for others?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: questions[9].answer
+  value: 'No'
+  where: page 1
+  quote: 10 Have there been any changes in the ownership, management, or the name of the operation in the past five (5) years?
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: state
+  value: CA
+  where: page 1
+  quote: 'State: CA'
+  verified_by_v2: true
+  reviewed: false
+- document: Quick quote form, Cobalt Mesa Transport Inc
+  path: years_in_business
+  value: '5'
+  where: page 1
+  quote: 'Years in Business: 5'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[0].date_of_birth
+  value: '1979-09-14T00:00:00'
+  where: cell 'driver_export20261009'!D2
+  quote: '1979-09-14T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[0].driver_type
+  value: OWNER
+  where: cell 'driver_export20261009'!H2
+  quote: OWNER
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[0].experience
+  value: CLASS C
+  where: cell 'driver_export20261009'!G2
+  quote: CLASS C
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[0].license_number
+  value: C4471925
+  where: cell 'driver_export20261009'!F2
+  quote: C4471925
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[0].role
+  value: OWNER
+  where: cell 'driver_export20261009'!H2
+  quote: OWNER
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[1].date_of_birth
+  value: '1971-03-22T00:00:00'
+  where: cell 'driver_export20261009'!D3
+  quote: '1971-03-22T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[1].driver_type
+  value: '2024-05-13T00:00:00'
+  where: cell 'driver_export20261009'!H3
+  quote: '2024-05-13T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[1].experience
+  value: 4+
+  where: cell 'driver_export20261009'!G3
+  quote: 4+
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[1].license_number
+  value: W38215604720918
+  where: cell 'driver_export20261009'!F3
+  quote: W38215604720918
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[2].date_of_birth
+  value: '1983-06-02T00:00:00'
+  where: cell 'driver_export20261009'!D4
+  quote: '1983-06-02T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[2].driver_type
+  value: '2024-09-03T00:00:00'
+  where: cell 'driver_export20261009'!H4
+  quote: '2024-09-03T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[2].experience
+  value: 4+
+  where: cell 'driver_export20261009'!G4
+  quote: 4+
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[2].license_number
+  value: V61930287415503
+  where: cell 'driver_export20261009'!F4
+  quote: V61930287415503
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[3].date_of_birth
+  value: '1991-10-03T00:00:00'
+  where: cell 'driver_export20261009'!D5
+  quote: '1991-10-03T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[3].driver_type
+  value: '2025-12-01T00:00:00'
+  where: cell 'driver_export20261009'!H5
+  quote: '2025-12-01T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[3].experience
+  value: 4+
+  where: cell 'driver_export20261009'!G5
+  quote: 4+
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[3].license_number
+  value: M5520814
+  where: cell 'driver_export20261009'!F5
+  quote: M5520814
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[4].date_of_birth
+  value: '1987-02-17T00:00:00'
+  where: cell 'driver_export20261009'!D6
+  quote: '1987-02-17T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[4].driver_type
+  value: '2026-10-19T00:00:00'
+  where: cell 'driver_export20261009'!H6
+  quote: '2026-10-19T00:00:00'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[4].experience
+  value: 3+
+  where: cell 'driver_export20261009'!G6
+  quote: 3+
+  verified_by_v2: true
+  reviewed: false
+- document: Driver list
+  path: rows[4].license_number
+  value: O7314062
+  where: cell 'driver_export20261009'!F6
+  quote: O7314062
+  verified_by_v2: true
+  reviewed: false
+- document: Loss history letter, 12/15/23-12/15/24
+  path: author
+  value: Midwest Freight Owners Association Inc
+  where: page 1
+  quote: Midwest Freight Owners Association Inc
+  verified_by_v2: true
+  reviewed: false
+- document: Loss history letter, 12/15/23-12/15/24
+  path: coverage
+  value: MTC
+  where: page 1
+  quote: 'Policy Number: 23-MFO-40C00017 MTC'
+  verified_by_v2: true
+  reviewed: false
+- document: Loss history letter, 12/15/23-12/15/24
+  path: letter_date
+  value: October 6, 2026
+  where: page 1
+  quote: October 6, 2026
+  verified_by_v2: true
+  reviewed: false
+- document: Loss history letter, 12/15/23-12/15/24
+  path: period
+  value: 12/15/23-12/15/24
+  where: page 1
+  quote: during the period of 12/15/23-12/15/24
+  verified_by_v2: true
+  reviewed: false
+- document: Loss history letter, 12/15/23-12/15/24
+  path: policy_number
+  value: 23-MFO-40C00017 MTC
+  where: page 1
+  quote: 'Policy Number: 23-MFO-40C00017 MTC'
+  verified_by_v2: true
+  reviewed: false
+- document: Loss history letter, 12/15/23-12/15/24
+  path: scope
+  value: no paid losses
+  where: page 1
+  quote: There have been no paid losses
+  verified_by_v2: true
+  reviewed: false
+- document: Loss history letter, 12/15/23-12/15/24
+  path: statement
+  value: There have been no paid losses during the period of 12/15/23-12/15/24
+  where: page 1
+  quote: There have been no paid losses during the period of 12/15/23-12/15/24
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: carrier
+  value: GRANITE PEAK SPECIALTY INSURANCE COMPANY
+  where: page 1
+  quote: 'Insurance Co: GRANITE PEAK SPECIALTY INSURANCE COMPANY'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[0].coverage
+  value: AUTO LIABLITY
+  where: page 1
+  quote: TOTAL LOSSES PAID No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[0].covered
+  value: No Coverage
+  where: page 1
+  quote: TOTAL LOSSES PAID No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[1].coverage
+  value: PHYSICAL DAMAGE
+  where: page 1
+  quote: TOTAL LOSSES PAID No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[1].covered
+  value: No Coverage
+  where: page 1
+  quote: TOTAL LOSSES PAID No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: coverage_totals[2].coverage
+  value: CARGO
+  where: page 1
+  quote: TOTAL LOSSES PAID $0.00
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: period_end
+  value: 12/16/2025
+  where: page 1
+  quote: 'Policy Period: 12/16/2024 to 12/16/2025'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: period_start
+  value: 12/16/2024
+  where: page 1
+  quote: 'Policy Period: 12/16/2024 to 12/16/2025'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: policy_number
+  value: GMC2990344
+  where: page 1
+  quote: 'Policy Number: GMC2990344'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2024-25
+  path: run_date
+  value: 10/06/2026
+  where: page 1
+  quote: 'Run Date: 10/06/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: carrier
+  value: GRANITE PEAK SPECIALTY INSURANCE COMPANY
+  where: page 1
+  quote: 'Insurance Co: GRANITE PEAK SPECIALTY INSURANCE COMPANY'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[0].coverage
+  value: AUTO LIABLITY
+  where: page 1
+  quote: AUTO LIABLITY TOTAL LOSSES PAID No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[0].covered
+  value: No Coverage
+  where: page 1
+  quote: AUTO LIABLITY TOTAL LOSSES PAID No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[1].coverage
+  value: PHYSICAL DAMAGE
+  where: page 1
+  quote: PHYSICAL DAMAGE TOTAL LOSSES PAID No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[1].covered
+  value: No Coverage
+  where: page 1
+  quote: PHYSICAL DAMAGE TOTAL LOSSES PAID No Coverage
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: coverage_totals[2].coverage
+  value: CARGO
+  where: page 1
+  quote: CARGO TOTAL LOSSES PAID $0.00
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: period_end
+  value: 12/16/2026
+  where: page 1
+  quote: 'Policy Period: 12/16/2025 to 12/16/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: period_start
+  value: 12/16/2025
+  where: page 1
+  quote: 'Policy Period: 12/16/2025 to 12/16/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: policy_number
+  value: GMC3990512
+  where: page 1
+  quote: 'Policy Number: GMC3990512'
+  verified_by_v2: true
+  reviewed: false
+- document: Cargo loss run, Granite Peak Specialty, 2025-26
+  path: run_date
+  value: 10/06/2026
+  where: page 1
+  quote: 'Run Date: 10/06/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Sandhu, Devraj
+  path: date_of_birth
+  value: 09/14/1979
+  where: page 1
+  quote: 'DOB:
+
+    09/14/1979'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Sandhu, Devraj
+  path: expiration_date
+  value: 09/14/2030
+  where: page 1
+  quote: 'Exp Date:
+
+    09/14/2030'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Sandhu, Devraj
+  path: issue_date
+  value: 08/21/2025
+  where: page 1
+  quote: 'Iss Date:
+
+    08/21/2025'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Sandhu, Devraj
+  path: license_class
+  value: C
+  where: page 1
+  quote: 'Class: C'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Sandhu, Devraj
+  path: license_number
+  value: C4471925
+  where: page 1
+  quote: 'License:
+
+    C4471925'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Sandhu, Devraj
+  path: license_status
+  value: VALID
+  where: page 1
+  quote: 'Status: VALID'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Sandhu, Devraj
+  path: license_type
+  value: NON-COMMERCIAL
+  where: page 1
+  quote: 'Class: C
+
+    NON-COMMERCIAL'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Sandhu, Devraj
+  path: order_date
+  value: 10/09/2026
+  where: page 1
+  quote: 'Order Date: 10/09/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: events[0].description
+  value: SPEEDING 15-29 MPH OVER LIMIT
+  where: page 2
+  quote: VIOL 06/07/2023
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: events[0].event_date
+  value: 06/07/2023
+  where: page 2
+  quote: VIOL 06/07/2023
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: events[0].kind
+  value: violation
+  where: page 2
+  quote: VIOL 06/07/2023
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: events[0].points
+  value: '4'
+  where: page 2
+  quote: VIOL 06/07/2023
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: events[1].description
+  value: '** ACCIDENT **'
+  where: page 2
+  quote: ACCD 02/11/2024
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: events[1].event_date
+  value: 02/11/2024
+  where: page 2
+  quote: ACCD 02/11/2024
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: events[1].kind
+  value: accident
+  where: page 2
+  quote: ACCD 02/11/2024
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: expiration_date
+  value: 03/22/2029
+  where: page 2
+  quote: 'Expire: 03/22/2029'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: license_class
+  value: A
+  where: page 2
+  quote: 'Class: A'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: license_number
+  value: W38215604720918
+  where: page 2
+  quote: W38215604720918
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: license_status
+  value: VALID
+  where: page 2
+  quote: 'Status: VALID'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: license_type
+  value: COMMERCIAL
+  where: page 2
+  quote: 'License: COMMERCIAL'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026
+  path: order_date
+  value: 10/09/2026
+  where: page 2
+  quote: 'Order Date: 10/09/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[0].description
+  value: CDL RENEWAL PROCESSED
+  where: page 5
+  quote: 06/02/2026 CDL RENEWAL PROCESSED AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[0].event_date
+  value: 06/02/2026
+  where: page 5
+  quote: 06/02/2026 CDL RENEWAL PROCESSED AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[0].kind
+  value: cdl_renewed
+  where: page 5
+  quote: 06/02/2026 CDL RENEWAL PROCESSED AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[1].description
+  value: CDL DOWNGRADE NOTICE
+  where: page 5
+  quote: 12/18/2024 CDL DOWNGRADE NOTICE AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[1].event_date
+  value: 12/18/2024
+  where: page 5
+  quote: 12/18/2024 CDL DOWNGRADE NOTICE AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[1].kind
+  value: cdl_downgraded
+  where: page 5
+  quote: 12/18/2024 CDL DOWNGRADE NOTICE AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[2].description
+  value: CDL ISSUED
+  where: page 5
+  quote: 05/28/2022 CDL ISSUED AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[2].event_date
+  value: 05/28/2022
+  where: page 5
+  quote: 05/28/2022 CDL ISSUED AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: events[2].kind
+  value: cdl_issued
+  where: page 5
+  quote: 05/28/2022 CDL ISSUED AC
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: expiration_date
+  value: 06/02/2030
+  where: page 5
+  quote: 'Exp Date: 06/02/2030'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: license_class
+  value: A
+  where: page 5
+  quote: 'Class: A'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: license_number
+  value: V61930287415503
+  where: page 5
+  quote: 'License: V61930287415503'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: license_status
+  value: VALID
+  where: page 5
+  quote: 'Status: VALID'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: license_type
+  value: COMMERCIAL
+  where: page 5
+  quote: 'License: COMMERCIAL'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, New Jersey driver record, Volkov, Aleksandr P
+  path: order_date
+  value: 10/09/2026
+  where: page 5
+  quote: 'Order Date: 10/09/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: Driver's license, Aleksandr Pavel Volkov, NJ Class A CDL
+  path: date_of_birth
+  value: 06-02-1983
+  where: page 7
+  quote: DOB 06-02-1983
+  verified_by_v2: true
+  reviewed: false
+- document: Driver's license, Aleksandr Pavel Volkov, NJ Class A CDL
+  path: expiration_date
+  value: 06-02-2026
+  where: page 7
+  quote: EXP 06-02-2026
+  verified_by_v2: true
+  reviewed: false
+- document: Driver's license, Aleksandr Pavel Volkov, NJ Class A CDL
+  path: issue_date
+  value: 05-28-2022
+  where: page 7
+  quote: ISS 05-28-2022
+  verified_by_v2: true
+  reviewed: false
+- document: Driver's license, Aleksandr Pavel Volkov, NJ Class A CDL
+  path: license_class
+  value: A
+  where: page 7
+  quote: CLASS A
+  verified_by_v2: true
+  reviewed: false
+- document: Driver's license, Aleksandr Pavel Volkov, NJ Class A CDL
+  path: license_number
+  value: V6193 02874 15503
+  where: page 7
+  quote: DL V6193 02874 15503
+  verified_by_v2: true
+  reviewed: false
+- document: Driver's license, Aleksandr Pavel Volkov, NJ Class A CDL
+  path: license_type
+  value: COMMERCIAL DRIVER LICENSE
+  where: page 7
+  quote: COMMERCIAL DRIVER LICENSE
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: date_of_birth
+  value: 10/30/1991
+  where: page 8
+  quote: 'DOB: 10/30/1991'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: events[0].description
+  value: SPEED-TRUCK/TRAILER OVER 55 MPH
+  where: page 8
+  quote: CONV 03/14/2025 04/22/2025
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: events[0].event_date
+  value: 03/14/2025
+  where: page 8
+  quote: CONV 03/14/2025 04/22/2025
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: events[0].kind
+  value: conviction
+  where: page 8
+  quote: CONV 03/14/2025 04/22/2025
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: events[0].points
+  value: '1'
+  where: page 8
+  quote: CONV 03/14/2025 04/22/2025
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: expiration_date
+  value: 10/30/2027
+  where: page 8
+  quote: 'Exp Date: 10/30/2027'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: issue_date
+  value: 06/04/2023
+  where: page 8
+  quote: 'Iss Date: 06/04/2023'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: license_class
+  value: A
+  where: page 8
+  quote: 'Class: A'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: license_number
+  value: M5520814
+  where: page 8
+  quote: 'License: M5520814'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: license_status
+  value: VALID
+  where: page 8
+  quote: 'Status: VALID'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: license_type
+  value: COMMERCIAL
+  where: page 8
+  quote: 'License: COMMERCIAL'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Morales, Luis E
+  path: order_date
+  value: 10/09/2026
+  where: page 8
+  quote: 'Order Date: 10/09/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Osei, Nathaniel K
+  path: date_of_birth
+  value: 02/17/1987
+  where: page 9
+  quote: 'DOB: 02/17/1987'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Osei, Nathaniel K
+  path: expiration_date
+  value: 02/17/2030
+  where: page 9
+  quote: 'Expire: 02/17/2030'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Osei, Nathaniel K
+  path: issue_date
+  value: 04/09/2025
+  where: page 9
+  quote: 'Issue: 04/09/2025'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Osei, Nathaniel K
+  path: license_class
+  value: A
+  where: page 9
+  quote: 'Class: A'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Osei, Nathaniel K
+  path: license_number
+  value: O7314062
+  where: page 9
+  quote: 'License: O7314062'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Osei, Nathaniel K
+  path: license_status
+  value: VALID
+  where: page 9
+  quote: 'Status: VALID'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Osei, Nathaniel K
+  path: license_type
+  value: COMMERCIAL
+  where: page 9
+  quote: 'License: COMMERCIAL'
+  verified_by_v2: true
+  reviewed: false
+- document: MVR, California driver record, Osei, Nathaniel K
+  path: order_date
+  value: 10/13/2026
+  where: page 9
+  quote: 'Order Date: 10/13/2026'
+  verified_by_v2: true
+  reviewed: false
+- document: California commercial driver license, Nathaniel Osei
+  path: date_of_birth
+  value: 02/17/1987
+  where: page 10
+  quote: DOB 02/17/1987
+  verified_by_v2: true
+  reviewed: false
+- document: California commercial driver license, Nathaniel Osei
+  path: expiration_date
+  value: 02/17/2025
+  where: page 10
+  quote: EXP 02/17/2025
+  verified_by_v2: true
+  reviewed: false
+- document: California commercial driver license, Nathaniel Osei
+  path: issue_date
+  value: 01/06/2021
+  where: page 10
+  quote: ISS 01/06/2021
+  verified_by_v2: true
+  reviewed: false
+- document: California commercial driver license, Nathaniel Osei
+  path: license_class
+  value: CLASS A
+  where: page 10
+  quote: CLASS A
+  verified_by_v2: true
+  reviewed: false
+- document: California commercial driver license, Nathaniel Osei
+  path: license_number
+  value: O7314062
+  where: page 10
+  quote: DL O7314062
+  verified_by_v2: true
+  reviewed: false
+- document: California commercial driver license, Nathaniel Osei
+  path: license_type
+  value: COMMERCIAL DRIVER LICENSE
+  where: page 10
+  quote: COMMERCIAL DRIVER LICENSE
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: period_begin
+  value: January 01, 2026
+  where: page 1
+  quote: 'Period Begin: January 01, 2026'
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: period_end
+  value: March 31, 2026
+  where: page 1
+  quote: 'Period End: March 31, 2026'
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[0].jurisdiction
+  value: Alabama
+  where: page 2
+  quote: Alabama 2. Diesel 448 448
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[0].total_miles
+  value: '448'
+  where: page 2
+  quote: Alabama 2. Diesel 448 448
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[10].jurisdiction
+  value: Kansas
+  where: page 2
+  quote: Kansas 2. Diesel 1,717 1,717
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[10].total_miles
+  value: 1,717
+  where: page 2
+  quote: Kansas 2. Diesel 1,717 1,717
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[11].jurisdiction
+  value: Kentucky
+  where: page 2
+  quote: Kentucky 2. Diesel 1,659 1,659
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[11].total_miles
+  value: 1,659
+  where: page 2
+  quote: Kentucky 2. Diesel 1,659 1,659
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[12].jurisdiction
+  value: Kentucky
+  where: page 2
+  quote: Kentucky Surcharge 2. Diesel 0 0
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[12].total_miles
+  value: '0'
+  where: page 2
+  quote: Kentucky Surcharge 2. Diesel 0 0
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[13].jurisdiction
+  value: Louisiana
+  where: page 2
+  quote: Louisiana 2. Diesel 640 640
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[13].total_miles
+  value: '640'
+  where: page 2
+  quote: Louisiana 2. Diesel 640 640
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[14].jurisdiction
+  value: Maryland
+  where: page 2
+  quote: Maryland 2. Diesel 1,715 1,715
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[14].total_miles
+  value: 1,715
+  where: page 2
+  quote: Maryland 2. Diesel 1,715 1,715
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[15].jurisdiction
+  value: Missouri
+  where: page 2
+  quote: Missouri 2. Diesel 886 886
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[15].total_miles
+  value: '886'
+  where: page 2
+  quote: Missouri 2. Diesel 886 886
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[16].jurisdiction
+  value: Nebraska
+  where: page 2
+  quote: Nebraska 2. Diesel 7,524 7,524
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[16].total_miles
+  value: 7,524
+  where: page 2
+  quote: Nebraska 2. Diesel 7,524 7,524
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[17].jurisdiction
+  value: Nevada
+  where: page 2
+  quote: Nevada 2. Diesel 6,909 6,909
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[17].total_miles
+  value: 6,909
+  where: page 2
+  quote: Nevada 2. Diesel 6,909 6,909
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[18].jurisdiction
+  value: New Jersey
+  where: page 2
+  quote: New Jersey 2. Diesel 6,128 6,128
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[18].total_miles
+  value: 6,128
+  where: page 2
+  quote: New Jersey 2. Diesel 6,128 6,128
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[19].jurisdiction
+  value: New Mexico
+  where: page 2
+  quote: New Mexico 2. Diesel 1,612 1,612
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[19].total_miles
+  value: 1,612
+  where: page 2
+  quote: New Mexico 2. Diesel 1,612 1,612
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[1].jurisdiction
+  value: Arizona
+  where: page 2
+  quote: Arizona 2. Diesel 8,918 8,918
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[1].total_miles
+  value: 8,918
+  where: page 2
+  quote: Arizona 2. Diesel 8,918 8,918
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[20].jurisdiction
+  value: North Carolina
+  where: page 2
+  quote: North Carolina 2. Diesel 1,287 1,287
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[20].total_miles
+  value: 1,287
+  where: page 2
+  quote: North Carolina 2. Diesel 1,287 1,287
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[21].jurisdiction
+  value: Ohio
+  where: page 2
+  quote: Ohio 2. Diesel 2,759 2,759
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[21].total_miles
+  value: 2,759
+  where: page 2
+  quote: Ohio 2. Diesel 2,759 2,759
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[22].jurisdiction
+  value: Oklahoma
+  where: page 2
+  quote: Oklahoma 2. Diesel 1,262 1,262
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[22].total_miles
+  value: 1,262
+  where: page 2
+  quote: Oklahoma 2. Diesel 1,262 1,262
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[23].jurisdiction
+  value: Oregon
+  where: page 2
+  quote: Oregon 2. Diesel 1,226 1,226
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[23].total_miles
+  value: 1,226
+  where: page 2
+  quote: Oregon 2. Diesel 1,226 1,226
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[24].jurisdiction
+  value: Pennsylvania
+  where: page 2
+  quote: Pennsylvania 2. Diesel 9,894 9,894
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[24].total_miles
+  value: 9,894
+  where: page 2
+  quote: Pennsylvania 2. Diesel 9,894 9,894
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[25].jurisdiction
+  value: Tennessee
+  where: page 2
+  quote: Tennessee 2. Diesel 1,121 1,121
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[25].total_miles
+  value: 1,121
+  where: page 2
+  quote: Tennessee 2. Diesel 1,121 1,121
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[26].jurisdiction
+  value: Texas
+  where: page 3
+  quote: Texas 2. Diesel 841 841
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[26].total_miles
+  value: '841'
+  where: page 3
+  quote: Texas 2. Diesel 841 841
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[27].jurisdiction
+  value: Utah
+  where: page 3
+  quote: Utah 2. Diesel 11,419 11,419
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[27].total_miles
+  value: 11,419
+  where: page 3
+  quote: Utah 2. Diesel 11,419 11,419
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[28].jurisdiction
+  value: Virginia
+  where: page 3
+  quote: Virginia 2. Diesel 693 693
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[28].total_miles
+  value: '693'
+  where: page 3
+  quote: Virginia 2. Diesel 693 693
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[29].jurisdiction
+  value: Washington
+  where: page 3
+  quote: Washington 2. Diesel 2,107 2,107
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[29].total_miles
+  value: 2,107
+  where: page 3
+  quote: Washington 2. Diesel 2,107 2,107
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[2].jurisdiction
+  value: California
+  where: page 2
+  quote: California 2. Diesel 28,535 28,535
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[2].total_miles
+  value: 28,535
+  where: page 2
+  quote: California 2. Diesel 28,535 28,535
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[30].jurisdiction
+  value: West Virginia
+  where: page 3
+  quote: West Virginia 2. Diesel 418 418
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[30].total_miles
+  value: '418'
+  where: page 3
+  quote: West Virginia 2. Diesel 418 418
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[31].jurisdiction
+  value: Wyoming
+  where: page 3
+  quote: Wyoming 2. Diesel 7,190 7,190
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[31].total_miles
+  value: 7,190
+  where: page 3
+  quote: Wyoming 2. Diesel 7,190 7,190
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[3].jurisdiction
+  value: Colorado
+  where: page 2
+  quote: Colorado 2. Diesel 1,575 1,575
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[3].total_miles
+  value: 1,575
+  where: page 2
+  quote: Colorado 2. Diesel 1,575 1,575
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[4].jurisdiction
+  value: Delaware
+  where: page 2
+  quote: Delaware 2. Diesel 2,139 2,139
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[4].total_miles
+  value: 2,139
+  where: page 2
+  quote: Delaware 2. Diesel 2,139 2,139
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[5].jurisdiction
+  value: Georgia
+  where: page 2
+  quote: Georgia 2. Diesel 1,927 1,927
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[5].total_miles
+  value: 1,927
+  where: page 2
+  quote: Georgia 2. Diesel 1,927 1,927
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[6].jurisdiction
+  value: Idaho
+  where: page 2
+  quote: Idaho 2. Diesel 863 863
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[6].total_miles
+  value: '863'
+  where: page 2
+  quote: Idaho 2. Diesel 863 863
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[7].jurisdiction
+  value: Illinois
+  where: page 2
+  quote: Illinois 2. Diesel 8,250 8,250
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[7].total_miles
+  value: 8,250
+  where: page 2
+  quote: Illinois 2. Diesel 8,250 8,250
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[8].jurisdiction
+  value: Indiana
+  where: page 2
+  quote: Indiana 2. Diesel 8,597 8,597
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[8].total_miles
+  value: 8,597
+  where: page 2
+  quote: Indiana 2. Diesel 8,597 8,597
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[9].jurisdiction
+  value: Iowa
+  where: page 2
+  quote: Iowa 2. Diesel 11,828 11,828
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q1 2026
+  path: rows[9].total_miles
+  value: 11,828
+  where: page 2
+  quote: Iowa 2. Diesel 11,828 11,828
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: period_begin
+  value: April 01, 2026
+  where: page 1
+  quote: 'Period Begin: April 01, 2026'
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: period_end
+  value: June 30, 2026
+  where: page 1
+  quote: 'Period End: June 30, 2026'
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[0].jurisdiction
+  value: Arizona
+  where: page 2
+  quote: Arizona 2. Diesel 8,005 8,005
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[0].total_miles
+  value: 8,005
+  where: page 2
+  quote: Arizona 2. Diesel 8,005 8,005
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[10].jurisdiction
+  value: Nebraska
+  where: page 2
+  quote: Nebraska 2. Diesel 7,697 7,697
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[10].total_miles
+  value: 7,697
+  where: page 2
+  quote: Nebraska 2. Diesel 7,697 7,697
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[11].jurisdiction
+  value: Nevada
+  where: page 2
+  quote: Nevada 2. Diesel 6,931 6,931
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[11].total_miles
+  value: 6,931
+  where: page 2
+  quote: Nevada 2. Diesel 6,931 6,931
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[12].jurisdiction
+  value: New Jersey
+  where: page 2
+  quote: New Jersey 2. Diesel 8,948 8,948
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[12].total_miles
+  value: 8,948
+  where: page 2
+  quote: New Jersey 2. Diesel 8,948 8,948
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[13].jurisdiction
+  value: New Mexico
+  where: page 2
+  quote: New Mexico 2. Diesel 1,631 1,631
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[13].total_miles
+  value: 1,631
+  where: page 2
+  quote: New Mexico 2. Diesel 1,631 1,631
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[14].jurisdiction
+  value: Ohio
+  where: page 2
+  quote: Ohio 2. Diesel 8,599 8,599
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[14].total_miles
+  value: 8,599
+  where: page 2
+  quote: Ohio 2. Diesel 8,599 8,599
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[15].jurisdiction
+  value: Oklahoma
+  where: page 2
+  quote: Oklahoma 2. Diesel 1,426 1,426
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[15].total_miles
+  value: 1,426
+  where: page 2
+  quote: Oklahoma 2. Diesel 1,426 1,426
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[16].jurisdiction
+  value: Oregon
+  where: page 2
+  quote: Oregon 2. Diesel 659 659
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[16].total_miles
+  value: '659'
+  where: page 2
+  quote: Oregon 2. Diesel 659 659
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[17].jurisdiction
+  value: Pennsylvania
+  where: page 2
+  quote: Pennsylvania 2. Diesel 5,651 5,651
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[17].total_miles
+  value: 5,651
+  where: page 2
+  quote: Pennsylvania 2. Diesel 5,651 5,651
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[18].jurisdiction
+  value: Texas
+  where: page 2
+  quote: Texas 2. Diesel 359 359
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[18].total_miles
+  value: '359'
+  where: page 2
+  quote: Texas 2. Diesel 359 359
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[19].jurisdiction
+  value: Utah
+  where: page 2
+  quote: Utah 2. Diesel 8,897 8,897
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[19].total_miles
+  value: 8,897
+  where: page 2
+  quote: Utah 2. Diesel 8,897 8,897
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[1].jurisdiction
+  value: Arkansas
+  where: page 2
+  quote: Arkansas 2. Diesel 423 423
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[1].total_miles
+  value: '423'
+  where: page 2
+  quote: Arkansas 2. Diesel 423 423
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[20].jurisdiction
+  value: Washington
+  where: page 2
+  quote: Washington 2. Diesel 553 553
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[20].total_miles
+  value: '553'
+  where: page 2
+  quote: Washington 2. Diesel 553 553
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[21].jurisdiction
+  value: Wyoming
+  where: page 2
+  quote: Wyoming 2. Diesel 2,093 2,093
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[21].total_miles
+  value: 2,093
+  where: page 2
+  quote: Wyoming 2. Diesel 2,093 2,093
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[2].jurisdiction
+  value: California
+  where: page 2
+  quote: California 2. Diesel 24,764 24,764
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[2].total_miles
+  value: 24,764
+  where: page 2
+  quote: California 2. Diesel 24,764 24,764
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[3].jurisdiction
+  value: Georgia
+  where: page 2
+  quote: Georgia 2. Diesel 1,622 1,622
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[3].total_miles
+  value: 1,622
+  where: page 2
+  quote: Georgia 2. Diesel 1,622 1,622
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[4].jurisdiction
+  value: Idaho
+  where: page 2
+  quote: Idaho 2. Diesel 420 420
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[4].total_miles
+  value: '420'
+  where: page 2
+  quote: Idaho 2. Diesel 420 420
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[5].jurisdiction
+  value: Illinois
+  where: page 2
+  quote: Illinois 2. Diesel 5,487 5,487
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[5].total_miles
+  value: 5,487
+  where: page 2
+  quote: Illinois 2. Diesel 5,487 5,487
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[6].jurisdiction
+  value: Indiana
+  where: page 2
+  quote: Indiana 2. Diesel 2,659 2,659
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[6].total_miles
+  value: 2,659
+  where: page 2
+  quote: Indiana 2. Diesel 2,659 2,659
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[7].jurisdiction
+  value: Iowa
+  where: page 2
+  quote: Iowa 2. Diesel 4,898 4,898
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[7].total_miles
+  value: 4,898
+  where: page 2
+  quote: Iowa 2. Diesel 4,898 4,898
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[8].jurisdiction
+  value: Kansas
+  where: page 2
+  quote: Kansas 2. Diesel 1,242 1,242
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[8].total_miles
+  value: 1,242
+  where: page 2
+  quote: Kansas 2. Diesel 1,242 1,242
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[9].jurisdiction
+  value: Missouri
+  where: page 2
+  quote: Missouri 2. Diesel 809 809
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q2 2026
+  path: rows[9].total_miles
+  value: '809'
+  where: page 2
+  quote: Missouri 2. Diesel 809 809
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: period_begin
+  value: July 01, 2025
+  where: page 1
+  quote: 'Period Begin: July 01, 2025'
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: period_end
+  value: September 30, 2025
+  where: page 1
+  quote: 'Period End: September 30, 2025'
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[0].jurisdiction
+  value: Alabama
+  where: page 2
+  quote: Alabama 2. Diesel 1,024
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[0].total_miles
+  value: 1,024
+  where: page 2
+  quote: Alabama 2. Diesel 1,024
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[10].jurisdiction
+  value: Kentucky
+  where: page 2
+  quote: Kentucky 2. Diesel 978
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[10].total_miles
+  value: '978'
+  where: page 2
+  quote: Kentucky 2. Diesel 978
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[11].jurisdiction
+  value: Kentucky
+  where: page 2
+  quote: Kentucky Surcharge 2. Diesel 0
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[11].total_miles
+  value: '0'
+  where: page 2
+  quote: Kentucky Surcharge 2. Diesel 0
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[12].jurisdiction
+  value: Louisiana
+  where: page 2
+  quote: Louisiana 2. Diesel 1,685
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[12].total_miles
+  value: 1,685
+  where: page 2
+  quote: Louisiana 2. Diesel 1,685
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[13].jurisdiction
+  value: Maryland
+  where: page 2
+  quote: Maryland 2. Diesel 1,667
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[13].total_miles
+  value: 1,667
+  where: page 2
+  quote: Maryland 2. Diesel 1,667
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[14].jurisdiction
+  value: Missouri
+  where: page 2
+  quote: Missouri 2. Diesel 697
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[14].total_miles
+  value: '697'
+  where: page 2
+  quote: Missouri 2. Diesel 697
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[15].jurisdiction
+  value: Nebraska
+  where: page 2
+  quote: Nebraska 2. Diesel 8,143
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[15].total_miles
+  value: 8,143
+  where: page 2
+  quote: Nebraska 2. Diesel 8,143
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[16].jurisdiction
+  value: Nevada
+  where: page 2
+  quote: Nevada 2. Diesel 13,681
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[16].total_miles
+  value: 13,681
+  where: page 2
+  quote: Nevada 2. Diesel 13,681
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[17].jurisdiction
+  value: New Jersey
+  where: page 2
+  quote: New Jersey 2. Diesel 7,430
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[17].total_miles
+  value: 7,430
+  where: page 2
+  quote: New Jersey 2. Diesel 7,430
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[18].jurisdiction
+  value: New Mexico
+  where: page 2
+  quote: New Mexico 2. Diesel 2,410
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[18].total_miles
+  value: 2,410
+  where: page 2
+  quote: New Mexico 2. Diesel 2,410
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[19].jurisdiction
+  value: North Carolina
+  where: page 2
+  quote: North Carolina 2. Diesel 1,003
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[19].total_miles
+  value: 1,003
+  where: page 2
+  quote: North Carolina 2. Diesel 1,003
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[1].jurisdiction
+  value: Arizona
+  where: page 2
+  quote: Arizona 2. Diesel 12,993
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[1].total_miles
+  value: 12,993
+  where: page 2
+  quote: Arizona 2. Diesel 12,993
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[20].jurisdiction
+  value: Ohio
+  where: page 2
+  quote: Ohio 2. Diesel 5,139
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[20].total_miles
+  value: 5,139
+  where: page 2
+  quote: Ohio 2. Diesel 5,139
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[21].jurisdiction
+  value: Oklahoma
+  where: page 2
+  quote: Oklahoma 2. Diesel 1,464
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[21].total_miles
+  value: 1,464
+  where: page 2
+  quote: Oklahoma 2. Diesel 1,464
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[22].jurisdiction
+  value: Oregon
+  where: page 2
+  quote: Oregon 2. Diesel 893
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[22].total_miles
+  value: '893'
+  where: page 2
+  quote: Oregon 2. Diesel 893
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[23].jurisdiction
+  value: Pennsylvania
+  where: page 2
+  quote: Pennsylvania 2. Diesel 6,154
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[23].total_miles
+  value: 6,154
+  where: page 2
+  quote: Pennsylvania 2. Diesel 6,154
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[24].jurisdiction
+  value: South Carolina
+  where: page 2
+  quote: South Carolina 2. Diesel 1,052
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[24].total_miles
+  value: 1,052
+  where: page 2
+  quote: South Carolina 2. Diesel 1,052
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[25].jurisdiction
+  value: Tennessee
+  where: page 2
+  quote: Tennessee 2. Diesel 1,992
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[25].total_miles
+  value: 1,992
+  where: page 2
+  quote: Tennessee 2. Diesel 1,992
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[26].jurisdiction
+  value: Texas
+  where: page 3
+  quote: Texas 2. Diesel 1,132
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[26].total_miles
+  value: 1,132
+  where: page 3
+  quote: Texas 2. Diesel 1,132
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[27].jurisdiction
+  value: Utah
+  where: page 3
+  quote: Utah 2. Diesel 4,582
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[27].total_miles
+  value: 4,582
+  where: page 3
+  quote: Utah 2. Diesel 4,582
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[28].jurisdiction
+  value: Virginia
+  where: page 3
+  quote: Virginia 2. Diesel 1,208
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[28].total_miles
+  value: 1,208
+  where: page 3
+  quote: Virginia 2. Diesel 1,208
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[29].jurisdiction
+  value: Washington
+  where: page 3
+  quote: Washington 2. Diesel 1,082
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[29].total_miles
+  value: 1,082
+  where: page 3
+  quote: Washington 2. Diesel 1,082
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[2].jurisdiction
+  value: California
+  where: page 2
+  quote: California 2. Diesel 26,170
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[2].total_miles
+  value: 26,170
+  where: page 2
+  quote: California 2. Diesel 26,170
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[30].jurisdiction
+  value: West Virginia
+  where: page 3
+  quote: West Virginia 2. Diesel 2,117
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[30].total_miles
+  value: 2,117
+  where: page 3
+  quote: West Virginia 2. Diesel 2,117
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[31].jurisdiction
+  value: Wyoming
+  where: page 3
+  quote: Wyoming 2. Diesel 8,945
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[31].total_miles
+  value: 8,945
+  where: page 3
+  quote: Wyoming 2. Diesel 8,945
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[3].jurisdiction
+  value: Colorado
+  where: page 2
+  quote: Colorado 2. Diesel 1,400
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[3].total_miles
+  value: 1,400
+  where: page 2
+  quote: Colorado 2. Diesel 1,400
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[4].jurisdiction
+  value: Delaware
+  where: page 2
+  quote: Delaware 2. Diesel 1,897
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[4].total_miles
+  value: 1,897
+  where: page 2
+  quote: Delaware 2. Diesel 1,897
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[5].jurisdiction
+  value: Idaho
+  where: page 2
+  quote: Idaho 2. Diesel 2,282
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[5].total_miles
+  value: 2,282
+  where: page 2
+  quote: Idaho 2. Diesel 2,282
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[6].jurisdiction
+  value: Illinois
+  where: page 2
+  quote: Illinois 2. Diesel 2,953
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[6].total_miles
+  value: 2,953
+  where: page 2
+  quote: Illinois 2. Diesel 2,953
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[7].jurisdiction
+  value: Indiana
+  where: page 2
+  quote: Indiana 2. Diesel 8,828
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[7].total_miles
+  value: 8,828
+  where: page 2
+  quote: Indiana 2. Diesel 8,828
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[8].jurisdiction
+  value: Iowa
+  where: page 2
+  quote: Iowa 2. Diesel 5,320
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[8].total_miles
+  value: 5,320
+  where: page 2
+  quote: Iowa 2. Diesel 5,320
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[9].jurisdiction
+  value: Kansas
+  where: page 2
+  quote: Kansas 2. Diesel 1,273
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q3 2025
+  path: rows[9].total_miles
+  value: 1,273
+  where: page 2
+  quote: Kansas 2. Diesel 1,273
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: period_begin
+  value: October 01, 2025
+  where: page 1
+  quote: 'Period Begin: October 01, 2025'
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: period_end
+  value: December 31, 2025
+  where: page 1
+  quote: 'Period End: December 31, 2025'
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[0].jurisdiction
+  value: Arizona
+  where: page 2
+  quote: Arizona 2. Diesel 10,476 10,476
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[0].total_miles
+  value: 10,476
+  where: page 2
+  quote: Arizona 2. Diesel 10,476 10,476
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[10].jurisdiction
+  value: Louisiana
+  where: page 2
+  quote: Louisiana 2. Diesel 1,457 1,457
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[10].total_miles
+  value: 1,457
+  where: page 2
+  quote: Louisiana 2. Diesel 1,457 1,457
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[11].jurisdiction
+  value: Maryland
+  where: page 2
+  quote: Maryland 2. Diesel 1,742 1,742
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[11].total_miles
+  value: 1,742
+  where: page 2
+  quote: Maryland 2. Diesel 1,742 1,742
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[12].jurisdiction
+  value: Mississippi
+  where: page 2
+  quote: Mississippi 2. Diesel 1,747 1,747
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[12].total_miles
+  value: 1,747
+  where: page 2
+  quote: Mississippi 2. Diesel 1,747 1,747
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[13].jurisdiction
+  value: Missouri
+  where: page 2
+  quote: Missouri 2. Diesel 506 506
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[13].total_miles
+  value: '506'
+  where: page 2
+  quote: Missouri 2. Diesel 506 506
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[14].jurisdiction
+  value: Nebraska
+  where: page 2
+  quote: Nebraska 2. Diesel 7,009 7,009
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[14].total_miles
+  value: 7,009
+  where: page 2
+  quote: Nebraska 2. Diesel 7,009 7,009
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[15].jurisdiction
+  value: Nevada
+  where: page 2
+  quote: Nevada 2. Diesel 5,709 5,709
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[15].total_miles
+  value: 5,709
+  where: page 2
+  quote: Nevada 2. Diesel 5,709 5,709
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[16].jurisdiction
+  value: New Jersey
+  where: page 2
+  quote: New Jersey 2. Diesel 4,858 4,858
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[16].total_miles
+  value: 4,858
+  where: page 2
+  quote: New Jersey 2. Diesel 4,858 4,858
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[17].jurisdiction
+  value: New Mexico
+  where: page 2
+  quote: New Mexico 2. Diesel 1,416 1,416
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[17].total_miles
+  value: 1,416
+  where: page 2
+  quote: New Mexico 2. Diesel 1,416 1,416
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[18].jurisdiction
+  value: Ohio
+  where: page 2
+  quote: Ohio 2. Diesel 5,998 5,998
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[18].total_miles
+  value: 5,998
+  where: page 2
+  quote: Ohio 2. Diesel 5,998 5,998
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[19].jurisdiction
+  value: Oklahoma
+  where: page 2
+  quote: Oklahoma 2. Diesel 949 949
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[19].total_miles
+  value: '949'
+  where: page 2
+  quote: Oklahoma 2. Diesel 949 949
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[1].jurisdiction
+  value: California
+  where: page 2
+  quote: California 2. Diesel 29,047 29,047
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[1].total_miles
+  value: 29,047
+  where: page 2
+  quote: California 2. Diesel 29,047 29,047
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[20].jurisdiction
+  value: Oregon
+  where: page 2
+  quote: Oregon 2. Diesel 1,674 1,674
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[20].total_miles
+  value: 1,674
+  where: page 2
+  quote: Oregon 2. Diesel 1,674 1,674
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[21].jurisdiction
+  value: Pennsylvania
+  where: page 2
+  quote: Pennsylvania 2. Diesel 3,962 3,962
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[21].total_miles
+  value: 3,962
+  where: page 2
+  quote: Pennsylvania 2. Diesel 3,962 3,962
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[22].jurisdiction
+  value: South Carolina
+  where: page 2
+  quote: South Carolina 2. Diesel 843 843
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[22].total_miles
+  value: '843'
+  where: page 2
+  quote: South Carolina 2. Diesel 843 843
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[23].jurisdiction
+  value: Tennessee
+  where: page 2
+  quote: Tennessee 2. Diesel 921 921
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[23].total_miles
+  value: '921'
+  where: page 2
+  quote: Tennessee 2. Diesel 921 921
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[24].jurisdiction
+  value: Texas
+  where: page 2
+  quote: Texas 2. Diesel 1,060 1,060
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[24].total_miles
+  value: 1,060
+  where: page 2
+  quote: Texas 2. Diesel 1,060 1,060
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[25].jurisdiction
+  value: Utah
+  where: page 2
+  quote: Utah 2. Diesel 9,090 9,090
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[25].total_miles
+  value: 9,090
+  where: page 2
+  quote: Utah 2. Diesel 9,090 9,090
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[26].jurisdiction
+  value: Virginia
+  where: page 3
+  quote: Virginia 2. Diesel 900 900
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[26].total_miles
+  value: '900'
+  where: page 3
+  quote: Virginia 2. Diesel 900 900
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[27].jurisdiction
+  value: Washington
+  where: page 3
+  quote: Washington 2. Diesel 1,432 1,432
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[27].total_miles
+  value: 1,432
+  where: page 3
+  quote: Washington 2. Diesel 1,432 1,432
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[28].jurisdiction
+  value: West Virginia
+  where: page 3
+  quote: West Virginia 2. Diesel 1,745 1,745
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[28].total_miles
+  value: 1,745
+  where: page 3
+  quote: West Virginia 2. Diesel 1,745 1,745
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[29].jurisdiction
+  value: Wyoming
+  where: page 3
+  quote: Wyoming 2. Diesel 6,625 6,625
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[29].total_miles
+  value: 6,625
+  where: page 3
+  quote: Wyoming 2. Diesel 6,625 6,625
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[2].jurisdiction
+  value: Delaware
+  where: page 2
+  quote: Delaware 2. Diesel 1,385 1,385
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[2].total_miles
+  value: 1,385
+  where: page 2
+  quote: Delaware 2. Diesel 1,385 1,385
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[3].jurisdiction
+  value: Georgia
+  where: page 2
+  quote: Georgia 2. Diesel 1,341 1,341
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[3].total_miles
+  value: 1,341
+  where: page 2
+  quote: Georgia 2. Diesel 1,341 1,341
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[4].jurisdiction
+  value: Idaho
+  where: page 2
+  quote: Idaho 2. Diesel 1,047 1,047
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[4].total_miles
+  value: 1,047
+  where: page 2
+  quote: Idaho 2. Diesel 1,047 1,047
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[5].jurisdiction
+  value: Illinois
+  where: page 2
+  quote: Illinois 2. Diesel 8,021 8,021
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[5].total_miles
+  value: 8,021
+  where: page 2
+  quote: Illinois 2. Diesel 8,021 8,021
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[6].jurisdiction
+  value: Indiana
+  where: page 2
+  quote: Indiana 2. Diesel 8,732 8,732
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[6].total_miles
+  value: 8,732
+  where: page 2
+  quote: Indiana 2. Diesel 8,732 8,732
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[7].jurisdiction
+  value: Iowa
+  where: page 2
+  quote: Iowa 2. Diesel 9,445 9,445
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[7].total_miles
+  value: 9,445
+  where: page 2
+  quote: Iowa 2. Diesel 9,445 9,445
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[8].jurisdiction
+  value: Kentucky
+  where: page 2
+  quote: Kentucky 2. Diesel 1,844 1,844
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[8].total_miles
+  value: 1,844
+  where: page 2
+  quote: Kentucky 2. Diesel 1,844 1,844
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[9].jurisdiction
+  value: Kentucky
+  where: page 2
+  quote: Kentucky Surcharge 2. Diesel 0 0
+  verified_by_v2: true
+  reviewed: false
+- document: IFTA return, Q4 2025
+  path: rows[9].total_miles
+  value: '0'
+  where: page 2
+  quote: Kentucky Surcharge 2. Diesel 0 0
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[0].make
+  value: VOLVO
+  where: cell 'vehicle_export20261009'!C2
+  quote: VOLVO
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[0].model
+  value: TRACTOR
+  where: cell 'vehicle_export20261009'!D2
+  quote: TRACTOR
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[0].vin
+  value: 4V4NC9EH4NN301742
+  where: cell 'vehicle_export20261009'!E2
+  quote: 4V4NC9EH4NN301742
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[0].year
+  value: '2022'
+  where: cell 'vehicle_export20261009'!B2
+  quote: '2022'
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[1].make
+  value: VOLVO
+  where: cell 'vehicle_export20261009'!C3
+  quote: VOLVO
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[1].model
+  value: TRACTOR
+  where: cell 'vehicle_export20261009'!D3
+  quote: TRACTOR
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[1].vin
+  value: 4V4NC9EH9LN248615
+  where: cell 'vehicle_export20261009'!E3
+  quote: 4V4NC9EH9LN248615
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[1].year
+  value: '2020'
+  where: cell 'vehicle_export20261009'!B3
+  quote: '2020'
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[2].make
+  value: INTERNATIONAL
+  where: cell 'vehicle_export20261009'!C4
+  quote: INTERNATIONAL
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[2].model
+  value: TRACTOR
+  where: cell 'vehicle_export20261009'!D4
+  quote: TRACTOR
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[2].vin
+  value: 3HSDZAPR0KN617093
+  where: cell 'vehicle_export20261009'!E4
+  quote: 3HSDZAPR0KN617093
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[2].year
+  value: '2019'
+  where: cell 'vehicle_export20261009'!B4
+  quote: '2019'
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[3].make
+  value: FREIGHTLINER
+  where: cell 'vehicle_export20261009'!C5
+  quote: FREIGHTLINER
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[3].model
+  value: TRACTOR
+  where: cell 'vehicle_export20261009'!D5
+  quote: TRACTOR
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[3].vin
+  value: 3AKJGLD59HSKR736
+  where: cell 'vehicle_export20261009'!E5
+  quote: 3AKJGLD59HSKR736
+  verified_by_v2: true
+  reviewed: false
+- document: Vehicle schedule
+  path: rows[3].year
+  value: '2017'
+  where: cell 'vehicle_export20261009'!B5
+  quote: '2017'
+  verified_by_v2: true
+  reviewed: false

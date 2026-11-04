@@ -1,0 +1,737 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Lane: one Graviton EC2 running the Docker stack (Caddy, web, API, worker, Mailpit), a private
+  RDS Postgres 16, an S3 bucket, ECR, secrets in Secrets Manager, sign-in with Cognito, logs and
+  alarms by email, and a deploy role for GitHub Actions. Created and deleted as one stack
+  (deploy/README.md).
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: The default VPC (deploy/stack.sh looks it up)
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: Two or more subnets in different zones, for the database subnet group
+  InstanceSubnetId:
+    Type: AWS::EC2::Subnet::Id
+    Description: The subnet the EC2 runs in
+  InstanceType:
+    Type: String
+    Default: t4g.large
+  AlertEmail:
+    Type: String
+    AllowedPattern: "[^@ ]+@[^@ ]+\\.[^@ ]+"
+    Description: Where alarms are emailed (confirm the subscription once)
+  DomainName:
+    Type: String
+    Default: ""
+    Description: The site's own domain (e.g. laneunder.online), its DNS here in Route 53; empty for sslip.io only
+  GitHubSubject:
+    Type: String
+    # GitHub's immutable OIDC subject: owner and repository with their numeric ids, so a deleted
+    # and re-created repository of the same name cannot deploy. Read it with:
+    #   gh api repos/<owner>/<repo>/actions/oidc/customization/sub  (sub_claim_prefix)
+    Default: repo:vamsijilla@118758121/lane-aws@1443616880
+    Description: The only repository (as GitHub names it in OIDC tokens) whose main branch may deploy
+  AmiId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64
+
+Conditions:
+  HasDomain: !Not [!Equals [!Ref DomainName, ""]]
+
+Resources:
+  # --- The domain's DNS (the registrar's nameservers point here) -----------------------------
+  HostedZone:
+    Type: AWS::Route53::HostedZone
+    Condition: HasDomain
+    Properties:
+      Name: !Ref DomainName
+      HostedZoneConfig:
+        Comment: Lane; records are added by this stack
+  SiteRecord:
+    Type: AWS::Route53::RecordSet
+    Condition: HasDomain
+    Properties:
+      HostedZoneId: !Ref HostedZone
+      Name: !Ref DomainName
+      Type: A
+      TTL: "300"
+      ResourceRecords: [!Ref Address]
+
+  # --- Real inbound email (SES) ------------------------------------------------------------
+  MailIdentity:
+    Type: AWS::SES::EmailIdentity
+    Condition: HasDomain
+    Properties:
+      EmailIdentity: !Ref DomainName
+      DkimSigningAttributes: { NextSigningKeyLength: RSA_2048_BIT }
+  DkimRecord1:
+    Type: AWS::Route53::RecordSet
+    Condition: HasDomain
+    Properties:
+      HostedZoneId: !Ref HostedZone
+      Name: !GetAtt MailIdentity.DkimDNSTokenName1
+      Type: CNAME
+      TTL: "1800"
+      ResourceRecords: [!GetAtt MailIdentity.DkimDNSTokenValue1]
+  DkimRecord2:
+    Type: AWS::Route53::RecordSet
+    Condition: HasDomain
+    Properties:
+      HostedZoneId: !Ref HostedZone
+      Name: !GetAtt MailIdentity.DkimDNSTokenName2
+      Type: CNAME
+      TTL: "1800"
+      ResourceRecords: [!GetAtt MailIdentity.DkimDNSTokenValue2]
+  DkimRecord3:
+    Type: AWS::Route53::RecordSet
+    Condition: HasDomain
+    Properties:
+      HostedZoneId: !Ref HostedZone
+      Name: !GetAtt MailIdentity.DkimDNSTokenName3
+      Type: CNAME
+      TTL: "1800"
+      ResourceRecords: [!GetAtt MailIdentity.DkimDNSTokenValue3]
+  MailExchangeRecord:
+    Type: AWS::Route53::RecordSet
+    Condition: HasDomain
+    Properties:
+      HostedZoneId: !Ref HostedZone
+      Name: !Ref DomainName
+      Type: MX
+      TTL: "300"
+      ResourceRecords: [!Sub "10 inbound-smtp.${AWS::Region}.amazonaws.com"]
+  SpfRecord:
+    Type: AWS::Route53::RecordSet
+    Condition: HasDomain
+    Properties:
+      HostedZoneId: !Ref HostedZone
+      Name: !Ref DomainName
+      Type: TXT
+      TTL: "300"
+      ResourceRecords: ['"v=spf1 include:amazonses.com -all"']
+  DmarcRecord:
+    Type: AWS::Route53::RecordSet
+    Condition: HasDomain
+    Properties:
+      HostedZoneId: !Ref HostedZone
+      Name: !Sub "_dmarc.${DomainName}"
+      Type: TXT
+      TTL: "300"
+      ResourceRecords: ['"v=DMARC1; p=quarantine; adkim=r; aspf=r"']
+
+  # Only this receipt rule may write the inbox
+  InboxPolicy:
+    Type: AWS::S3::BucketPolicy
+    Condition: HasDomain
+    Properties:
+      Bucket: !Ref Bucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: SesDeliversInbound
+            Effect: Allow
+            Principal: { Service: ses.amazonaws.com }
+            Action: s3:PutObject
+            Resource: !Sub "${Bucket.Arn}/inbound/*"
+            Condition:
+              StringEquals: { "AWS:SourceAccount": !Ref AWS::AccountId }
+              ArnLike:
+                "AWS:SourceArn": !Sub "arn:${AWS::Partition}:ses:${AWS::Region}:${AWS::AccountId}:receipt-rule-set/lane-inbound:receipt-rule/lane-submissions"
+  InboundRules:
+    Type: AWS::SES::ReceiptRuleSet
+    Condition: HasDomain
+    Properties:
+      RuleSetName: lane-inbound
+  SubmissionsRule:
+    Type: AWS::SES::ReceiptRule
+    Condition: HasDomain
+    DependsOn: [InboxPolicy, MailIdentity]
+    Properties:
+      RuleSetName: !Ref InboundRules
+      Rule:
+        Name: lane-submissions
+        Enabled: true
+        Recipients: [!Sub "submissions@${DomainName}"]
+        ScanEnabled: true  # spam and virus verdicts, checked by Lane before anything is processed
+        TlsPolicy: Optional
+        Actions:
+          - S3Action:
+              BucketName: !Ref Bucket
+              ObjectKeyPrefix: inbound/
+
+  # --- Files -------------------------------------------------------------------------------
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "lane-${AWS::AccountId}-${AWS::Region}"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: { SSEAlgorithm: AES256 }
+      OwnershipControls:
+        Rules: [{ ObjectOwnership: BucketOwnerEnforced }]
+      LifecycleConfiguration:
+        Rules:
+          # Deploy hand-offs (compose files, settings, the cache dump) never linger
+          - Id: deploy-handoff
+            Status: Enabled
+            Prefix: deploy/
+            ExpirationInDays: 1
+          # Emails SES stored; the ingested copy lives in the blob store
+          - Id: inbound-mail
+            Status: Enabled
+            Prefix: inbound/
+            ExpirationInDays: 30
+
+  # --- Images ------------------------------------------------------------------------------
+  ApiRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: lane-api
+      EmptyOnDelete: true
+      ImageScanningConfiguration: { ScanOnPush: true }
+      LifecyclePolicy:
+        LifecyclePolicyText: '{"rules":[{"rulePriority":1,"description":"keep the last 10","selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":10},"action":{"type":"expire"}}]}'
+  WebRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: lane-web
+      EmptyOnDelete: true
+      ImageScanningConfiguration: { ScanOnPush: true }
+      LifecyclePolicy:
+        LifecyclePolicyText: '{"rules":[{"rulePriority":1,"description":"keep the last 10","selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":10},"action":{"type":"expire"}}]}'
+
+  # --- Network -----------------------------------------------------------------------------
+  WebSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Lane web, HTTP and HTTPS only (no SSH; admin is by SSM)
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - { IpProtocol: tcp, FromPort: 80, ToPort: 80, CidrIp: 0.0.0.0/0 }
+        - { IpProtocol: tcp, FromPort: 443, ToPort: 443, CidrIp: 0.0.0.0/0 }
+  DatabaseSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Lane database, from the Lane EC2 only
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 5432
+          ToPort: 5432
+          SourceSecurityGroupId: !Ref WebSecurityGroup
+
+  # --- Database ----------------------------------------------------------------------------
+  DatabaseSubnets:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Lane database subnets
+      SubnetIds: !Ref SubnetIds
+  DatabaseParameters:
+    Type: AWS::RDS::DBParameterGroup
+    Properties:
+      Description: Lane, SSL required
+      Family: postgres16
+      Parameters:
+        rds.force_ssl: "1"
+  Database:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Snapshot
+    Properties:
+      DBInstanceIdentifier: lane
+      Engine: postgres
+      EngineVersion: "16"
+      DBInstanceClass: db.t4g.micro
+      AllocatedStorage: "20"
+      StorageType: gp3
+      StorageEncrypted: true
+      DBName: lane
+      MasterUsername: lane
+      # Generated by Secrets Manager and never rotated, so the app's copy never goes stale
+      MasterUserPassword: !Sub "{{resolve:secretsmanager:${DatabaseSecret}:SecretString:password}}"
+      DBSubnetGroupName: !Ref DatabaseSubnets
+      DBParameterGroupName: !Ref DatabaseParameters
+      VPCSecurityGroups: [!Ref DatabaseSecurityGroup]
+      PubliclyAccessible: false
+      BackupRetentionPeriod: 7
+      AutoMinorVersionUpgrade: true
+      DeletionProtection: false
+
+  # --- The host ----------------------------------------------------------------------------
+  InstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { Service: ec2.amazonaws.com }
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+      Policies:
+        - PolicyName: lane-files
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: [s3:GetObject, s3:PutObject, s3:DeleteObject]
+                Resource: !Sub "${Bucket.Arn}/*"
+              - Effect: Allow
+                Action: [s3:ListBucket]
+                Resource: !GetAtt Bucket.Arn
+              - Effect: Allow
+                Action: [secretsmanager:GetSecretValue]
+                Resource: [!Ref AppSecret, !Ref DatabaseSecret]
+              # The demo's agent emails the inbox through SES, as this domain's agent@ only
+              - Effect: Allow
+                Action: [ses:SendRawEmail, ses:SendEmail]
+                Resource: "*"
+                Condition:
+                  StringEquals:
+                    "ses:FromAddress": !If [HasDomain, !Sub "agent@${DomainName}", "nobody@invalid"]
+              - Effect: Allow
+                Action: [logs:CreateLogStream, logs:PutLogEvents, logs:DescribeLogStreams]
+                Resource: !Sub "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/lane/*"
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles: [!Ref InstanceRole]
+
+  Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref AmiId
+      InstanceType: !Ref InstanceType
+      SubnetId: !Ref InstanceSubnetId
+      IamInstanceProfile: !Ref InstanceProfile
+      SecurityGroupIds: [!Ref WebSecurityGroup]
+      # Containers reach the instance role through IMDSv2; that needs a hop limit of 2
+      MetadataOptions:
+        HttpTokens: required
+        HttpPutResponseHopLimit: 2
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs: { VolumeSize: 30, VolumeType: gp3, Encrypted: true }
+      Tags:
+        - { Key: Name, Value: lane }
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          set -euxo pipefail
+          dnf install -y docker
+          mkdir -p /usr/local/lib/docker/cli-plugins
+          curl -fsSL -o /usr/local/lib/docker/cli-plugins/docker-compose \
+            https://github.com/docker/compose/releases/download/v2.39.2/docker-compose-linux-aarch64
+          chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+          systemctl enable --now docker
+          mkdir -p /opt/lane
+          touch /opt/lane/.ready
+
+  Address:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref Instance
+
+  # --- Secrets -----------------------------------------------------------------------------
+  DatabaseSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: lane/db
+      Description: The RDS master password, generated here; RDS and the app read it
+      GenerateSecretString:
+        SecretStringTemplate: '{"username": "lane"}'
+        GenerateStringKey: password
+        PasswordLength: 40
+        ExcludePunctuation: true
+  AppSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: lane/app
+      Description: The session secret (generated here) and the Anthropic key (deploy/secrets.sh)
+      GenerateSecretString:
+        SecretStringTemplate: '{"ANTHROPIC_API_KEY": ""}'
+        GenerateStringKey: LANE_SESSION_SECRET
+        PasswordLength: 64
+        ExcludePunctuation: true
+
+  # --- Sign-in -----------------------------------------------------------------------------
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: lane
+      UsernameAttributes: [email]
+      AutoVerifiedAttributes: [email]
+      AdminCreateUserConfig:
+        AllowAdminCreateUserOnly: true
+        InviteMessageTemplate:
+          EmailSubject: Your Lane account
+          EmailMessage: "You have been invited to Lane. Sign in with {username} and the temporary password {####}; you will choose your own."
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 12
+          RequireLowercase: true
+          RequireUppercase: true
+          RequireNumbers: true
+          RequireSymbols: false
+          TemporaryPasswordValidityDays: 7
+      MfaConfiguration: "OPTIONAL"
+      EnabledMfas: [SOFTWARE_TOKEN_MFA]
+      AccountRecoverySetting:
+        RecoveryMechanisms: [{ Name: verified_email, Priority: 1 }]
+      DeletionProtection: INACTIVE
+  SeniorUnderwriterGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties: { UserPoolId: !Ref UserPool, GroupName: senior_underwriter, Description: Senior underwriter }
+  UnderwriterGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties: { UserPoolId: !Ref UserPool, GroupName: underwriter, Description: Underwriter }
+  ViewerGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties: { UserPoolId: !Ref UserPool, GroupName: viewer, Description: "Viewer (read only)" }
+  OpsGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties: { UserPoolId: !Ref UserPool, GroupName: ops, Description: Operations }
+  AdminGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties: { UserPoolId: !Ref UserPool, GroupName: admin, Description: Administrator }
+  UserPoolDomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      UserPoolId: !Ref UserPool
+      Domain: !Sub "lane-${AWS::AccountId}"
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: !Ref UserPool
+      ClientName: lane-web
+      GenerateSecret: false  # a browser app: PKCE instead of a secret
+      AllowedOAuthFlowsUserPoolClient: true
+      AllowedOAuthFlows: [code]
+      AllowedOAuthScopes: [openid, email, profile]
+      SupportedIdentityProviders: [COGNITO]
+      CallbackURLs:
+        - !If [HasDomain, !Sub "https://${DomainName}/auth/callback", !Ref AWS::NoValue]
+        - !Join ["", ["https://", !Join ["-", !Split [".", !Ref Address]], ".sslip.io/auth/callback"]]
+        - http://localhost:8080/auth/callback
+      LogoutURLs:
+        - !If [HasDomain, !Sub "https://${DomainName}/", !Ref AWS::NoValue]
+        - !Join ["", ["https://", !Join ["-", !Split [".", !Ref Address]], ".sslip.io/"]]
+        - http://localhost:8080/
+      ExplicitAuthFlows: [ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH]
+      PreventUserExistenceErrors: ENABLED
+      IdTokenValidity: 60
+      AccessTokenValidity: 60
+      TokenValidityUnits: { IdToken: minutes, AccessToken: minutes, RefreshToken: days }
+      RefreshTokenValidity: 1
+
+  # --- Logs and alarms ---------------------------------------------------------------------
+  ApiLogs:
+    Type: AWS::Logs::LogGroup
+    Properties: { LogGroupName: /lane/api, RetentionInDays: 30 }
+  WorkerLogs:
+    Type: AWS::Logs::LogGroup
+    Properties: { LogGroupName: /lane/worker, RetentionInDays: 30 }
+  WebLogs:
+    Type: AWS::Logs::LogGroup
+    Properties: { LogGroupName: /lane/web, RetentionInDays: 30 }
+  CaddyLogs:
+    Type: AWS::Logs::LogGroup
+    Properties: { LogGroupName: /lane/caddy, RetentionInDays: 30 }
+  MailpitLogs:
+    Type: AWS::Logs::LogGroup
+    Properties: { LogGroupName: /lane/mailpit, RetentionInDays: 30 }
+
+  AlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: lane-alerts
+      Subscription: [{ Protocol: email, Endpoint: !Ref AlertEmail }]
+
+  # Failed pipeline steps or jobs, and model spend, from the JSON logs (lane/log.py)
+  WorkerRunFailures:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref WorkerLogs
+      FilterPattern: '{ ($.event = "step.failed") || ($.event = "job.failed") }'
+      MetricTransformations: [{ MetricNamespace: Lane, MetricName: RunFailures, MetricValue: "1", DefaultValue: 0 }]
+  ApiRunFailures:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref ApiLogs
+      FilterPattern: '{ ($.event = "step.failed") || ($.event = "job.failed") }'
+      MetricTransformations: [{ MetricNamespace: Lane, MetricName: RunFailures, MetricValue: "1", DefaultValue: 0 }]
+  WorkerModelSpend:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref WorkerLogs
+      FilterPattern: '{ $.event = "llm.call" }'
+      MetricTransformations: [{ MetricNamespace: Lane, MetricName: ModelSpendUSD, MetricValue: "$.cost_usd", DefaultValue: 0 }]
+  ApiModelSpend:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: !Ref ApiLogs
+      FilterPattern: '{ $.event = "llm.call" }'
+      MetricTransformations: [{ MetricNamespace: Lane, MetricName: ModelSpendUSD, MetricValue: "$.cost_usd", DefaultValue: 0 }]
+
+  SiteHealth:
+    Type: AWS::Route53::HealthCheck
+    Properties:
+      HealthCheckConfig:
+        Type: HTTPS
+        FullyQualifiedDomainName: !If [HasDomain, !Ref DomainName, !Join ["", [!Join ["-", !Split [".", !Ref Address]], ".sslip.io"]]]
+        ResourcePath: /api/v1/health
+        Port: 443
+        RequestInterval: 30
+        FailureThreshold: 3
+      HealthCheckTags: [{ Key: Name, Value: lane-site }]
+
+  SiteDownAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: lane-site-down
+      AlarmDescription: The site's health check is failing (https://<site>/api/v1/health)
+      Namespace: AWS/Route53
+      MetricName: HealthCheckStatus
+      Dimensions: [{ Name: HealthCheckId, Value: !Ref SiteHealth }]
+      Statistic: Minimum
+      Period: 60
+      EvaluationPeriods: 3
+      ComparisonOperator: LessThanThreshold
+      Threshold: 1
+      TreatMissingData: breaching
+      AlarmActions: [!Ref AlertTopic]
+      OKActions: [!Ref AlertTopic]
+  HostRecoverAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: lane-host-recover
+      AlarmDescription: AWS hardware under the instance failed; the instance is being recovered
+      Namespace: AWS/EC2
+      MetricName: StatusCheckFailed_System
+      Dimensions: [{ Name: InstanceId, Value: !Ref Instance }]
+      Statistic: Maximum
+      Period: 60
+      EvaluationPeriods: 2
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Threshold: 1
+      AlarmActions:
+        - !Sub "arn:${AWS::Partition}:automate:${AWS::Region}:ec2:recover"
+        - !Ref AlertTopic
+  HostRebootAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: lane-host-reboot
+      AlarmDescription: The instance stopped answering its status check; it is being rebooted
+      Namespace: AWS/EC2
+      MetricName: StatusCheckFailed_Instance
+      Dimensions: [{ Name: InstanceId, Value: !Ref Instance }]
+      Statistic: Maximum
+      Period: 60
+      EvaluationPeriods: 3
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Threshold: 1
+      AlarmActions:
+        - !Sub "arn:${AWS::Partition}:automate:${AWS::Region}:ec2:reboot"
+        - !Ref AlertTopic
+  RunFailedAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: lane-run-failed
+      AlarmDescription: A pipeline step or job failed (see /lane/worker in CloudWatch Logs)
+      Namespace: Lane
+      MetricName: RunFailures
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Threshold: 1
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref AlertTopic]
+  ModelSpendAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: lane-model-spend
+      AlarmDescription: Model calls cost more than $5 in a day
+      Namespace: Lane
+      MetricName: ModelSpendUSD
+      Statistic: Sum
+      Period: 86400
+      EvaluationPeriods: 1
+      ComparisonOperator: GreaterThanThreshold
+      Threshold: 5
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref AlertTopic]
+  DatabaseStorageAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: lane-db-storage
+      AlarmDescription: The database has less than 2 GB free
+      Namespace: AWS/RDS
+      MetricName: FreeStorageSpace
+      Dimensions: [{ Name: DBInstanceIdentifier, Value: !Ref Database }]
+      Statistic: Minimum
+      Period: 300
+      EvaluationPeriods: 1
+      ComparisonOperator: LessThanThreshold
+      Threshold: 2000000000
+      AlarmActions: [!Ref AlertTopic]
+  DatabaseCpuAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: lane-db-cpu
+      AlarmDescription: The database CPU has been over 80% for 15 minutes
+      Namespace: AWS/RDS
+      MetricName: CPUUtilization
+      Dimensions: [{ Name: DBInstanceIdentifier, Value: !Ref Database }]
+      Statistic: Average
+      Period: 300
+      EvaluationPeriods: 3
+      ComparisonOperator: GreaterThanThreshold
+      Threshold: 80
+      AlarmActions: [!Ref AlertTopic]
+
+  # --- One page to watch it run ------------------------------------------------------------
+  Dashboard:
+    Type: AWS::CloudWatch::Dashboard
+    Properties:
+      DashboardName: lane
+      DashboardBody: !Sub
+        - |
+          {
+            "start": "-PT24H",
+            "widgets": [
+              {"type": "text", "x": 0, "y": 0, "width": 24, "height": 1,
+               "properties": {"markdown": "## Lane on AWS &nbsp; [${Site}](https://${Site}) &nbsp; alarms email the SNS topic lane-alerts"}},
+              {"type": "alarm", "x": 0, "y": 1, "width": 24, "height": 3,
+               "properties": {"title": "Alarms", "alarms": [
+                 "${SiteDownAlarm.Arn}", "${RunFailedAlarm.Arn}", "${ModelSpendAlarm.Arn}",
+                 "${HostRecoverAlarm.Arn}", "${HostRebootAlarm.Arn}",
+                 "${DatabaseStorageAlarm.Arn}", "${DatabaseCpuAlarm.Arn}"]}},
+              {"type": "metric", "x": 0, "y": 4, "width": 8, "height": 6,
+               "properties": {"title": "Site health (1 = up)", "region": "${AWS::Region}", "view": "timeSeries",
+                 "stat": "Minimum", "period": 60, "yAxis": {"left": {"min": 0, "max": 1}},
+                 "metrics": [["AWS/Route53", "HealthCheckStatus", "HealthCheckId", "${SiteHealth}"]]}},
+              {"type": "metric", "x": 8, "y": 4, "width": 8, "height": 6,
+               "properties": {"title": "Model spend (USD per hour)", "region": "${AWS::Region}", "view": "timeSeries",
+                 "stat": "Sum", "period": 3600, "metrics": [["Lane", "ModelSpendUSD"]]}},
+              {"type": "metric", "x": 16, "y": 4, "width": 8, "height": 6,
+               "properties": {"title": "Failed runs", "region": "${AWS::Region}", "view": "timeSeries",
+                 "stat": "Sum", "period": 300, "metrics": [["Lane", "RunFailures"]]}},
+              {"type": "metric", "x": 0, "y": 10, "width": 8, "height": 6,
+               "properties": {"title": "Instance CPU (%)", "region": "${AWS::Region}", "view": "timeSeries",
+                 "stat": "Average", "period": 300, "metrics": [["AWS/EC2", "CPUUtilization", "InstanceId", "${Instance}"]]}},
+              {"type": "metric", "x": 8, "y": 10, "width": 8, "height": 6,
+               "properties": {"title": "Database CPU (%) and connections", "region": "${AWS::Region}", "view": "timeSeries",
+                 "stat": "Average", "period": 300, "metrics": [
+                   ["AWS/RDS", "CPUUtilization", "DBInstanceIdentifier", "${Database}"],
+                   ["AWS/RDS", "DatabaseConnections", "DBInstanceIdentifier", "${Database}", {"yAxis": "right"}]]}},
+              {"type": "metric", "x": 16, "y": 10, "width": 8, "height": 6,
+               "properties": {"title": "Database free storage (GB)", "region": "${AWS::Region}", "view": "timeSeries",
+                 "stat": "Minimum", "period": 300, "metrics": [
+                   [{"expression": "m1 / 1000000000", "label": "Free GB", "id": "e1"}],
+                   ["AWS/RDS", "FreeStorageSpace", "DBInstanceIdentifier", "${Database}", {"id": "m1", "visible": false}]]}},
+              {"type": "log", "x": 0, "y": 16, "width": 12, "height": 7,
+               "properties": {"title": "Model calls by purpose (last 24 h)", "region": "${AWS::Region}", "view": "table",
+                 "query": "SOURCE '/lane/worker' | SOURCE '/lane/api' | filter event = 'llm.call' | stats count(*) as calls, sum(cost_usd) as usd by purpose, cache_hit | sort usd desc"}},
+              {"type": "log", "x": 12, "y": 16, "width": 12, "height": 7,
+               "properties": {"title": "Recent errors and warnings", "region": "${AWS::Region}", "view": "table",
+                 "query": "SOURCE '/lane/worker' | SOURCE '/lane/api' | filter level in ['error', 'warning'] | fields @timestamp, event, error | sort @timestamp desc | limit 20"}}
+            ]
+          }
+        - Site: !If [HasDomain, !Ref DomainName, !Join ["", [!Join ["-", !Split [".", !Ref Address]], ".sslip.io"]]]
+
+  # --- Deploys from GitHub (OIDC: no AWS keys in GitHub) -----------------------------------
+  GitHubOidc:
+    Type: AWS::IAM::OIDCProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList: [sts.amazonaws.com]
+  DeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: lane-github-deploy
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { Federated: !Ref GitHubOidc }
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+                token.actions.githubusercontent.com:sub: !Sub "${GitHubSubject}:ref:refs/heads/main"
+      Policies:
+        - PolicyName: lane-deploy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: [s3:PutObject]
+                Resource: !Sub "${Bucket.Arn}/deploy/*"
+              - Effect: Allow
+                Action: [ssm:SendCommand]
+                Resource:
+                  - !Sub "arn:${AWS::Partition}:ec2:${AWS::Region}:${AWS::AccountId}:instance/${Instance}"
+                  - !Sub "arn:${AWS::Partition}:ssm:${AWS::Region}::document/AWS-RunShellScript"
+              - Effect: Allow
+                Action: [ssm:GetCommandInvocation, ssm:ListCommandInvocations]
+                Resource: "*"
+              - Effect: Allow
+                Action: [cloudformation:DescribeStacks]
+                Resource: !Sub "arn:${AWS::Partition}:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${AWS::StackName}/*"
+
+Outputs:
+  PublicIp:
+    Value: !Ref Address
+  Site:
+    Description: The site's name; Caddy gets its certificate
+    Value: !If [HasDomain, !Ref DomainName, !Join ["", [!Join ["-", !Split [".", !Ref Address]], ".sslip.io"]]]
+  SslipSite:
+    Description: The site's second name, kept working
+    Value: !Join ["", [!Join ["-", !Split [".", !Ref Address]], ".sslip.io"]]
+  InboxAddress:
+    Condition: HasDomain
+    Value: !Sub "submissions@${DomainName}"
+  InstanceId:
+    Value: !Ref Instance
+  BucketName:
+    Value: !Ref Bucket
+  DatabaseHost:
+    Value: !GetAtt Database.Endpoint.Address
+  ApiRepositoryUri:
+    Value: !GetAtt ApiRepository.RepositoryUri
+  WebRepositoryUri:
+    Value: !GetAtt WebRepository.RepositoryUri
+  AppSecretArn:
+    Value: !Ref AppSecret
+  DatabaseSecretArn:
+    Value: !Ref DatabaseSecret
+  UserPoolId:
+    Value: !Ref UserPool
+  UserPoolClientId:
+    Value: !Ref UserPoolClient
+  CognitoDomain:
+    Value: !Sub "https://lane-${AWS::AccountId}.auth.${AWS::Region}.amazoncognito.com"
+  DeployRoleArn:
+    Value: !GetAtt DeployRole.Arn
+  AlertTopicArn:
+    Value: !Ref AlertTopic
+  DashboardUrl:
+    Value: !Sub "https://${AWS::Region}.console.aws.amazon.com/cloudwatch/home?region=${AWS::Region}#dashboards/dashboard/lane"
+  HostedZoneId:
+    Condition: HasDomain
+    Value: !Ref HostedZone
+  NameServers:
+    Condition: HasDomain
+    Description: Paste these into the registrar (Porkbun > Authoritative Nameservers)
+    Value: !Join [" ", !GetAtt HostedZone.NameServers]

@@ -1,0 +1,1 @@
+Document type: a named driver exclusion, a letter or form in which the insured excludes a named person from driving any insured vehicle. Extract only the listed facts it states; the excluded driver is the person who will not drive, not the person signing.

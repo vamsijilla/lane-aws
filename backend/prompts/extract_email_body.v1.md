@@ -1,0 +1,1 @@
+Document type: the body of the agent's email. Extract only facts the email states. Most fields will be null. other_facts holds any further underwriting fact (units, operating states, losses, FEIN) stated in the email.

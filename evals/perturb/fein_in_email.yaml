@@ -1,0 +1,8 @@
+name: fein_in_email
+what: The agent adds the FEIN to the email body ("FEIN 47-2193856"), closing the application's FEIN gap.
+expect:
+  never_less_careful: false  # adds the FEIN: APP-01 passing is the point
+  same_route: true
+  same_rules_except: [APP-01]
+  rules: {APP-01: pass}
+  missing_absent: [APP_FEIN]

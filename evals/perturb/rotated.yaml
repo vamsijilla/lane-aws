@@ -1,0 +1,7 @@
+name: rotated
+what: Two scanned IFTA returns are rotated, one by 90 degrees and one by 180.
+expect:
+  same_route: true
+  same_rules_except: []
+  unknown_when_unverified: true
+  documents: 24

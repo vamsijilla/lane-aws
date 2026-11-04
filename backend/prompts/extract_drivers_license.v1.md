@@ -1,0 +1,1 @@
+Document type: a photo or scan of a physical driver's license card. Read the card text only; ignore watermarks such as SAMPLE or SPECIMEN. license_type captures card wording such as COMMERCIAL DRIVER LICENSE or LIMITED-TERM. Give page and quote as the visible card text.

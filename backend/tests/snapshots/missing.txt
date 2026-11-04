@@ -1,0 +1,15 @@
+APP_AUTHORITY: The date operating authority was granted is blank.
+APP_BUSINESS_START: The first date in business is blank.
+APP_FEIN: The application has no FEIN or SSN.
+APP_GARAGING: The application's garaging address is blank.
+APP_HISTORY: The historical premium and power units table is blank on the Commercial auto insurance application, Cobalt Mesa Transport Inc.
+APP_SIGNATURE: The application is not signed.
+DRV_UNLISTED:name:BRANDT-KEVIN: Does Kevin Brandt still drive? If so, send their MVR; if not, confirm they no longer drive.
+LAPSE:2023-02-10: No coverage shown (liability and cargo) from Feb 10, 2023 to Dec 15, 2023 (308 days).
+LOSS_PARTIAL:cargo:2023-12-15: Cargo 2023-2024: only a letter was sent ("There have been no paid losses during the period of 12/15/23-12/15/24"). It covers paid losses only and does not show open claims or reserves.
+LOSS_TERM:auto_liability:2022-03-08: Auto liability 2022-2023: listed as prior insurance, but no loss run was sent.
+LOSS_TERM:cargo:2022-03-08: Cargo 2022-2023: listed as prior insurance, but no loss run was sent.
+Q_ENGLISH_PROFICIENCY: Are all scheduled drivers employed by you in compliance with the English Language Proficiency requirements of Federal Regulations FMCSA 49 CFR § 391.11(b)(2) (left blank on the Commercial auto insurance application, Cobalt Mesa Transport Inc)
+VEH_STATED_VALUE: No stated value for 4 of 4 scheduled units (only cost new is given).
+VEH_UNLISTED:1XPBD49X5MD735204: 2021 Peterbilt (735204) appears in loss history. Is it still operated, is it a tractor or a straight truck, and why is it not scheduled?
+VEH_VIN:3AKJGLD59HSKR736: 2017 Freightliner (SKR736): VIN 16 characters instead of 17.

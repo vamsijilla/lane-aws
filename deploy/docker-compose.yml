@@ -1,0 +1,85 @@
+# Lane on one host: Caddy in front, the web app, the API, one worker and Mailpit.
+# Postgres and file storage are outside (RDS and S3 on AWS; docker-compose.local.yml locally).
+# Settings come from deploy/.env (see .env.aws.example).
+
+x-logging: &logging
+  driver: json-file
+  options: { max-size: "10m", max-file: "3" }
+
+x-backend: &backend
+  image: ${LANE_API_IMAGE:-lane-api:local}
+  env_file: .env
+  restart: unless-stopped
+  logging: *logging
+
+services:
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    logging: *logging
+    ports:
+      - "${LANE_HTTP_PORT:-80}:80"
+      - "${LANE_HTTPS_PORT:-443}:443"
+    env_file: .env
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web: { condition: service_healthy }
+      api: { condition: service_healthy }
+
+  web:
+    image: ${LANE_WEB_IMAGE:-lane-web:local}
+    restart: unless-stopped
+    logging: *logging
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  api:
+    <<: *backend
+    command: ["uvicorn", "lane.api.main:app", "--host", "0.0.0.0", "--port", "8000",
+              "--proxy-headers", "--forwarded-allow-ips", "*"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=4).status == 200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  # The only process that watches Mailpit and runs the pipeline (LANE_RUN_MODE=queue).
+  # Never add a second watcher: two would race for every email.
+  worker:
+    <<: *backend
+    command: ["python", "-m", "lane.worker"]
+    depends_on:
+      api: { condition: service_healthy }
+      mailpit: { condition: service_started }
+
+  # One-off: docker compose run --rm migrate
+  migrate:
+    <<: *backend
+    restart: "no"
+    command: ["alembic", "upgrade", "head"]
+    profiles: ["tools"]
+
+  # The agent's mailbox. SMTP and the web UI stay inside Docker; the UI is reached through
+  # Caddy at /mail, behind the same password as the site.
+  mailpit:
+    image: axllent/mailpit:v1.32.0
+    restart: unless-stopped
+    logging: *logging
+    volumes:
+      - mailpit_data:/data
+    # Set by environment, not flags, so Mailpit's own health check knows the web root too
+    environment:
+      MP_DATABASE: /data/mailpit.db
+      MP_WEBROOT: mail
+      MP_MAX_MESSAGES: "500"
+
+volumes:
+  caddy_data:
+  caddy_config:
+  mailpit_data:

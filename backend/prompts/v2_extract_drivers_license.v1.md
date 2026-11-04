@@ -1,0 +1,1 @@
+Document type: a photo or scan of a physical driver's license card. Read the card text only; ignore watermarks such as SAMPLE or SPECIMEN. license_type is the card wording that says whether it is a commercial driver license (for example COMMERCIAL DRIVER LICENSE), as printed. Give page and quote as the visible card text, with the label beside each value (DOB, ISS, EXP, CLASS).

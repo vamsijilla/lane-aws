@@ -1,0 +1,31 @@
+# One site. People sign in to Lane itself (Cognito, or the demo people locally); the API refuses
+# anyone who has not (LANE_REQUIRE_SIGN_IN). Only the Mailpit inbox at /mail has a password here.
+
+{$LANE_SITE} {
+	encode zstd gzip
+
+	route {
+		@api path /api/*
+		handle @api {
+			# A browser that has the /mail password may resend it as "Authorization: Basic". The
+			# API would read that header and refuse; it belongs to /mail, so it stops here.
+			@basic header Authorization "Basic *"
+			request_header @basic -Authorization
+			reverse_proxy api:8000 {
+				# Live progress is a stream: pass every event through as it comes
+				flush_interval -1
+			}
+		}
+
+		handle /mail* {
+			basic_auth {
+				{$LANE_GATE_USER} {$LANE_GATE_HASH}
+			}
+			reverse_proxy mailpit:8025
+		}
+
+		handle {
+			reverse_proxy web:3000
+		}
+	}
+}

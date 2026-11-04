@@ -1,0 +1,8 @@
+name: blurred
+what: The Q2 2026 IFTA return is blurred and saved as low-quality JPEG scans.
+expect:
+  same_route: true
+  same_rules_except: []
+  unknown_when_unverified: true
+  documents: 24
+  low_quality_files: ["Q2 2026.pdf"]

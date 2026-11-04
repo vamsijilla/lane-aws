@@ -1,0 +1,1 @@
+Document type: a commercial auto application printed as a PDF or image. Fill the fields that the form shows; leave the rest null. Questions holds every yes or no operational question with its marked answer.

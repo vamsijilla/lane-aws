@@ -1,0 +1,122 @@
+{
+ "rules_changed": {},
+ "route": {
+  "a": [
+   "refer",
+   "small_fleet",
+   "Refer to Small Fleet underwriting",
+   true
+  ],
+  "b": [
+   "refer",
+   "small_fleet",
+   "Refer to Small Fleet underwriting",
+   true
+  ]
+ },
+ "diffs": {
+  "rules": "",
+  "conflicts": "",
+  "missing": "",
+  "email": ""
+ },
+ "fields_changed": [
+  {
+   "field": "driver:lic:C4471925.name",
+   "a": {
+    "label": "Devraj Sandhu: Name",
+    "state": "known",
+    "value": "Sandhu, Devraj",
+    "candidates": [
+     [
+      "Sandhu, Devraj",
+      [
+       "Commercial auto application, drivers and vehicles",
+       "Driver list",
+       "MVR, California driver record, Sandhu, Devraj",
+       "Quick quote form, Cobalt Mesa Transport Inc"
+      ]
+     ]
+    ]
+   },
+   "b": {
+    "label": "Devraj Sandhu: Name",
+    "state": "known",
+    "value": "Devraj Sandhu",
+    "candidates": [
+     [
+      "Devraj Sandhu",
+      [
+       "Commercial auto application, drivers and vehicles",
+       "Driver list",
+       "MVR, California driver record, Sandhu, Devraj",
+       "Quick quote form, Cobalt Mesa Transport Inc"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "field": "driver:lic:M5520814.name",
+   "a": {
+    "label": "Luis Morales: Name",
+    "state": "known",
+    "value": "Morales, Luis E",
+    "candidates": [
+     [
+      "Morales, Luis E",
+      [
+       "Driver list",
+       "MVR, California driver record, Morales, Luis E"
+      ]
+     ]
+    ]
+   },
+   "b": {
+    "label": "Luis Morales: Name",
+    "state": "known",
+    "value": "Luis E Morales",
+    "candidates": [
+     [
+      "Luis E Morales",
+      [
+       "Driver list",
+       "MVR, California driver record, Morales, Luis E"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "field": "driver:lic:W38215604720918.name",
+   "a": {
+    "label": "Marcus Whitfield: Name",
+    "state": "known",
+    "value": "Whitfield, Marcus J",
+    "candidates": [
+     [
+      "Whitfield, Marcus J",
+      [
+       "Driver list",
+       "MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026"
+      ]
+     ]
+    ]
+   },
+   "b": {
+    "label": "Marcus Whitfield: Name",
+    "state": "known",
+    "value": "Marcus J Whitfield",
+    "candidates": [
+     [
+      "Marcus J Whitfield",
+      [
+       "Driver list",
+       "MVR, New Jersey driver record, Whitfield, Marcus J, Oct 9, 2026"
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}
