@@ -1,0 +1,36 @@
+# The local rehearsal: the same stack, with Postgres 16 standing in for RDS and the Mac's own
+# MinIO (make minio, reached as host.docker.internal:9000, bucket lane-aws) standing in for S3.
+#   docker compose -f docker-compose.yml -f docker-compose.local.yml up -d
+# Caddy serves http://localhost:8080 (LANE_SITE=http://:80, LANE_HTTP_PORT=8080 in .env).
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lane
+      POSTGRES_PASSWORD: lane
+      POSTGRES_DB: lane
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    # This Mac only: deploy/copy-cache.sh reads the rehearsal's cache from here. The EC2 is the
+    # same Linux arm64, so page images match byte for byte; the Mac's own cache would not.
+    ports:
+      - "127.0.0.1:5434:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "lane"]
+      interval: 5s
+      retries: 20
+
+  api:
+    depends_on:
+      postgres: { condition: service_healthy }
+  worker:
+    depends_on:
+      postgres: { condition: service_healthy }
+  migrate:
+    depends_on:
+      postgres: { condition: service_healthy }
+
+volumes:
+  pg_data:

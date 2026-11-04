@@ -1,0 +1,1 @@
+Document type: a driver or vehicle schedule printed as a PDF or image. One entry per row that holds a driver or vehicle; skip header, total and "list attached" rows. Copy VINs and license numbers character for character.

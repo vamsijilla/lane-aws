@@ -1,0 +1,10 @@
+name: deleted_claim
+what: >-
+  The last claim block of the 2024-2025 auto liability loss run is redacted; the header still
+  says TOTAL CLAIMS: 2. Written before the first run.
+expect:
+  same_route: true
+  # Without that claim the unscheduled unit it named, and the counts that include it, may go
+  same_rules_except: [ELIG-01, DATA-01, DOC-05, ROUTE-01, ROUTE-02]
+  documents: 24
+  recall_failed: ["AL 24-25.pdf"]

@@ -1,0 +1,104 @@
+# Tier 1 of classification: deterministic signals, checked before known layouts or any model.
+# Industry vocabulary only (how carriers, agencies and states label these documents), never
+# anything from one packet. Each signal decides only when its evidence is clear; otherwise the
+# next tier decides and this one is a cross-check.
+
+version: 1
+
+# Printed form identifiers. A page carrying one is that form, whoever sent it.
+form_identifiers:
+  - { pattern: '\bACORD\s*125\b', doc_type: application, name: ACORD 125 commercial insurance application }
+  - { pattern: '\bACORD\s*127\b', doc_type: application, name: ACORD 127 business auto section }
+  - { pattern: '\bACORD\s*137\b', doc_type: application, name: ACORD 137 commercial auto state supplement }
+  - { pattern: '\bACORD\s*129\b', doc_type: vehicle_schedule, name: ACORD 129 vehicle schedule }
+  - { pattern: '\bACORD\s*163\b', doc_type: driver_schedule, name: ACORD 163 driver information schedule }
+
+# Worksheet column headers per document type. A header counts only when its column holds real
+# data below it (not a placeholder), so a tab with driver rows and an empty vehicle block reads
+# as a driver schedule.
+sheet_headers:
+  driver_schedule:
+    - first name
+    - last name
+    - driver name
+    - date of birth
+    - dob
+    - hire date
+    - date of hire
+    - license number
+    - license no
+    - license #
+    - dl number
+    - cdl number
+    - cdl state
+    - license state
+    - state licensed
+    - years of experience
+    - years experience
+    - driver type
+    - accidents
+    - violations
+    - mvr
+  vehicle_schedule:
+    - vin
+    - vehicle identification number
+    - year
+    - make
+    - model
+    - unit number
+    - unit #
+    - vehicle type
+    - body type
+    - gross vehicle weight
+    - gvw
+    - stated value
+    - cost new
+    - original cost
+    - plate number
+    - registered state
+    - garaging zip
+    - garaged zip code
+  application:
+    - named insured
+    - insured name
+    - applicant name
+    - legal name
+    - fein
+    - federal id
+    - usdot
+    - dot number
+    - mc number
+    - mailing address
+    - years in business
+    - effective date
+    - entity type
+    - business type
+    - description of operations
+
+# A header type wins with at least this many headers holding data, and this many more than the
+# next type.
+sheet_min_headers: 3
+sheet_margin: 2
+
+# Values that hold a place rather than data.
+placeholders:
+  - attached
+  - see attached
+  - list attached
+  - see list
+  - "n/a"
+  - na
+  - none
+  - tbd
+  - "-"
+  - "$ -"
+
+# Lookup or dropdown-value sheets: hidden, or named like this, holding only short categorical
+# values and no document's headers. They belong to no document.
+lookup_sheet_names: ['lookup', 'list values', 'dropdown', 'drop down', 'values', 'reference', 'codes', 'validation']
+lookup_max_value_chars: 60
+
+# Key phrases (lane/documents/signals.py KEYWORDS) decide only when this strong, with this margin
+# over the next type, on a page with a text layer.
+key_phrases_min_score: 6
+key_phrases_margin: 3

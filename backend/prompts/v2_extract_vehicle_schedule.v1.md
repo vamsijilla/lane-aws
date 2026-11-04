@@ -1,0 +1,1 @@
+Document type: a vehicle schedule in a worksheet. Map the table: header row, first and last data rows (exclude total or summary lines), and the column letter for each field. Leave a field null when there is no such column.

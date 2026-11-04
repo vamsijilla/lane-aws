@@ -1,0 +1,1 @@
+Document type: a vehicle schedule in a worksheet. Map the table: header row, first and last data rows (exclude total or summary lines), and the column letter for each field. Labelled values outside the table, such as a trailer interchange limit or a total insured value, go to extra_cells with the cell holding the value and the label in value.

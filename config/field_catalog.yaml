@@ -1,0 +1,434 @@
+# Field catalog: the single source of truth for what Lane extracts.
+#
+# Extraction schemas and the per-type prompt field lists are generated from this file
+# (backend/src/lane/extract/catalog.py). Nothing outside it becomes a fact; everything else on a
+# page stays as indexed page text with boxes, searchable and visible in the evidence lens.
+#
+# Per field:
+#   entity, attribute  where the value lands after resolution (kind.attribute), or a detail
+#   type               identifier | number | money | date | name | enum | text
+#   tier               decision   a rule, the route or a missing item reads it: needs two reads
+#                      crosscheck compared across documents (conflicts, matching): one read + grounding
+#                      context    shown on a screen only: one read + grounding
+#   role               fact (default) | check (read for a self-check only, never a fact)
+#                      | display (shown as text, never a fact)
+#   labels             the label as printed next to the value (synonyms); the second read and
+#                      grounding anchor on these
+#   validators         self-checks by name (lane/extract/validators.py)
+#   used_by            rule ids, conflicts, match:<entity>, missing:<code>, check:<name>, screen:<name>
+#   shapes             pdf, sheet (default both where the document type has both)
+#   description        guidance for the model (goes into the generated prompt)
+#
+# Tables are records: one per row (claim, jurisdiction, driver, vehicle, MVR event). A table in a
+# workbook is either `columns` (a header row and one column per field) or `cells` (labelled
+# cells, one group per entry).
+#
+# Adding a document type or a program is catalog entries plus one prompt; no code changes.
+
+version: 2
+
+doc_types:
+  mvr:
+    prompt: v2_extract_mvr
+    shapes: [pdf]
+    fields:
+      driver_name: {entity: driver, attribute: name, type: name, tier: crosscheck, labels: [Name, Driver Name], used_by: [match:driver, conflicts, screen:drivers]}
+      license_number: {entity: driver, attribute: license_number, type: identifier, tier: decision, labels: [License, License No, License Number, DL, DL No, DLN, Driver License Number, Driver License No, Operator License, Customer Number], validators: [license_format], used_by: [match:driver, DOC-04, conflicts]}
+      license_state: {entity: driver, attribute: license_state, type: enum, tier: crosscheck, labels: [Driver Record, State], validators: [state], used_by: [match:driver, conflicts, screen:drivers]}
+      date_of_birth: {entity: driver, attribute: date_of_birth, type: date, tier: decision, labels: [DOB, Date of Birth, Birth Date, Birthdate, D.O.B.], validators: [age_at_order], used_by: [DRV-03, DRV-04, conflicts]}
+      license_class: {entity: driver, attribute: license_class, type: enum, tier: decision, labels: [Class, Cl, License Class], used_by: [DRV-01, conflicts]}
+      license_type: {entity: driver, attribute: commercial_license, type: enum, tier: decision, labels: [License Type, License], description: "commercial or personal/non-commercial, as printed", clean: [legal_presence], used_by: [DRV-01, DRV-02]}
+      license_status: {entity: driver, attribute: license_status, type: enum, tier: decision, labels: [Status, License Status], used_by: [DRV-01]}
+      issue_date: {entity: driver, attribute: license_issued, type: date, tier: decision, labels: [Iss Date, Issue Date, Issued, Iss, Issue, Original Issue Date, Date Issued], validators: [issue_before_expiry], used_by: [DRV-02, screen:drivers]}
+      expiration_date: {entity: driver, attribute: license_expiration, type: date, tier: decision, labels: [Exp Date, Expiration Date, Expires, Expire, Exp, Expiration, Valid Until, Date of Expiration], validators: [issue_before_expiry], used_by: [DRV-01, conflicts]}
+      first_licensed: {entity: driver, attribute: first_licensed, type: text, tier: context, labels: [Approx. Year Lic. First Issued, First Licensed, Year First Licensed], description: "Year or date first licensed, if printed", used_by: [screen:drivers]}
+      order_date: {entity: driver, attribute: mvr_order_date, type: date, tier: decision, labels: [Order Date, Date Ordered, Report Date, Ordered, Request Date, Date Requested], validators: [age_at_order], used_by: [DOC-04, DRV-05]}
+      record_type: {entity: driver, attribute: mvr_record_type, type: text, tier: context, labels: [Rec Type, Record Type], description: "e.g. standard, three year, five year", used_by: [screen:drivers]}
+    tables:
+      events:
+        description: >-
+          Every violation, conviction, accident, suspension, failure to appear, and every CDL
+          action (issued, renewed, downgraded, suspended). One record per event.
+        fields:
+          kind: {entity: driver, attribute: mvr_event, type: enum, tier: decision, description: "violation, conviction, accident, suspension, failure to appear, cdl_issued, cdl_renewed, cdl_downgraded or cdl_suspended", values: {violation: [VIOL, VIOLATION, VIO], conviction: [CONV, CONVICTION], accident: [ACC, ACCD, ACCIDENT, ACDT], suspension: [SUSP, SUSPENSION, SUSPENDED], failure to appear: [FTA, FAILURE TO APPEAR], cdl_issued: [CDL ISSUED, ISSUED], cdl_renewed: [RENEWAL, RENEWED], cdl_downgraded: [DOWNGRADE, DOWNGRADED], cdl_suspended: [CDL SUSPENDED, DISQUALIFIED]}, used_by: [DRV-05, DRV-06, screen:drivers]}
+          event_date: {entity: driver, attribute: mvr_event, type: date, tier: decision, labels: [Viol Date, Violation Date, Date, Acc Date], used_by: [DRV-05, DRV-06]}
+          conviction_date: {entity: driver, attribute: mvr_event, type: date, tier: context, labels: [Conv Date, Conviction Date], used_by: [screen:drivers]}
+          description: {entity: driver, attribute: mvr_event, type: text, tier: decision, labels: [Description, Violation], used_by: [DRV-06, screen:drivers]}
+          points: {entity: driver, attribute: mvr_event, type: number, tier: decision, labels: [Points, Pts], used_by: [DRV-05]}
+          location: {entity: driver, attribute: mvr_event, type: text, tier: context, used_by: [screen:drivers]}
+      notes:
+        description: "Other dated administrative entries (clearance notices, point credits, duplicates issued). Shown as text."
+        role: display
+        fields:
+          note_date: {entity: driver, attribute: mvr_note, type: date, tier: context, role: display, used_by: [screen:drivers]}
+          text: {entity: driver, attribute: mvr_note, type: text, tier: context, role: display, used_by: [screen:drivers]}
+
+  drivers_license:
+    prompt: v2_extract_drivers_license
+    shapes: [pdf]
+    fields:
+      full_name: {entity: driver, attribute: name, type: name, tier: crosscheck, labels: [LN, FN, Name], used_by: [match:driver, conflicts]}
+      license_number: {entity: driver, attribute: license_number, type: identifier, tier: decision, labels: [DL, DLN, License No, Lic No], validators: [license_format], used_by: [match:driver, conflicts]}
+      state: {entity: driver, attribute: license_state, type: enum, tier: crosscheck, validators: [state], description: "Issuing state, as printed on the card", used_by: [match:driver, conflicts]}
+      license_class: {entity: driver, attribute: license_class, type: enum, tier: decision, labels: [CLASS, CL], used_by: [DRV-01, conflicts]}
+      license_type: {entity: driver, attribute: commercial_license, type: enum, tier: decision, description: "Card wording that says whether it is a commercial driver license, as printed", clean: [legal_presence], used_by: [DRV-01, DRV-02]}
+      date_of_birth: {entity: driver, attribute: date_of_birth, type: date, tier: decision, labels: [DOB, Date of Birth, Birthdate, Birth Date], used_by: [DRV-03, DRV-04, conflicts]}
+      issue_date: {entity: driver, attribute: license_issued, type: date, tier: decision, labels: [ISS, Issued, Issue Date, Date Issued], validators: [issue_before_expiry], used_by: [DRV-02, screen:drivers]}
+      expiration_date: {entity: driver, attribute: license_expiration, type: date, tier: decision, labels: [EXP, Expires, Expiration, Expiration Date, Valid Until], validators: [issue_before_expiry], used_by: [DRV-01, conflicts]}
+
+  loss_run:
+    prompt: v2_extract_loss_run
+    shapes: [pdf]
+    fields:
+      carrier: {entity: coverage_term, attribute: carrier, type: name, tier: decision, labels: [Insurance Co, Insurance Company, Carrier, Company, Insurer, Writing Company, Underwriting Company], used_by: [DOC-02, INS-02, conflicts]}
+      policy_number: {entity: coverage_term, attribute: policy_number, type: identifier, tier: decision, labels: [Policy Number, Policy No], used_by: [match:coverage_term, DOC-02, INS-02]}
+      period_start: {entity: coverage_term, attribute: start, type: date, tier: decision, labels: [Policy Period, Period, Effective, Policy Term, Coverage Period, Term], used_by: [DOC-02, INS-01, INS-02]}
+      period_end: {entity: coverage_term, attribute: end, type: date, tier: decision, labels: [Policy Period, Period, Expiration, to, Policy Term, Coverage Period, Term], used_by: [DOC-02, INS-01, INS-02]}
+      run_date: {entity: coverage_term, attribute: loss_evidence, type: date, tier: decision, labels: [Run Date, Valuation Date, Valued As Of, As Of, Loss Run Date, Prepared, Report Date, Evaluated], used_by: [DOC-01]}
+      line_of_business: {entity: coverage_term, attribute: line, type: enum, tier: decision, labels: [Line of Business, Coverage, Line], description: "The coverage line the report is for, as printed in its header (for example Auto liability or Motor truck cargo); null when not printed", used_by: [DOC-02, INS-01, INS-02]}
+      total_claims: {entity: coverage_term, attribute: loss_evidence, type: number, tier: decision, role: check, labels: [TOTAL CLAIMS, Total Claims, Number of Claims], used_by: [check:loss_run_recall]}
+      no_claims_statement: {entity: coverage_term, attribute: loss_evidence, type: enum, tier: decision, role: check, description: "e.g. 'NO CLAIMS' or 'NONE TO REPORT', if printed", used_by: [check:loss_run_recall]}
+    tables:
+      coverage_totals:
+        description: "One record per coverage line in the totals block, with its amounts or the printed 'No Coverage'."
+        column_key: coverage
+        fields:
+          coverage: {entity: coverage_term, attribute: line, type: enum, tier: decision, description: "e.g. Auto Liability, Physical Damage, Cargo", used_by: [DOC-02, INS-02, conflicts]}
+          covered: {entity: coverage_history, attribute: physical_damage_carried, type: enum, tier: decision, description: "Only the printed statement 'No Coverage', else null", used_by: [DOC-02, conflicts]}
+          losses_paid: {entity: coverage_term, attribute: loss_evidence, type: money, tier: crosscheck, labels: [TOTAL LOSSES PAID, Losses Paid, Paid], used_by: [check:loss_run_totals, screen:coverage]}
+          reserved: {entity: coverage_term, attribute: loss_evidence, type: money, tier: crosscheck, labels: [TOTAL RESERVED, Reserved, Reserves], used_by: [check:loss_run_totals, screen:coverage]}
+          incurred: {entity: coverage_term, attribute: loss_evidence, type: money, tier: crosscheck, labels: [TOTAL INCURRED, Incurred], validators: [paid_reserved_incurred], used_by: [check:loss_run_totals, screen:coverage]}
+      claims:
+        description: "One record per claim, with every claim on every page."
+        fields:
+          claim_number: {entity: claim, attribute: number, type: identifier, tier: crosscheck, labels: [Claim Number, Claim No], used_by: [match:claim, screen:coverage]}
+          status: {entity: claim, attribute: status, type: enum, tier: crosscheck, labels: [Claim Status, Status], used_by: [screen:coverage, conflicts]}
+          date_of_loss: {entity: claim, attribute: date_of_loss, type: date, tier: crosscheck, labels: [Date of Loss, Loss Date, DOL], used_by: [screen:coverage, conflicts]}
+          date_reported: {entity: claim, attribute: date_reported, type: date, tier: crosscheck, labels: [Date Reported, Reported Date, Report Date], validators: [report_after_loss], used_by: [screen:coverage]}
+          late_reported: {entity: claim, attribute: late_reported, type: enum, tier: context, labels: [Late Reported], used_by: [screen:coverage]}
+          driver_name: {entity: claim, attribute: driver, type: name, tier: decision, labels: [Name of Driver, Driver Name, Driver], used_by: [DOC-04, missing:DRV_UNLISTED, match:driver]}
+          driver_date_of_birth: {entity: driver, attribute: date_of_birth, type: date, tier: crosscheck, labels: [Date of Birth, DOB], used_by: [match:driver, conflicts]}
+          driver_status: {entity: claim, attribute: driver_status, type: enum, tier: context, labels: [Driver Status], description: "e.g. Reported or Unreported", used_by: [screen:coverage]}
+          vehicle_description: {entity: vehicle, attribute: description, type: text, tier: crosscheck, labels: [Vehicle, Vehicle Description, Unit], used_by: [conflicts, screen:vehicles]}
+          vin: {entity: vehicle, attribute: vin, type: identifier, tier: decision, labels: [VIN, Vehicle ID], validators: [vin], used_by: [DOC-05, missing:VEH_UNLISTED, match:vehicle]}
+          unit_reported: {entity: claim, attribute: unit_reported, type: enum, tier: context, labels: [Unit Status, Vehicle Status], description: "Unreported unit flag as printed", used_by: [screen:coverage]}
+          accident_location: {entity: claim, attribute: location, type: text, tier: context, labels: [Accident Location, Location], used_by: [screen:coverage]}
+          description: {entity: claim, attribute: description, type: text, tier: context, labels: [Description, Accident Description, Loss Description], used_by: [screen:coverage]}
+          total_paid: {entity: claim, attribute: paid, type: money, tier: crosscheck, labels: [Total Paid, Paid], used_by: [check:loss_run_totals, screen:coverage]}
+          total_reserves: {entity: claim, attribute: reserved, type: money, tier: crosscheck, labels: [Total Reserves, Reserves, Reserved], used_by: [check:loss_run_totals, screen:coverage]}
+          total_incurred: {entity: claim, attribute: incurred, type: money, tier: crosscheck, labels: [Total Incurred, Incurred], validators: [paid_reserved_incurred], used_by: [check:loss_run_totals, screen:coverage]}
+          lines:
+            type: table
+            role: check
+            description: "The claim's lines by coverage, with their amounts"
+            fields:
+              coverage: {entity: claim, attribute: lines, type: enum, tier: crosscheck, role: check, used_by: [check:loss_run_totals]}
+              status: {entity: claim, attribute: lines, type: enum, tier: crosscheck, role: check, used_by: [check:loss_run_totals]}
+              paid: {entity: claim, attribute: lines, type: money, tier: crosscheck, role: check, used_by: [check:loss_run_totals]}
+              reserves: {entity: claim, attribute: lines, type: money, tier: crosscheck, role: check, used_by: [check:loss_run_totals]}
+              incurred: {entity: claim, attribute: lines, type: money, tier: crosscheck, role: check, validators: [paid_reserved_incurred], used_by: [check:loss_run_totals]}
+
+  loss_history_letter:
+    prompt: extract_loss_history_letter
+    shapes: [pdf]
+    fields:
+      author: {entity: coverage_term, attribute: carrier, type: name, tier: decision, description: "Organization that wrote the letter", used_by: [DOC-02, INS-02, conflicts]}
+      letter_date: {entity: coverage_term, attribute: loss_evidence, type: date, tier: decision, labels: [Date], used_by: [DOC-01]}
+      policy_number: {entity: coverage_term, attribute: policy_number, type: identifier, tier: decision, labels: [Policy Number, Policy No, Policy], used_by: [match:coverage_term, DOC-02, INS-02]}
+      coverage: {entity: coverage_term, attribute: line, type: enum, tier: decision, labels: [Policy, Policy Number, Coverage, Line], description: "Line of business if stated, e.g. MTC (motor truck cargo)", used_by: [DOC-02, INS-02]}
+      period: {entity: coverage_term, attribute: start, type: text, tier: decision, labels: [during the period of, Period, Policy Period], used_by: [DOC-02, INS-01, INS-02]}
+      statement: {entity: coverage_term, attribute: loss_evidence, type: text, tier: decision, description: "The sentence that states the loss history, verbatim", used_by: [INS-02]}
+      scope: {entity: coverage_term, attribute: loss_evidence, type: text, tier: decision, description: "What the statement covers, as worded: e.g. 'paid losses' only, or all claims", used_by: [INS-02, DOC-02]}
+
+  ifta_return:
+    prompt: extract_ifta_return
+    shapes: [pdf]
+    fields:
+      taxpayer_name: {entity: applicant, attribute: legal_name, type: name, tier: crosscheck, labels: [Taxpayer Name, Name], used_by: [conflicts]}
+      account_number: {entity: ifta_quarter, attribute: account_number, type: identifier, tier: crosscheck, labels: [Account Number, Account No, IFTA Account], used_by: [match:ifta_quarter, conflicts]}
+      period_begin: {entity: ifta_quarter, attribute: period, type: date, tier: decision, labels: [Period Begin, Period Beginning, Quarter Beginning, Reporting Period, Tax Period, Period From], used_by: [DOC-03]}
+      period_end: {entity: ifta_quarter, attribute: period, type: date, tier: decision, labels: [Period End, Period Ending, Quarter Ending, Reporting Period, Tax Period, Period To], used_by: [DOC-03]}
+      subtotal_due: {entity: ifta_quarter, attribute: totals, type: money, tier: crosscheck, role: check, labels: [Subtotal Amount Due or Credit, Subtotal], used_by: [check:ifta_crossfoot]}
+      penalty: {entity: ifta_quarter, attribute: totals, type: money, tier: crosscheck, role: check, labels: [Penalty], used_by: [check:ifta_crossfoot]}
+      interest: {entity: ifta_quarter, attribute: totals, type: money, tier: crosscheck, role: check, labels: [Interest], used_by: [check:ifta_crossfoot]}
+      total_due: {entity: ifta_quarter, attribute: totals, type: money, tier: crosscheck, role: check, labels: [TOTAL BALANCE DUE OR CREDIT, Total Due], used_by: [check:ifta_crossfoot]}
+    tables:
+      rows:
+        description: "Every jurisdiction row on every page, in order, one record per row"
+        fields:
+          jurisdiction: {entity: operations, attribute: ifta, type: enum, tier: decision, validators: [state], used_by: [ELIG-02, ELIG-05, conflicts]}
+          total_miles: {entity: operations, attribute: ifta, type: number, tier: decision, labels: [Total Miles, Total IFTA Miles, Total Fleet Miles, Total Distance], used_by: [ELIG-02, ELIG-05, conflicts]}
+          surcharge: {entity: operations, attribute: ifta, type: enum, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          taxable_miles: {entity: operations, attribute: ifta, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          taxable_gallons: {entity: operations, attribute: ifta, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          tax_paid_gallons: {entity: operations, attribute: ifta, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          net_taxable_gallons: {entity: operations, attribute: ifta, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          rate: {entity: operations, attribute: ifta, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          tax: {entity: operations, attribute: ifta, type: money, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          interest: {entity: operations, attribute: ifta, type: money, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          total: {entity: operations, attribute: ifta, type: money, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+      totals:
+        single: true
+        description: "The quarter's totals row"
+        fields:
+          total_miles: {entity: ifta_quarter, attribute: totals, type: number, tier: crosscheck, labels: [Total Miles, Totals], used_by: [check:ifta_crossfoot, screen:operations]}
+          taxable_miles: {entity: ifta_quarter, attribute: totals, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          taxable_gallons: {entity: ifta_quarter, attribute: totals, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          tax_paid_gallons: {entity: ifta_quarter, attribute: totals, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          net_taxable_gallons: {entity: ifta_quarter, attribute: totals, type: number, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          tax: {entity: ifta_quarter, attribute: totals, type: money, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          interest: {entity: ifta_quarter, attribute: totals, type: money, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+          total: {entity: ifta_quarter, attribute: totals, type: money, tier: crosscheck, role: check, used_by: [check:ifta_crossfoot]}
+
+  quote_form:
+    prompt: v2_extract_quote_form
+    shapes: [pdf]
+    fields:
+      agency_name: {entity: agency, attribute: name, type: name, tier: crosscheck, labels: [Agency Name, Agency, Producer], used_by: [conflicts, screen:brief]}
+      agency_contact: {entity: agency, attribute: contact, type: name, tier: context, labels: [Contact, Agent, Producer Contact], used_by: [screen:actions]}
+      agency_phone: {entity: agency, attribute: phone, type: identifier, tier: context, labels: [Ph, Phone, Agency Phone], validators: [phone], used_by: [screen:conflicts]}
+      applicant_name: {entity: applicant, attribute: legal_name, type: name, tier: crosscheck, labels: [Applicant Name, Applicant, Insured Name, Named Insured], used_by: [conflicts, screen:brief]}
+      dba: {entity: applicant, attribute: dba, type: name, tier: context, labels: [DBA, Doing Business As], used_by: [screen:brief]}
+      mailing_address: {entity: applicant, attribute: mailing_address, type: text, tier: context, labels: [Mailing Address, Address], used_by: [screen:brief]}
+      city: {entity: applicant, attribute: mailing_city, type: name, tier: context, labels: [City], used_by: [screen:brief]}
+      state: {entity: applicant, attribute: mailing_state, type: enum, tier: decision, labels: [State, ST, "State/Province"], validators: [state], used_by: [ELIG-02, ELIG-03, ELIG-05]}
+      zip: {entity: applicant, attribute: mailing_zip, type: identifier, tier: context, labels: [Zip, Zip Code], used_by: [screen:brief]}
+      phone: {entity: applicant, attribute: phone, type: identifier, tier: context, labels: [Phone, Ph], validators: [phone], used_by: [screen:brief]}
+      email: {entity: applicant, attribute: email, type: text, tier: context, labels: [Email, E-mail], used_by: [screen:brief]}
+      years_in_business: {entity: applicant, attribute: years_experience, type: number, tier: decision, labels: [Years in Business, Years in business, Years Established, Years in Operation, Years Operating], used_by: [ELIG-07, conflicts]}
+      years_prior_insurance: {entity: applicant, attribute: years_prior_insurance, type: number, tier: crosscheck, labels: [Years of Prior Insurance, Prior Insurance], used_by: [conflicts]}
+      dot_number: {entity: applicant, attribute: dot_number, type: identifier, tier: decision, labels: [DOT, USDOT, DOT Number, US DOT, USDOT Number, USDOT No, DOT No, "DOT #"], validators: [dot], used_by: [ELIG-06, conflicts]}
+      mc_number: {entity: applicant, attribute: mc_number, type: identifier, tier: decision, labels: [MC, MC Number, Docket, MC/MX, MC No, Docket Number, ICC MC], validators: [mc], used_by: [APP-02, conflicts]}
+      auto_liability_limit: {entity: coverage_request, attribute: auto_liability_limit, type: money, tier: crosscheck, labels: [Auto Liability Limit, Liability Limit], used_by: [conflicts, screen:brief]}
+      um_limit: {entity: coverage_request, attribute: um_limit, type: text, tier: crosscheck, labels: [U.M. Limit, UM Limit, Uninsured Motorist], used_by: [conflicts]}
+      physical_damage_requested: {entity: coverage_request, attribute: physical_damage_requested, type: enum, tier: decision, labels: ["Do you need a quote for Physical Damage?", Physical Damage], used_by: [COV-02]}
+      cargo_requested: {entity: coverage_request, attribute: cargo_requested, type: enum, tier: crosscheck, labels: ["Do you need a quote for Cargo Coverage?", Cargo Coverage], used_by: [conflicts]}
+      cargo_limit: {entity: coverage_request, attribute: cargo_limit, type: money, tier: crosscheck, labels: ["If Yes, what limits?", Cargo Limit], used_by: [conflicts]}
+      reefer_breakdown_requested: {entity: operations, attribute: refrigerated, type: enum, tier: crosscheck, labels: [Reefer Breakdown], used_by: [conflicts]}
+      renewal_or_new: {entity: applicant, attribute: renewal_or_new, type: enum, tier: context, labels: [Renewal, New], used_by: [screen:brief]}
+    tables:
+      radius:
+        description: "One record per radius band with its share"
+        fields:
+          label: {entity: operations, attribute: radius, type: text, tier: context, used_by: [check:shares, screen:operations]}
+          percent: {entity: operations, attribute: radius, type: number, tier: context, used_by: [check:shares, screen:operations]}
+      commodities:
+        description: "One record per commodity with its share and value"
+        fields:
+          label: {entity: operations, attribute: commodities, type: text, tier: decision, used_by: [ELIG-04, screen:operations]}
+          percent: {entity: operations, attribute: commodities, type: number, tier: context, used_by: [check:shares, screen:operations]}
+          value: {entity: operations, attribute: commodities, type: money, tier: context, used_by: [screen:operations]}
+      questions:
+        description: "One record per yes/no question with the marked answer"
+        fields:
+          number: {entity: operations, attribute: questions, type: text, tier: context, used_by: [screen:operations]}
+          question: {entity: operations, attribute: questions, type: text, tier: context, used_by: [ELIG-04, screen:operations]}
+          answer: {entity: operations, attribute: questions, type: enum, tier: decision, description: "Yes, No or blank, from the marked box", used_by: [ELIG-04, conflicts, missing:Q_]}
+      drivers:
+        description: "One record per listed driver"
+        fields:
+          name: {entity: driver, attribute: name, type: name, tier: crosscheck, used_by: [match:driver, conflicts]}
+          license_number: {entity: driver, attribute: license_number, type: identifier, tier: decision, validators: [license_format], used_by: [match:driver, conflicts]}
+          state: {entity: driver, attribute: license_state, type: enum, tier: crosscheck, validators: [state], used_by: [match:driver]}
+          date_of_birth: {entity: driver, attribute: date_of_birth, type: date, tier: decision, used_by: [DRV-03, DRV-04, conflicts]}
+          experience: {entity: driver, attribute: experience_stated, type: text, tier: decision, used_by: [DRV-02, conflicts]}
+          hire_date: {entity: driver, attribute: hire_date, type: date, tier: context, used_by: [screen:drivers]}
+          role: {entity: driver, attribute: owner_marker, type: enum, tier: decision, derived: true, description: "Set by code when a date column prints a role (OWNER) instead of a date", used_by: [DRV-01, conflicts]}
+      prior_insurance:
+        description: "One record per prior policy term listed"
+        fields:
+          start: {entity: coverage_term, attribute: start, type: date, tier: decision, used_by: [INS-01, INS-02, DOC-02]}
+          end: {entity: coverage_term, attribute: end, type: date, tier: decision, used_by: [INS-01, INS-02, DOC-02]}
+          carrier: {entity: coverage_term, attribute: carrier, type: name, tier: decision, used_by: [DOC-02, INS-02, conflicts]}
+          coverage: {entity: coverage_term, attribute: line, type: enum, tier: decision, used_by: [INS-01, INS-02, DOC-02]}
+          policy_number: {entity: coverage_term, attribute: policy_number, type: identifier, tier: crosscheck, used_by: [match:coverage_term]}
+          units: {entity: fleet, attribute: power_units, type: number, tier: decision, used_by: [ROUTE-01, conflicts]}
+          notes: {entity: coverage_term, attribute: notes, type: text, tier: context, used_by: [screen:coverage, conflicts]}
+
+  application:
+    prompt: v2_extract_application_pdf
+    sheet_prompt: extract_application
+    shapes: [pdf, sheet]
+    fields:
+      form_brand: {entity: applicant, attribute: form_brand, type: text, tier: context, description: "Name or logo text at the top of the form", used_by: [screen:documents]}
+      application_date: {entity: applicant, attribute: application_date, type: date, tier: decision, labels: [Application Date, Date of Application, Date, Date Signed, Signature Date], used_by: [DRV-03, DRV-04, DOC-01, DOC-03, DOC-04, INS-01]}
+      effective_date: {entity: applicant, attribute: effective_date, type: date, tier: decision, labels: [Effective Date, Proposed Effective Date, Eff Date, Requested Effective Date, Policy Effective Date, Inception Date], used_by: [DOC-01, conflicts]}
+      agency_name: {entity: agency, attribute: name, type: name, tier: crosscheck, labels: [Agency Name, Agency, Producer], used_by: [conflicts]}
+      agency_contact: {entity: agency, attribute: contact, type: name, tier: context, labels: [Agency Contact, Contact, Producer Name], used_by: [screen:actions]}
+      agency_phone: {entity: agency, attribute: phone, type: identifier, tier: context, labels: [Agency Phone, Phone], validators: [phone], used_by: [screen:conflicts]}
+      agency_email: {entity: agency, attribute: email, type: text, tier: context, labels: [Agency Email, Email], used_by: [screen:actions]}
+      business_name: {entity: applicant, attribute: legal_name, type: name, tier: crosscheck, labels: [Business Name, Applicant Name, Named Insured, Legal Name], used_by: [conflicts, screen:brief]}
+      dba: {entity: applicant, attribute: dba, type: name, tier: context, labels: [DBA, Doing Business As], used_by: [screen:brief]}
+      contact_name: {entity: applicant, attribute: contact_name, type: name, tier: crosscheck, labels: [Contact Name, Contact], used_by: [match:driver, screen:brief]}
+      contact_phone: {entity: applicant, attribute: phone, type: identifier, tier: context, labels: [Contact Phone, Phone], validators: [phone], used_by: [screen:brief]}
+      contact_email: {entity: applicant, attribute: email, type: text, tier: context, labels: [Contact Email, Email], used_by: [screen:brief]}
+      garaging_address: {entity: applicant, attribute: garaging_address, type: text, tier: decision, labels: [Garaging Address, Garage Address, Garaging Location, Physical Address, Terminal Address], used_by: [ELIG-05, missing:APP_GARAGING]}
+      garaging_state: {entity: applicant, attribute: garaging_state, type: enum, tier: decision, labels: [Garaging State, State], validators: [state], used_by: [ELIG-02, ELIG-03, ELIG-05]}
+      mailing_address: {entity: applicant, attribute: mailing_address, type: text, tier: context, labels: [Mailing Address, Address], used_by: [screen:brief]}
+      mailing_city: {entity: applicant, attribute: mailing_city, type: name, tier: context, labels: [Mailing City, City], used_by: [screen:brief]}
+      mailing_state: {entity: applicant, attribute: mailing_state, type: enum, tier: decision, labels: [Mailing State, State], validators: [state], used_by: [ELIG-02, ELIG-03, ELIG-05]}
+      mailing_zip: {entity: applicant, attribute: mailing_zip, type: identifier, tier: context, labels: [Mailing Zip, Zip], used_by: [screen:brief]}
+      entity_type: {entity: applicant, attribute: entity_form, type: enum, tier: crosscheck, labels: [Entity Type, Business Type, Legal Entity], used_by: [conflicts]}
+      fein: {entity: applicant, attribute: fein, type: identifier, tier: decision, labels: [FEIN, FEIN/SSN, Federal Tax ID, Tax ID], used_by: [APP-01, missing:APP_FEIN]}
+      dot_number: {entity: applicant, attribute: dot_number, type: identifier, tier: decision, labels: [DOT Number, USDOT, DOT], validators: [dot], used_by: [ELIG-06, conflicts]}
+      mc_number: {entity: applicant, attribute: mc_number, type: identifier, tier: decision, labels: [MC Number, MC, Docket Number], validators: [mc], used_by: [APP-02, conflicts]}
+      date_of_authority: {entity: applicant, attribute: date_of_authority, type: date, tier: context, labels: [Date of Authority, Authority Date], used_by: [missing:APP_AUTHORITY]}
+      first_date_in_business: {entity: applicant, attribute: first_date_in_business, type: date, tier: context, labels: [First Date in Business, Date Business Started], used_by: [missing:APP_BUSINESS_START]}
+      description_of_operation: {entity: applicant, attribute: operation, type: text, tier: decision, labels: [Description of Operation, Operations], used_by: [ELIG-01, ELIG-04, SEL-02]}
+      auto_liability_limit: {entity: coverage_request, attribute: auto_liability_limit, type: money, tier: crosscheck, labels: [Auto Liability Limit, Liability Limit], used_by: [conflicts]}
+      auto_liability_deductible: {entity: coverage_request, attribute: auto_liability_deductible, type: text, tier: decision, labels: [Auto Liability Deductible, Deductible], used_by: [COV-01]}
+      um_limit: {entity: coverage_request, attribute: um_limit, type: text, tier: crosscheck, labels: [UM Limit, Uninsured Motorist], used_by: [conflicts]}
+      physical_damage_requested: {entity: coverage_request, attribute: physical_damage_requested, type: enum, tier: decision, shapes: [pdf], labels: [Physical Damage], used_by: [COV-02]}
+      physical_damage_tiv: {entity: coverage_request, attribute: physical_damage_requested, type: money, tier: decision, shapes: [sheet], labels: [Physical Damage TIV, TIV], used_by: [COV-02]}
+      cargo_limit: {entity: coverage_request, attribute: cargo_limit, type: money, tier: crosscheck, labels: [Cargo Limit, Cargo], used_by: [conflicts]}
+      reefer: {entity: operations, attribute: refrigerated, type: enum, tier: crosscheck, labels: [Reefer, Refrigerated], description: "Refrigerated units or reefer cover: yes or no", used_by: [conflicts]}
+      farthest_territory: {entity: operations, attribute: farthest_territory, type: enum, tier: crosscheck, labels: [Farthest Territory, Farthest State], validators: [state], used_by: [conflicts]}
+      new_venture: {entity: operations, attribute: new_venture, type: enum, tier: decision, labels: [New Venture], used_by: [ELIG-07]}
+      owner_is_driver: {entity: operations, attribute: owner_drives, type: enum, tier: decision, labels: [Owner Driver, Does the owner drive, Owner is Driver], used_by: [DRV-01, conflicts]}
+      fast_growth: {entity: operations, attribute: fast_growth, type: enum, tier: context, shapes: [sheet], labels: [Fast Growth], used_by: [screen:operations]}
+      years_experience: {entity: applicant, attribute: years_experience, type: number, tier: decision, labels: [Years Experience, Years in Business], description: "Years in business or operating trucks", used_by: [ELIG-07, conflicts]}
+      years_prior_insurance: {entity: applicant, attribute: years_prior_insurance, type: number, tier: crosscheck, labels: [Years of Prior Insurance, Prior Insurance], used_by: [conflicts]}
+      telematics_share: {entity: operations, attribute: telematics_share, type: number, tier: context, labels: [Telematics], used_by: [screen:operations]}
+      signature: {entity: applicant, attribute: signature, type: name, tier: decision, labels: [Signature, Signed], description: "The signer's name or signature mark; null if unsigned", used_by: [missing:APP_SIGNATURE]}
+    tables:
+      radius:
+        description: "One record per radius band with its share"
+        sheet: cells
+        fields:
+          label: {entity: operations, attribute: radius, type: text, tier: context, used_by: [check:shares, screen:operations]}
+          percent: {entity: operations, attribute: radius, type: number, tier: context, used_by: [check:shares, screen:operations]}
+      commodities:
+        description: "One record per commodity with its share and values"
+        sheet: cells
+        fields:
+          label: {entity: operations, attribute: commodities, type: text, tier: decision, used_by: [ELIG-04, screen:operations]}
+          percent: {entity: operations, attribute: commodities, type: number, tier: context, used_by: [check:shares, screen:operations]}
+          max_value: {entity: operations, attribute: commodities, type: money, tier: context, shapes: [sheet], used_by: [screen:operations]}
+      questions:
+        description: "One record per yes/no question with the marked answer"
+        sheet: cells
+        fields:
+          question: {entity: operations, attribute: questions, type: text, tier: context, used_by: [ELIG-04, screen:operations]}
+          answer: {entity: operations, attribute: questions, type: enum, tier: decision, description: "Yes, No or blank, from the marked box", used_by: [ELIG-04, conflicts, missing:Q_]}
+      historical:
+        description: "Historical premium and power units table: one entry per prior-year row, with the cells where its values belong even when they are empty"
+        sheet: cells
+        shapes: [sheet]
+        fields:
+          period: {entity: applicant, attribute: historical, type: text, tier: context, description: "Row label, e.g. 1st prior year", used_by: [missing:APP_HISTORY]}
+          premium: {entity: applicant, attribute: historical, type: money, tier: context, used_by: [missing:APP_HISTORY]}
+          power_units: {entity: applicant, attribute: historical, type: number, tier: context, used_by: [missing:APP_HISTORY]}
+      drivers:
+        description: "One record per listed driver"
+        shapes: [pdf]
+        fields:
+          name: {entity: driver, attribute: name, type: name, tier: crosscheck, used_by: [match:driver, conflicts]}
+          license_number: {entity: driver, attribute: license_number, type: identifier, tier: decision, validators: [license_format], used_by: [match:driver, conflicts]}
+          state: {entity: driver, attribute: license_state, type: enum, tier: crosscheck, validators: [state], used_by: [match:driver]}
+          date_of_birth: {entity: driver, attribute: date_of_birth, type: date, tier: decision, used_by: [DRV-03, DRV-04, conflicts]}
+          experience: {entity: driver, attribute: experience_stated, type: text, tier: decision, used_by: [DRV-02, conflicts]}
+          hire_date: {entity: driver, attribute: hire_date, type: date, tier: context, used_by: [screen:drivers]}
+          role: {entity: driver, attribute: owner_marker, type: enum, tier: decision, derived: true, description: "Set by code when a date column prints a role (OWNER) instead of a date", used_by: [DRV-01, conflicts]}
+      prior_insurance:
+        description: "One record per prior policy term listed"
+        shapes: [pdf]
+        fields:
+          start: {entity: coverage_term, attribute: start, type: date, tier: decision, used_by: [INS-01, INS-02, DOC-02]}
+          end: {entity: coverage_term, attribute: end, type: date, tier: decision, used_by: [INS-01, INS-02, DOC-02]}
+          carrier: {entity: coverage_term, attribute: carrier, type: name, tier: decision, used_by: [DOC-02, INS-02, conflicts]}
+          coverage: {entity: coverage_term, attribute: line, type: enum, tier: decision, used_by: [INS-01, INS-02, DOC-02]}
+          policy_number: {entity: coverage_term, attribute: policy_number, type: identifier, tier: crosscheck, used_by: [match:coverage_term]}
+          units: {entity: fleet, attribute: power_units, type: number, tier: decision, used_by: [ROUTE-01, conflicts]}
+          notes: {entity: coverage_term, attribute: notes, type: text, tier: context, used_by: [screen:coverage, conflicts]}
+      drivers_table:
+        description: "The drivers table on the drivers and vehicles sheet"
+        sheet: columns
+        shapes: [sheet]
+        fields: &driver_columns
+          number: {entity: driver, attribute: number, type: identifier, tier: context, used_by: [screen:drivers]}
+          first_name: {entity: driver, attribute: name, type: name, tier: crosscheck, used_by: [match:driver, conflicts]}
+          middle: {entity: driver, attribute: name, type: name, tier: crosscheck, used_by: [match:driver]}
+          last_name: {entity: driver, attribute: name, type: name, tier: crosscheck, used_by: [match:driver, conflicts]}
+          full_name: {entity: driver, attribute: name, type: name, tier: crosscheck, used_by: [match:driver, conflicts]}
+          date_of_birth: {entity: driver, attribute: date_of_birth, type: date, tier: decision, used_by: [DRV-03, DRV-04, conflicts]}
+          license_state: {entity: driver, attribute: license_state, type: enum, tier: crosscheck, validators: [state], used_by: [match:driver, conflicts]}
+          license_number: {entity: driver, attribute: license_number, type: identifier, tier: decision, validators: [license_format], used_by: [match:driver, conflicts]}
+          license_class: {entity: driver, attribute: license_class, type: enum, tier: decision, used_by: [DRV-01, conflicts]}
+          experience: {entity: driver, attribute: experience_stated, type: text, tier: decision, used_by: [DRV-02, conflicts]}
+          hire_date: {entity: driver, attribute: hire_date, type: date, tier: context, used_by: [screen:drivers]}
+          role: {entity: driver, attribute: owner_marker, type: enum, tier: decision, derived: true, description: "Set by code when a date column prints a role (OWNER) instead of a date", used_by: [DRV-01, conflicts]}
+          driver_type: {entity: driver, attribute: owner_marker, type: enum, tier: decision, description: "Owner, employee or owner-operator, as printed", used_by: [DRV-01, conflicts]}
+      vehicles_table:
+        description: "The vehicles table on the drivers and vehicles sheet"
+        sheet: columns
+        shapes: [sheet]
+        fields: &vehicle_columns
+          number: {entity: vehicle, attribute: number, type: identifier, tier: context, used_by: [screen:vehicles]}
+          year: {entity: vehicle, attribute: year, type: number, tier: decision, validators: [vin_year], used_by: [DOC-05, conflicts]}
+          make: {entity: vehicle, attribute: make, type: name, tier: decision, used_by: [DOC-05, conflicts]}
+          model: {entity: vehicle, attribute: model, type: text, tier: decision, used_by: [ELIG-01, SEL-02]}
+          vin: {entity: vehicle, attribute: vin, type: identifier, tier: decision, validators: [vin], used_by: [DOC-05, match:vehicle]}
+          vehicle_type: {entity: vehicle, attribute: vehicle_type, type: text, tier: decision, used_by: [ELIG-01, SEL-02]}
+          gvw: {entity: vehicle, attribute: gvw, type: number, tier: context, used_by: [screen:vehicles]}
+          cost_new: {entity: vehicle, attribute: cost_new, type: money, tier: context, used_by: [screen:vehicles, missing:VEH_STATED_VALUE]}
+          stated_value: {entity: vehicle, attribute: stated_value, type: money, tier: decision, used_by: [DOC-05, missing:VEH_STATED_VALUE]}
+
+  email_body:
+    prompt: v2_extract_email_body
+    shapes: [pdf]
+    fields:
+      applicant_name: {entity: applicant, attribute: legal_name, type: name, tier: crosscheck, labels: [submission for, Applicant, Insured], used_by: [conflicts]}
+      requested_effective_date: {entity: applicant, attribute: effective_date, type: date, tier: crosscheck, labels: [effective date of, effective], used_by: [conflicts]}
+      fein: {entity: applicant, attribute: fein, type: identifier, tier: decision, labels: [FEIN, Tax ID, EIN], used_by: [APP-01, missing:APP_FEIN]}
+      dot_number: {entity: applicant, attribute: dot_number, type: identifier, tier: crosscheck, labels: [DOT, USDOT], validators: [dot], used_by: [conflicts]}
+      agent_name: {entity: agency, attribute: contact, type: name, tier: context, used_by: [screen:actions]}
+      agency_name: {entity: agency, attribute: name, type: name, tier: crosscheck, used_by: [conflicts]}
+      agency_phone: {entity: agency, attribute: phone, type: identifier, tier: context, validators: [phone], used_by: [screen:conflicts]}
+
+  driver_schedule:
+    prompt: extract_schedule_pdf
+    sheet_prompt: extract_driver_schedule
+    shapes: [pdf, sheet]
+    tables:
+      drivers:
+        description: "One record per driver"
+        shapes: [pdf]
+        fields:
+          name: {entity: driver, attribute: name, type: name, tier: crosscheck, used_by: [match:driver, conflicts]}
+          license_number: {entity: driver, attribute: license_number, type: identifier, tier: decision, validators: [license_format], used_by: [match:driver, conflicts]}
+          state: {entity: driver, attribute: license_state, type: enum, tier: crosscheck, validators: [state], used_by: [match:driver]}
+          date_of_birth: {entity: driver, attribute: date_of_birth, type: date, tier: decision, used_by: [DRV-03, DRV-04, conflicts]}
+          experience: {entity: driver, attribute: experience_stated, type: text, tier: decision, used_by: [DRV-02, conflicts]}
+          hire_date: {entity: driver, attribute: hire_date, type: date, tier: context, used_by: [screen:drivers]}
+          role: {entity: driver, attribute: owner_marker, type: enum, tier: decision, derived: true, description: "Set by code when a date column prints a role (OWNER) instead of a date", used_by: [DRV-01, conflicts]}
+      rows:
+        description: "The driver table"
+        sheet: columns
+        sheet_key: table
+        shapes: [sheet]
+        fields: *driver_columns
+
+  vehicle_schedule:
+    prompt: extract_schedule_pdf
+    sheet_prompt: v2_extract_vehicle_schedule
+    shapes: [pdf, sheet]
+    tables:
+      vehicles:
+        description: "One record per vehicle"
+        shapes: [pdf]
+        fields:
+          number: {entity: vehicle, attribute: number, type: identifier, tier: context, used_by: [screen:vehicles]}
+          year: {entity: vehicle, attribute: year, type: number, tier: decision, validators: [vin_year], used_by: [DOC-05, conflicts]}
+          make: {entity: vehicle, attribute: make, type: name, tier: decision, used_by: [DOC-05, conflicts]}
+          model: {entity: vehicle, attribute: model, type: text, tier: decision, used_by: [ELIG-01, SEL-02]}
+          vin: {entity: vehicle, attribute: vin, type: identifier, tier: decision, validators: [vin], used_by: [DOC-05, match:vehicle]}
+          vehicle_type: {entity: vehicle, attribute: vehicle_type, type: text, tier: decision, used_by: [ELIG-01, SEL-02]}
+          gvw: {entity: vehicle, attribute: gvw, type: number, tier: context, used_by: [screen:vehicles]}
+          cost_new: {entity: vehicle, attribute: cost_new, type: money, tier: context, used_by: [screen:vehicles, missing:VEH_STATED_VALUE]}
+          stated_value: {entity: vehicle, attribute: stated_value, type: money, tier: decision, used_by: [DOC-05, missing:VEH_STATED_VALUE]}
+      rows:
+        description: "The vehicle table"
+        sheet: columns
+        sheet_key: table
+        shapes: [sheet]
+        fields: *vehicle_columns

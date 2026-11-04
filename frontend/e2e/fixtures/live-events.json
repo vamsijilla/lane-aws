@@ -1,0 +1,2408 @@
+[
+  {
+    "type": "snapshot",
+    "data": {
+      "submission_id": "858573658b574fbfa495caddb81e6524",
+      "status": "processing",
+      "email": {
+        "subject": "New business submission: Cobalt Mesa Transport",
+        "from": "dokafor@baylineinsurance.example",
+        "received_at": "2026-11-01T06:38:17.284996"
+      },
+      "attachments": [
+        {
+          "id": "245f2d7d92824406acd2d9ad6242fad7",
+          "filename": "Email body",
+          "role": "email_body",
+          "status": "accepted",
+          "size": 501,
+          "kind": "text",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "8abbec908ca548889504fe5545665ed3",
+          "filename": "AL 23-24.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 3106,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "efbd55fcf97445c1bbd2b360709b91b3",
+          "filename": "AL 24-25.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 5254,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "22aa869155b44c6395ddc6bab7f37c66",
+          "filename": "AL 25-26.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 3102,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "e0c707f2918a47ffbecbeffbac26f097",
+          "filename": "COBALT MESA TRANSPORT INC - KNIGHT.xlsx",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 57999,
+          "kind": "xlsx",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "ba6500a9f0744359a096a1bed3a755b3",
+          "filename": "COBALT MESA TRANSPORT INC - QUOTE FORM.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 9363,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "a41792bcc78845f5a6cf6ecda0e4991a",
+          "filename": "DRIVER LIST - COBALT MESA TRANSPORT INC.xlsx",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 5459,
+          "kind": "xlsx",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "48f35c5cd2644de29049a693e39f7315",
+          "filename": "MTC 23-24.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 1909,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "b386352292234fa5bf9b8734b004b395",
+          "filename": "MTC 24-25.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 3110,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "74959e7daa224de393fb953da2a8c41e",
+          "filename": "MTC 25-26.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 3106,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "45a7bc5531ab4506ac30dd4540ae904f",
+          "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 135187,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "a213a69e35e4453c995c0fe35dfa35ee",
+          "filename": "Q1 2026.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 400802,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "68a5bc25db05407d832e175d9a341bcb",
+          "filename": "Q2 2026.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 291983,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "e67e07d5df7143f58a63c62305c95832",
+          "filename": "Q3 2025.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 402068,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "1dd983ad6db74099a3ce9c1aecc8d550",
+          "filename": "Q4 2025.pdf",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 392759,
+          "kind": "pdf",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "0934aa1ee23c47e9a13e328d6b4eca43",
+          "filename": "VEHICLE LIST - COBALT MESA TRANSPORT INC.xlsx",
+          "role": "attachment",
+          "status": "accepted",
+          "size": 5334,
+          "kind": "xlsx",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": null
+        },
+        {
+          "id": "63620a82953f48c8a709da576ff0fe42",
+          "filename": "Sample Submission - Cobalt Mesa Transport.zip",
+          "role": "attachment",
+          "status": "expanded",
+          "size": 1324164,
+          "kind": "zip",
+          "parent_id": null,
+          "duplicate_of_id": null,
+          "reason": "Opened archive with 15 files"
+        },
+        {
+          "id": "6410ad9e6463431a98d6e9d74329176b",
+          "filename": "AL 23-24.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 3106,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "8abbec908ca548889504fe5545665ed3",
+          "reason": "Same bytes as AL 23-24.pdf"
+        },
+        {
+          "id": "70ca7e58e883482d8584d0a5794dce2a",
+          "filename": "AL 24-25.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 5254,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "efbd55fcf97445c1bbd2b360709b91b3",
+          "reason": "Same bytes as AL 24-25.pdf"
+        },
+        {
+          "id": "b9b337e7ba7e46a0a81bc7dd570474f0",
+          "filename": "AL 25-26.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 3102,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "22aa869155b44c6395ddc6bab7f37c66",
+          "reason": "Same bytes as AL 25-26.pdf"
+        },
+        {
+          "id": "0efb302896294985a401ee2f2cc7a943",
+          "filename": "COBALT MESA TRANSPORT INC - KNIGHT.xlsx",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 57999,
+          "kind": "xlsx",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "e0c707f2918a47ffbecbeffbac26f097",
+          "reason": "Same bytes as COBALT MESA TRANSPORT INC - KNIGHT.xlsx"
+        },
+        {
+          "id": "cd0c37b77b964c3facd6ae463f943032",
+          "filename": "COBALT MESA TRANSPORT INC - QUOTE FORM.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 9363,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "ba6500a9f0744359a096a1bed3a755b3",
+          "reason": "Same bytes as COBALT MESA TRANSPORT INC - QUOTE FORM.pdf"
+        },
+        {
+          "id": "6b98e6f336924e199cf8670cc7357c31",
+          "filename": "DRIVER LIST - COBALT MESA TRANSPORT INC.xlsx",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 5459,
+          "kind": "xlsx",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "a41792bcc78845f5a6cf6ecda0e4991a",
+          "reason": "Same bytes as DRIVER LIST - COBALT MESA TRANSPORT INC.xlsx"
+        },
+        {
+          "id": "3f268767d8d048f09411eb8f1c170840",
+          "filename": "MTC 23-24.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 1909,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "48f35c5cd2644de29049a693e39f7315",
+          "reason": "Same bytes as MTC 23-24.pdf"
+        },
+        {
+          "id": "1c6e4064475c449a904d36c68e2b9260",
+          "filename": "MTC 24-25.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 3110,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "b386352292234fa5bf9b8734b004b395",
+          "reason": "Same bytes as MTC 24-25.pdf"
+        },
+        {
+          "id": "7d3710ff4bae4b5f926c8824ca3cf67f",
+          "filename": "MTC 25-26.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 3106,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "74959e7daa224de393fb953da2a8c41e",
+          "reason": "Same bytes as MTC 25-26.pdf"
+        },
+        {
+          "id": "5130820cb40040f292a5be847bea9aa5",
+          "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 135187,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "45a7bc5531ab4506ac30dd4540ae904f",
+          "reason": "Same bytes as MVR REPORT - COBALT MESA TRANSPORT INC.pdf"
+        },
+        {
+          "id": "1b45aad804714b5f8dfe44613d584c08",
+          "filename": "Q1 2026.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 400802,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "a213a69e35e4453c995c0fe35dfa35ee",
+          "reason": "Same bytes as Q1 2026.pdf"
+        },
+        {
+          "id": "72c7d2d508b34feeb90431c303cb1fb2",
+          "filename": "Q2 2026.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 291983,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "68a5bc25db05407d832e175d9a341bcb",
+          "reason": "Same bytes as Q2 2026.pdf"
+        },
+        {
+          "id": "21c270d3f0904e73844f0b5fd755a670",
+          "filename": "Q3 2025.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 402068,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "e67e07d5df7143f58a63c62305c95832",
+          "reason": "Same bytes as Q3 2025.pdf"
+        },
+        {
+          "id": "431cbed5a5bb4e5d815ba96b6356f451",
+          "filename": "Q4 2025.pdf",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 392759,
+          "kind": "pdf",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "1dd983ad6db74099a3ce9c1aecc8d550",
+          "reason": "Same bytes as Q4 2025.pdf"
+        },
+        {
+          "id": "594b0cd9907d49549c908c095cd8238c",
+          "filename": "VEHICLE LIST - COBALT MESA TRANSPORT INC.xlsx",
+          "role": "archive_member",
+          "status": "duplicate",
+          "size": 5334,
+          "kind": "xlsx",
+          "parent_id": "63620a82953f48c8a709da576ff0fe42",
+          "duplicate_of_id": "0934aa1ee23c47e9a13e328d6b4eca43",
+          "reason": "Same bytes as VEHICLE LIST - COBALT MESA TRANSPORT INC.xlsx"
+        }
+      ],
+      "run": {
+        "id": "0d0d9991892d4567af19d214eed5ea95",
+        "status": "running",
+        "steps": [
+          {
+            "name": "triage",
+            "status": "running"
+          }
+        ]
+      },
+      "decision": null
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "8abbec908ca548889504fe5545665ed3",
+      "filename": "AL 23-24.pdf",
+      "page_id": "f222fa6920124c8895bbc53b7b682f1c",
+      "page_no": 1,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:17.474+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "efbd55fcf97445c1bbd2b360709b91b3",
+      "filename": "AL 24-25.pdf",
+      "page_id": "45fdcaec77e545bb853633109c2c2f1e",
+      "page_no": 1,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:17.571+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "22aa869155b44c6395ddc6bab7f37c66",
+      "filename": "AL 25-26.pdf",
+      "page_id": "d3dfd6b0b0924d958324b2499c6f496f",
+      "page_no": 1,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:17.643+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "e0c707f2918a47ffbecbeffbac26f097",
+      "filename": "COBALT MESA TRANSPORT INC - KNIGHT.xlsx",
+      "page_id": "75e91e4a835c4b4aaf3089926db09c17",
+      "page_no": 1,
+      "kind": "sheet",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:17.826+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "e0c707f2918a47ffbecbeffbac26f097",
+      "filename": "COBALT MESA TRANSPORT INC - KNIGHT.xlsx",
+      "page_id": "bf454a56427b43968256fe0a8c9879f3",
+      "page_no": 2,
+      "kind": "sheet",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:17.826+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "e0c707f2918a47ffbecbeffbac26f097",
+      "filename": "COBALT MESA TRANSPORT INC - KNIGHT.xlsx",
+      "page_id": "f46698b783b84f49b41826bf657ce2f6",
+      "page_no": 3,
+      "kind": "sheet",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:17.826+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "ba6500a9f0744359a096a1bed3a755b3",
+      "filename": "COBALT MESA TRANSPORT INC - QUOTE FORM.pdf",
+      "page_id": "94fccdb278d343a5bb95885b8e4d6247",
+      "page_no": 1,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:17.939+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "a41792bcc78845f5a6cf6ecda0e4991a",
+      "filename": "DRIVER LIST - COBALT MESA TRANSPORT INC.xlsx",
+      "page_id": "3522c139fe8e45f3b423628b8135486d",
+      "page_no": 1,
+      "kind": "sheet",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:17.942+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "48f35c5cd2644de29049a693e39f7315",
+      "filename": "MTC 23-24.pdf",
+      "page_id": "db1834c4abd4453db9ff87c33d206698",
+      "page_no": 1,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:18.006+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "b386352292234fa5bf9b8734b004b395",
+      "filename": "MTC 24-25.pdf",
+      "page_id": "0fa9e05f2ac54e108b302f659fde6bf8",
+      "page_no": 1,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:18.077+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "74959e7daa224de393fb953da2a8c41e",
+      "filename": "MTC 25-26.pdf",
+      "page_id": "f702d26b7e504b38b18a49b3475ac20d",
+      "page_no": 1,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:38:18.150+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "c1242400d8b444ad82a6eebf90bd4cdd",
+      "page_no": 1,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "0b79a48f809140ed90c70ee5e5c92966",
+      "page_no": 2,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "b1c3079d98f542f588996936ea6f52bf",
+      "page_no": 3,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "2f6b221fda354272976092ab465931bb",
+      "page_no": 4,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "25a2eaccc5874822b8bf2f9f759d2199",
+      "page_no": 5,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "5b105b35255444658b04b650f2bc6c16",
+      "page_no": 6,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "54da5c7ad37e4151a65c552157993401",
+      "page_no": 7,
+      "kind": "photo",
+      "quality": "degraded",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "4227c7cebe804499b6ea1cae75237e14",
+      "page_no": 8,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "74e8663bf8d94731a0d22625f87e2d86",
+      "page_no": 9,
+      "kind": "text",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "page_id": "a1e9103c13754e9494e77311bf9828bf",
+      "page_no": 10,
+      "kind": "photo",
+      "quality": "degraded",
+      "at": "2026-11-01T06:39:00.644+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "a213a69e35e4453c995c0fe35dfa35ee",
+      "filename": "Q1 2026.pdf",
+      "page_id": "f17bc1fc3b1c4bd881676ff67ae2bc75",
+      "page_no": 1,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:20.495+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "a213a69e35e4453c995c0fe35dfa35ee",
+      "filename": "Q1 2026.pdf",
+      "page_id": "d3752586161e48318093bd09eb8e9000",
+      "page_no": 2,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:20.495+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "a213a69e35e4453c995c0fe35dfa35ee",
+      "filename": "Q1 2026.pdf",
+      "page_id": "82ee0f392b074c7d96a9af76a0b8c7c4",
+      "page_no": 3,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:20.495+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "68a5bc25db05407d832e175d9a341bcb",
+      "filename": "Q2 2026.pdf",
+      "page_id": "5cff198245b34a7b82baf7abbd60dd03",
+      "page_no": 1,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:34.829+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "68a5bc25db05407d832e175d9a341bcb",
+      "filename": "Q2 2026.pdf",
+      "page_id": "4284a08f6a104f1a99d09fd226b11659",
+      "page_no": 2,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:34.829+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "e67e07d5df7143f58a63c62305c95832",
+      "filename": "Q3 2025.pdf",
+      "page_id": "f8488a6d47fd445e9e2987c0c100771f",
+      "page_no": 1,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:55.246+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "e67e07d5df7143f58a63c62305c95832",
+      "filename": "Q3 2025.pdf",
+      "page_id": "9bef1509ba83464ea7ce9bc660fe6822",
+      "page_no": 2,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:55.246+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "e67e07d5df7143f58a63c62305c95832",
+      "filename": "Q3 2025.pdf",
+      "page_id": "85ca6fd0fdbd418cacc4b326391dc1aa",
+      "page_no": 3,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:39:55.246+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "1dd983ad6db74099a3ce9c1aecc8d550",
+      "filename": "Q4 2025.pdf",
+      "page_id": "cc5069085d334934905a03babf808106",
+      "page_no": 1,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:40:15.218+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "1dd983ad6db74099a3ce9c1aecc8d550",
+      "filename": "Q4 2025.pdf",
+      "page_id": "15fdea0379ee4cf99d612a09d8aee6d4",
+      "page_no": 2,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:40:15.219+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "1dd983ad6db74099a3ce9c1aecc8d550",
+      "filename": "Q4 2025.pdf",
+      "page_id": "d47beb4c9ea44f7faab6dd9e0e3cda0a",
+      "page_no": 3,
+      "kind": "scan",
+      "quality": "clean",
+      "at": "2026-11-01T06:40:15.219+00:00"
+    }
+  },
+  {
+    "type": "page.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "attachment_id": "0934aa1ee23c47e9a13e328d6b4eca43",
+      "filename": "VEHICLE LIST - COBALT MESA TRANSPORT INC.xlsx",
+      "page_id": "23b1162b239f43d8a523613591d0b256",
+      "page_no": 1,
+      "kind": "sheet",
+      "quality": "clean",
+      "at": "2026-11-01T06:40:15.228+00:00"
+    }
+  },
+  {
+    "type": "step.finished",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "triage",
+      "status": "succeeded",
+      "duration_ms": 117924,
+      "summary": {
+        "pages": 34,
+        "injection_attempts": 0,
+        "hidden_text": 0,
+        "kinds": {
+          "email_body": 1,
+          "text": 15,
+          "sheet": 5,
+          "photo": 2,
+          "scan": 11
+        },
+        "quality": {
+          "clean": 32,
+          "degraded": 2
+        },
+        "reused_attachments": 0
+      },
+      "error": null,
+      "at": "2026-11-01T06:40:15.259+00:00"
+    }
+  },
+  {
+    "type": "step.started",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "classify",
+      "at": "2026-11-01T06:40:15.260+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "ea0fa0f3ef491c6d66233e87b880c7fa",
+      "attachment_id": "245f2d7d92824406acd2d9ad6242fad7",
+      "filename": "Email body",
+      "doc_type": "email_body",
+      "title": "Email from the agent",
+      "pages": [1, 1],
+      "filename_hint": null,
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.622+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "e2c3571991876aeffd2c6de6cc244872",
+      "attachment_id": "8abbec908ca548889504fe5545665ed3",
+      "filename": "AL 23-24.pdf",
+      "doc_type": "loss_run",
+      "title": "Loss run, Granite Peak Specialty, 2023-2024",
+      "pages": [1, 1],
+      "filename_hint": "loss_run",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.622+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "f8a60cfe798e0a3a9fbd4a492ccbed8e",
+      "attachment_id": "efbd55fcf97445c1bbd2b360709b91b3",
+      "filename": "AL 24-25.pdf",
+      "doc_type": "loss_run",
+      "title": "Loss run, auto liability, 12/15/2024-12/15/2025",
+      "pages": [1, 1],
+      "filename_hint": "loss_run",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "d97a38d0d08f99dcc4ef77dca6b168ee",
+      "attachment_id": "22aa869155b44c6395ddc6bab7f37c66",
+      "filename": "AL 25-26.pdf",
+      "doc_type": "loss_run",
+      "title": "Loss run, Granite Peak Specialty, 12/15/2025-12/15/2026",
+      "pages": [1, 1],
+      "filename_hint": "loss_run",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "23a562d271603f902b5b8f023551f4d3",
+      "attachment_id": "e0c707f2918a47ffbecbeffbac26f097",
+      "filename": "COBALT MESA TRANSPORT INC - KNIGHT.xlsx",
+      "doc_type": "application",
+      "title": "Commercial auto insurance application, Cobalt Mesa Transport Inc",
+      "pages": [1, 2],
+      "filename_hint": null,
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "918b343ac6d68ad3c5d5f71274298a17",
+      "attachment_id": "e0c707f2918a47ffbecbeffbac26f097",
+      "filename": "COBALT MESA TRANSPORT INC - KNIGHT.xlsx",
+      "doc_type": "other",
+      "title": "Hidden lookup worksheet (commodity and vehicle type lists)",
+      "pages": [3, 3],
+      "filename_hint": null,
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "b0ba05e50237b0237756136fd6bbf61c",
+      "attachment_id": "ba6500a9f0744359a096a1bed3a755b3",
+      "filename": "COBALT MESA TRANSPORT INC - QUOTE FORM.pdf",
+      "doc_type": "quote_form",
+      "title": "Quick quote form, Cobalt Mesa Transport Inc",
+      "pages": [1, 1],
+      "filename_hint": "quote_form",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "ce73d969b15e490389bce3bbd48c1d23",
+      "attachment_id": "a41792bcc78845f5a6cf6ecda0e4991a",
+      "filename": "DRIVER LIST - COBALT MESA TRANSPORT INC.xlsx",
+      "doc_type": "driver_schedule",
+      "title": "Driver list, Cobalt Mesa Transport Inc.",
+      "pages": [1, 1],
+      "filename_hint": "driver_schedule",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "558469dece592721cea6f45ea8e1a633",
+      "attachment_id": "48f35c5cd2644de29049a693e39f7315",
+      "filename": "MTC 23-24.pdf",
+      "doc_type": "loss_history_letter",
+      "title": "Loss history letter, no paid losses, 12/15/23-12/15/24",
+      "pages": [1, 1],
+      "filename_hint": "loss_run",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "82619ec447054d28b6a494fe648336fe",
+      "attachment_id": "b386352292234fa5bf9b8734b004b395",
+      "filename": "MTC 24-25.pdf",
+      "doc_type": "loss_run",
+      "title": "Loss run, Granite Peak Specialty, 2024-2025",
+      "pages": [1, 1],
+      "filename_hint": "loss_run",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "6a34f8f2db998066b21ffd17ea4c800b",
+      "attachment_id": "74959e7daa224de393fb953da2a8c41e",
+      "filename": "MTC 25-26.pdf",
+      "doc_type": "loss_run",
+      "title": "Loss run, GRANITE PEAK SPECIALTY, 12/16/2025-12/16/2026",
+      "pages": [1, 1],
+      "filename_hint": "loss_run",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "00029ba2ceddf154043a44041090211a",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "doc_type": "mvr",
+      "title": "MVR, California driver record, Sandhu, Devraj",
+      "pages": [1, 1],
+      "filename_hint": "mvr",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "5f322620f9f2c45e71cf7cbf13ceca8d",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "doc_type": "mvr",
+      "title": "MVR, New Jersey driver record, Whitfield Marcus J",
+      "pages": [2, 3],
+      "filename_hint": "mvr",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "9e5ce742f8d8577678d55a1b238ad7d1",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "doc_type": "mvr",
+      "title": "MVR, New Jersey driver record, Whitfield Marcus J",
+      "pages": [4, 4],
+      "filename_hint": "mvr",
+      "filename_mismatch": false,
+      "superseded": true,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "d72c2fc63c1a4ae0bc542d83d8a587a8",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "doc_type": "mvr",
+      "title": "MVR, Volkov Aleksandr P, New Jersey five year record",
+      "pages": [5, 6],
+      "filename_hint": "mvr",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "ba46ba64ead5b70558d54ab314864bc2",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "doc_type": "drivers_license",
+      "title": "Driver's license, Aleksandr Pavel Volkov, NJ Class A CDL",
+      "pages": [7, 7],
+      "filename_hint": "mvr",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "08ad393b94e548cfa15323933ef583f7",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "doc_type": "mvr",
+      "title": "MVR, California driver record, Morales Luis E",
+      "pages": [8, 8],
+      "filename_hint": "mvr",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "20d1b1b6e468ba7cf2499b89a9c5937b",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "doc_type": "mvr",
+      "title": "MVR, California driver record, OSEI, NATHANIEL K",
+      "pages": [9, 9],
+      "filename_hint": "mvr",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "736d35a643c647ff5fdda27b669e6e7e",
+      "attachment_id": "45a7bc5531ab4506ac30dd4540ae904f",
+      "filename": "MVR REPORT - COBALT MESA TRANSPORT INC.pdf",
+      "doc_type": "drivers_license",
+      "title": "California commercial driver license, Nathaniel Osei",
+      "pages": [10, 10],
+      "filename_hint": "mvr",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "3f69a9f5afb327a9955288f741bc05da",
+      "attachment_id": "a213a69e35e4453c995c0fe35dfa35ee",
+      "filename": "Q1 2026.pdf",
+      "doc_type": "ifta_return",
+      "title": "IFTA return, California, Q1 2026",
+      "pages": [1, 3],
+      "filename_hint": "ifta_return",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "2114fa8c5a0542940be8e1acdf5498d2",
+      "attachment_id": "68a5bc25db05407d832e175d9a341bcb",
+      "filename": "Q2 2026.pdf",
+      "doc_type": "ifta_return",
+      "title": "IFTA return, Q2 2026, Cobalt Mesa Transport Inc",
+      "pages": [1, 2],
+      "filename_hint": "ifta_return",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "6686317c4528ac0a12eb3a72817de6bc",
+      "attachment_id": "e67e07d5df7143f58a63c62305c95832",
+      "filename": "Q3 2025.pdf",
+      "doc_type": "ifta_return",
+      "title": "IFTA return, Q3 2025, California filing record",
+      "pages": [1, 3],
+      "filename_hint": "ifta_return",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "df99e51fad04263fd3feee8bbaffa130",
+      "attachment_id": "1dd983ad6db74099a3ce9c1aecc8d550",
+      "filename": "Q4 2025.pdf",
+      "doc_type": "ifta_return",
+      "title": "IFTA return, Q4 2025 (California filing record)",
+      "pages": [1, 3],
+      "filename_hint": "ifta_return",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "document.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "8728196054757689da5e12d3580035e8",
+      "attachment_id": "0934aa1ee23c47e9a13e328d6b4eca43",
+      "filename": "VEHICLE LIST - COBALT MESA TRANSPORT INC.xlsx",
+      "doc_type": "vehicle_schedule",
+      "title": "Vehicle schedule, Cobalt Mesa Transport Inc.",
+      "pages": [1, 1],
+      "filename_hint": "vehicle_schedule",
+      "filename_mismatch": false,
+      "superseded": false,
+      "known_layout": false,
+      "at": "2026-11-01T06:40:17.623+00:00"
+    }
+  },
+  {
+    "type": "step.finished",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "classify",
+      "status": "succeeded",
+      "duration_ms": 2364,
+      "summary": {
+        "documents": 24,
+        "types": {
+          "email_body": 1,
+          "loss_run": 5,
+          "application": 1,
+          "other": 1,
+          "quote_form": 1,
+          "driver_schedule": 1,
+          "loss_history_letter": 1,
+          "mvr": 6,
+          "drivers_license": 2,
+          "ifta_return": 4,
+          "vehicle_schedule": 1
+        },
+        "needs_review": 0
+      },
+      "error": null,
+      "at": "2026-11-01T06:40:17.625+00:00"
+    }
+  },
+  {
+    "type": "step.started",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "extract",
+      "at": "2026-11-01T06:40:17.625+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "ea0fa0f3ef491c6d66233e87b880c7fa",
+      "title": "Email from the agent",
+      "status": "ok",
+      "facts": 4,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "e2c3571991876aeffd2c6de6cc244872",
+      "title": "Auto liability loss run, Granite Peak Specialty, 2023-24",
+      "status": "ok",
+      "facts": 13,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "f8a60cfe798e0a3a9fbd4a492ccbed8e",
+      "title": "Auto liability loss run, auto liability, 12/15/2024-12/15/2025",
+      "status": "ok",
+      "facts": 45,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "d97a38d0d08f99dcc4ef77dca6b168ee",
+      "title": "Auto liability loss run, Granite Peak Specialty, 12/15/2025-12/15/2026",
+      "status": "ok",
+      "facts": 13,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "23a562d271603f902b5b8f023551f4d3",
+      "title": "Commercial auto insurance application, Cobalt Mesa Transport Inc",
+      "status": "ok",
+      "facts": 78,
+      "checks_failed": 1,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "918b343ac6d68ad3c5d5f71274298a17",
+      "title": "Hidden lookup worksheet (commodity and vehicle type lists)",
+      "status": "skipped",
+      "facts": 0,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "b0ba05e50237b0237756136fd6bbf61c",
+      "title": "Quick quote form, Cobalt Mesa Transport Inc",
+      "status": "ok",
+      "facts": 121,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "ce73d969b15e490389bce3bbd48c1d23",
+      "title": "Driver list, Cobalt Mesa Transport Inc.",
+      "status": "ok",
+      "facts": 45,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "558469dece592721cea6f45ea8e1a633",
+      "title": "Loss history letter, no paid losses, 12/15/23-12/15/24",
+      "status": "ok",
+      "facts": 7,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "82619ec447054d28b6a494fe648336fe",
+      "title": "Cargo loss run, Granite Peak Specialty, 2024-25",
+      "status": "ok",
+      "facts": 13,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "6a34f8f2db998066b21ffd17ea4c800b",
+      "title": "Cargo loss run, GRANITE PEAK SPECIALTY, 12/16/2025-12/16/2026",
+      "status": "ok",
+      "facts": 13,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "00029ba2ceddf154043a44041090211a",
+      "title": "MVR, California driver record, Sandhu, Devraj",
+      "status": "ok",
+      "facts": 12,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "5f322620f9f2c45e71cf7cbf13ceca8d",
+      "title": "MVR, New Jersey driver record, Whitfield Marcus J, Oct 9, 2026",
+      "status": "ok",
+      "facts": 33,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "9e5ce742f8d8577678d55a1b238ad7d1",
+      "title": "MVR, New Jersey driver record, Whitfield Marcus J, Sep 24, 2025",
+      "status": "skipped",
+      "facts": 0,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "d72c2fc63c1a4ae0bc542d83d8a587a8",
+      "title": "MVR, Volkov Aleksandr P, New Jersey five year record",
+      "status": "ok",
+      "facts": 18,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "ba46ba64ead5b70558d54ab314864bc2",
+      "title": "Driver's license, Aleksandr Pavel Volkov, NJ Class A CDL",
+      "status": "ok",
+      "facts": 8,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "08ad393b94e548cfa15323933ef583f7",
+      "title": "MVR, California driver record, Morales Luis E",
+      "status": "ok",
+      "facts": 18,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "20d1b1b6e468ba7cf2499b89a9c5937b",
+      "title": "MVR, California driver record, OSEI, NATHANIEL K",
+      "status": "ok",
+      "facts": 12,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "736d35a643c647ff5fdda27b669e6e7e",
+      "title": "California commercial driver license, Nathaniel Osei",
+      "status": "ok",
+      "facts": 8,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "3f69a9f5afb327a9955288f741bc05da",
+      "title": "IFTA return, California, Q1 2026",
+      "status": "ok",
+      "facts": 69,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "2114fa8c5a0542940be8e1acdf5498d2",
+      "title": "IFTA return, Q2 2026, Cobalt Mesa Transport Inc",
+      "status": "ok",
+      "facts": 49,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "6686317c4528ac0a12eb3a72817de6bc",
+      "title": "IFTA return, Q3 2025, California filing record",
+      "status": "ok",
+      "facts": 69,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "df99e51fad04263fd3feee8bbaffa130",
+      "title": "IFTA return, Q4 2025 (California filing record)",
+      "status": "ok",
+      "facts": 65,
+      "checks_failed": 0,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "document.extracted",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "document_id": "8728196054757689da5e12d3580035e8",
+      "title": "Vehicle schedule, Cobalt Mesa Transport Inc.",
+      "status": "ok",
+      "facts": 24,
+      "checks_failed": 1,
+      "at": "2026-11-01T06:41:31.863+00:00"
+    }
+  },
+  {
+    "type": "step.finished",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "extract",
+      "status": "succeeded",
+      "duration_ms": 74239,
+      "summary": {
+        "statuses": {
+          "skipped": 2,
+          "ok": 22
+        },
+        "facts": 737,
+        "text_grounding_rate": 1.0,
+        "ocr_confirmation_rate": 0.974,
+        "checks": {
+          "passed": 264,
+          "failed": 2
+        },
+        "escalation_cost_usd": 0,
+        "decision_facts": 499,
+        "decision_verified": 499
+      },
+      "error": null,
+      "at": "2026-11-01T06:41:31.864+00:00"
+    }
+  },
+  {
+    "type": "step.started",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "resolve",
+      "at": "2026-11-01T06:41:31.865+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "0c833a92ebe59f8632e475ff37dc724c",
+      "title": "Legal entity form",
+      "conflict_type": "identity",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "22129bc9cbbed91666c5004103c32921",
+      "title": "Years of prior insurance",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "1f402f76f51bd3356d2dfd7c6cd07054",
+      "title": "Agency identity",
+      "conflict_type": "identity",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "b7347ff73a4542fa9f5ae7f5379cbcaa",
+      "title": "Uninsured motorist limit",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "1a61169083d40eb355b21e5a20591ffe",
+      "title": "Refrigerated operations",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "b5251fdb4aa4f63ab143d1b2ea9f24a2",
+      "title": "Farthest territory (stated)",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "57b65b8771812574dc37d2d2fb6e78c7",
+      "title": "Owner drives",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "1c5e60a4164ba76c2108f513b008bd03",
+      "title": "Has vehicles not listed on the application",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "edf20427a5f5f18eb25c56e94b3bd70f",
+      "title": "Power units",
+      "conflict_type": "cardinality",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "d1aade16ae551ab9bc09384c9f8d5056",
+      "title": "Physical damage carried before",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "500a17a64d6245486db5bfacfc81de6d",
+      "title": "Carrier: Cargo 2023-2024",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "591cd86fec359e829c1ea0b0ec2f7fa0",
+      "title": "Date of birth: Luis Morales",
+      "conflict_type": "value",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "conflict.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "conflict_id": "a7c19eac5c13164c48d91525e094a625",
+      "title": "Make: 2020 Volvo (248615)",
+      "conflict_type": "reference",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "c3b7f971567e9e4c04a8c32de33f3993",
+      "title": "FEIN or SSN",
+      "category": "application",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "1285531f6c7cd96587a898a65d3977cf",
+      "title": "Garaging address",
+      "category": "application",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "30335d64b56347294d0147667a5e0e77",
+      "title": "Date of authority",
+      "category": "application",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "b63628b7d1b4ad3f5435c25fd9c33ea8",
+      "title": "First date in business",
+      "category": "application",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "c09fe974a2fcdfc68523e6ca70768b5e",
+      "title": "Signed and dated application",
+      "category": "application",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "bbf371d1a848fe1fc0e24af80bc61f33",
+      "title": "Historical premium and power units",
+      "category": "application",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "21b61ffa733872dfd972172412007e53",
+      "title": "Unanswered question",
+      "category": "operations",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "4c2fb87581151ec2edf7e4c6e77493c8",
+      "title": "Stated value for each vehicle",
+      "category": "vehicles",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "99fea4d237965d0d15bfd415364774ae",
+      "title": "Vehicle in a claim but not on the schedule",
+      "category": "vehicles",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "40d01760c1c9ab9ec646ce8c0e986464",
+      "title": "Valid 17-character VIN",
+      "category": "vehicles",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "d0fcdb2d95a508d9e3d6019b6a1c081e",
+      "title": "Driver in a claim but not on the schedule",
+      "category": "drivers",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "75b031b0844d7b60b50f98def86c0bfe",
+      "title": "Complete loss run",
+      "category": "loss_history",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "75e1afce1bbc32f658ad822c7264c543",
+      "title": "Loss history for a listed term",
+      "category": "loss_history",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "199c7a8466f67ab2bb622ac032244dda",
+      "title": "Loss history for a listed term",
+      "category": "loss_history",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "missing.found",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "missing_id": "22825514370a33b97cdcc5ddc642d263",
+      "title": "Explanation of a coverage gap",
+      "category": "loss_history",
+      "at": "2026-11-01T06:41:31.903+00:00"
+    }
+  },
+  {
+    "type": "step.finished",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "resolve",
+      "status": "succeeded",
+      "duration_ms": 38,
+      "summary": {
+        "entities": {
+          "applicant": 1,
+          "agency": 1,
+          "coverage_request": 1,
+          "operations": 1,
+          "fleet": 1,
+          "coverage_history": 1,
+          "coverage_term": 8,
+          "claim": 2,
+          "ifta_quarter": 4,
+          "driver": 6,
+          "vehicle": 5
+        },
+        "fields": {
+          "known": 165,
+          "conflict": 13,
+          "missing": 2,
+          "invalid": 1
+        },
+        "conflicts": 13,
+        "missing": 15,
+        "superseded_values": 3
+      },
+      "error": null,
+      "at": "2026-11-01T06:41:31.905+00:00"
+    }
+  },
+  {
+    "type": "step.started",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "rules",
+      "at": "2026-11-01T06:41:31.905+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "APP-01",
+      "title": "Application has a FEIN or SSN",
+      "section": "Submission requirements",
+      "outcome": "refer",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "APP-02",
+      "title": "Application has an MC or docket number",
+      "section": "Submission requirements",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DOC-01",
+      "title": "Loss runs are current",
+      "section": "Submission requirements",
+      "outcome": "flag",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DOC-02",
+      "title": "Loss runs cover the expiring term and three prior years",
+      "section": "Submission requirements",
+      "outcome": "refer",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DOC-03",
+      "title": "Four most recent quarters of IFTA",
+      "section": "Submission requirements",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DOC-04",
+      "title": "Current MVR for every scheduled driver",
+      "section": "Submission requirements",
+      "outcome": "flag",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DOC-05",
+      "title": "Vehicle schedule is complete",
+      "section": "Submission requirements",
+      "outcome": "refer",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ELIG-01",
+      "title": "Units are semi-tractors",
+      "section": "Program appetite",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ELIG-02",
+      "title": "Account is based in an available state",
+      "section": "Available states",
+      "outcome": "flag",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ELIG-03",
+      "title": "Texas accounts operate north of I-10",
+      "section": "Available states",
+      "outcome": "n/a",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ELIG-04",
+      "title": "No prohibited cargo or operations",
+      "section": "Quick decline / escalation flags",
+      "outcome": "flag",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ELIG-05",
+      "title": "No operations within 50 miles of the Mexico border",
+      "section": "Quick decline / escalation flags",
+      "outcome": "unknown",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ELIG-06",
+      "title": "No serious SAFER violations",
+      "section": "Quick decline / escalation flags",
+      "outcome": "unknown",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ELIG-07",
+      "title": "New venture requirements",
+      "section": "Program appetite",
+      "outcome": "n/a",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "COV-01",
+      "title": "No auto liability deductible",
+      "section": "Coverage snapshot",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "COV-02",
+      "title": "Physical damage is not offered",
+      "section": "Coverage snapshot",
+      "outcome": "flag",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DRV-01",
+      "title": "Every driver holds a valid CDL",
+      "section": "Safe driver criteria",
+      "outcome": "refer",
+      "potential_decline": true,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DRV-02",
+      "title": "Two years of CDL experience",
+      "section": "Safe driver criteria",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DRV-03",
+      "title": "Drivers are at least 23",
+      "section": "Safe driver criteria",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DRV-04",
+      "title": "DOT medical exam for drivers 65 and older",
+      "section": "Safe driver criteria",
+      "outcome": "n/a",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DRV-05",
+      "title": "Driver points within limits",
+      "section": "Quick decline / escalation flags",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DRV-06",
+      "title": "No unacceptable driving history",
+      "section": "Quick decline / escalation flags",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "INS-01",
+      "title": "Three years of continuous coverage",
+      "section": "Prior insurance",
+      "outcome": "refer",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "INS-02",
+      "title": "Losses reported for every prior term",
+      "section": "Prior insurance",
+      "outcome": "refer",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "SEL-01",
+      "title": "Premium per unit or fleet size",
+      "section": "Selective exposures",
+      "outcome": "unknown",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "SEL-02",
+      "title": "Auto haulers and box trucks",
+      "section": "Selective exposures",
+      "outcome": "n/a",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "DATA-01",
+      "title": "Documents agree with each other",
+      "section": "Routing and referral",
+      "outcome": "refer",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ROUTE-01",
+      "title": "Route to the team for the fleet size",
+      "section": "Routing and referral",
+      "outcome": "pass",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "rule.evaluated",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "rule_id": "ROUTE-02",
+      "title": "Final route",
+      "section": "Routing and referral",
+      "outcome": "refer",
+      "potential_decline": false,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "decision.made",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "outcome": "refer",
+      "headline": "Refer to Small Fleet underwriting",
+      "team": "small_fleet",
+      "potential_decline": true,
+      "route_stable": true,
+      "at": "2026-11-01T06:41:31.931+00:00"
+    }
+  },
+  {
+    "type": "step.finished",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "rules",
+      "status": "succeeded",
+      "duration_ms": 27,
+      "summary": {
+        "decision": "refer",
+        "headline": "Refer to Small Fleet underwriting",
+        "team": "small_fleet",
+        "potential_decline": true,
+        "route": "1-10 power units under every count the documents give: 4 (vehicle schedule), 5 (quick quote form; vehicle schedule plus 1 found only in loss history), 6 (quick quote form plus 1 found only in loss history)",
+        "counts": {
+          "refer": 7,
+          "pass": 9,
+          "flag": 5,
+          "n/a": 4,
+          "unknown": 3
+        },
+        "anchor": "application_date 2026-10-22"
+      },
+      "error": null,
+      "at": "2026-11-01T06:41:31.932+00:00"
+    }
+  },
+  {
+    "type": "step.started",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "analyze",
+      "at": "2026-11-01T06:41:31.932+00:00"
+    }
+  },
+  {
+    "type": "analysis.done",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "status": "awaiting_approval",
+      "findings": 0,
+      "at": "2026-11-01T06:41:31.949+00:00"
+    }
+  },
+  {
+    "type": "step.finished",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "analyze",
+      "status": "skipped",
+      "duration_ms": 17,
+      "summary": {
+        "status": "awaiting_approval",
+        "findings": 0,
+        "rejected": 0,
+        "security_notes": 0,
+        "attempts": 0,
+        "cost_usd": 0.0,
+        "error": "Waiting for approval to spend about $0.35"
+      },
+      "error": null,
+      "at": "2026-11-01T06:41:31.950+00:00"
+    }
+  },
+  {
+    "type": "step.started",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "actions",
+      "at": "2026-11-01T06:41:31.950+00:00"
+    }
+  },
+  {
+    "type": "actions.ready",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "items": {
+        "before_quote": 12,
+        "before_binding": 2,
+        "inform": 1
+      },
+      "draft_method": "model",
+      "at": "2026-11-01T06:41:36.261+00:00"
+    }
+  },
+  {
+    "type": "step.finished",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "step": "actions",
+      "status": "succeeded",
+      "duration_ms": 4310,
+      "summary": {
+        "items": {
+          "before_quote": 12,
+          "before_binding": 2,
+          "inform": 1
+        },
+        "draft_version": 1,
+        "draft_method": "model",
+        "redrafted": true,
+        "cost_usd": 0.00766
+      },
+      "error": null,
+      "at": "2026-11-01T06:41:36.262+00:00"
+    }
+  },
+  {
+    "type": "run.finished",
+    "data": {
+      "run_id": "0d0d9991892d4567af19d214eed5ea95",
+      "status": "succeeded",
+      "at": "2026-11-01T06:41:36.298+00:00"
+    }
+  }
+]

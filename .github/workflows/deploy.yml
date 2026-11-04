@@ -1,0 +1,94 @@
+name: deploy
+
+# After the checks pass on main, the commit is built on the instance and started there.
+# remote-deploy.sh migrates, waits for health, and rolls back to the previous images on failure.
+# AWS access is by OIDC: GitHub's token is exchanged for the lane-github-deploy role, which only
+# this repository's main branch may assume (deploy/cloudformation.yml). No AWS keys are stored.
+
+on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+  AWS_DEFAULT_REGION: us-east-1
+  ROLE_ARN: arn:aws:iam::367959205637:role/lane-github-deploy
+  STACK: lane
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Sign in to AWS with GitHub's OIDC token
+        run: |
+          token=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq -r .value)
+          creds=$(aws sts assume-role-with-web-identity --role-arn "$ROLE_ARN" \
+            --role-session-name "deploy-${GITHUB_RUN_ID}" --web-identity-token "$token" \
+            --duration-seconds 3600 --query Credentials --output json)
+          echo "::add-mask::$(jq -r .SecretAccessKey <<< "$creds")"
+          echo "::add-mask::$(jq -r .SessionToken <<< "$creds")"
+          {
+            echo "AWS_ACCESS_KEY_ID=$(jq -r .AccessKeyId <<< "$creds")"
+            echo "AWS_SECRET_ACCESS_KEY=$(jq -r .SecretAccessKey <<< "$creds")"
+            echo "AWS_SESSION_TOKEN=$(jq -r .SessionToken <<< "$creds")"
+          } >> "$GITHUB_ENV"
+
+      - name: Upload the commit
+        id: upload
+        run: |
+          out() { aws cloudformation describe-stacks --stack-name "$STACK" \
+            --query "Stacks[0].Outputs[?OutputKey=='$1'].OutputValue" --output text; }
+          bucket=$(out BucketName); instance=$(out InstanceId); site=$(out Site)
+          sha=$(git rev-parse HEAD)
+          git archive --format=tar.gz -o src.tgz HEAD
+          aws s3 cp --quiet src.tgz "s3://$bucket/deploy/src-$sha.tgz"
+          {
+            echo "bucket=$bucket"; echo "instance=$instance"; echo "site=$site"; echo "sha=$sha"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build and start on the instance
+        run: |
+          id=$(aws ssm send-command --instance-ids "${{ steps.upload.outputs.instance }}" \
+            --document-name AWS-RunShellScript --timeout-seconds 2400 \
+            --comment "deploy ${{ steps.upload.outputs.sha }}" \
+            --parameters "$(jq -nc --arg c "/opt/lane/ci-build.sh ${{ steps.upload.outputs.sha }} s3://${{ steps.upload.outputs.bucket }}/deploy/src-${{ steps.upload.outputs.sha }}.tgz" \
+              '{commands: [$c], executionTimeout: ["2400"]}')" \
+            --query Command.CommandId --output text)
+          while :; do
+            sleep 10
+            status=$(aws ssm get-command-invocation --command-id "$id" \
+              --instance-id "${{ steps.upload.outputs.instance }}" --query Status --output text 2>/dev/null || echo Pending)
+            case "$status" in Pending|InProgress|Delayed) ;; *) break ;; esac
+          done
+          aws ssm get-command-invocation --command-id "$id" --instance-id "${{ steps.upload.outputs.instance }}" \
+            --query '[StandardOutputContent,StandardErrorContent]' --output text
+          [ "$status" = Success ]
+
+      - name: Check the site
+        run: |
+          site="${{ steps.upload.outputs.site }}"
+          for _ in $(seq 1 20); do
+            [ "$(curl -s -o /dev/null -w '%{http_code}' "https://$site/api/v1/health")" = 200 ] && break
+            sleep 5
+          done
+          test "$(curl -s -o /dev/null -w '%{http_code}' "https://$site/api/v1/health")" = 200
+          test "$(curl -s -o /dev/null -w '%{http_code}' "https://$site/api/v1/submissions")" = 401
+          echo "Live: https://$site"

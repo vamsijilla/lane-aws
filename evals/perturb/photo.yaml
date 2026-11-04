@@ -1,0 +1,8 @@
+name: photo
+what: The quote form is replaced by a phone photo of it, taken at an angle with a shadow across the page.
+expect:
+  same_route: true
+  same_rules_except: []
+  unknown_when_unverified: true
+  documents: 24
+  low_quality_files: ["COBALT MESA TRANSPORT INC - QUOTE FORM.pdf"]

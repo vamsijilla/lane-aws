@@ -1,0 +1,149 @@
+APP-01 refer
+  reason: No FEIN or SSN on the application
+
+APP-02 pass
+  reason: MC 1987405 is on the application
+
+DOC-01 flag
+  reason: Valued Oct 6, 2026, 16 days before the application date; they will be 70 days old by the requested effective date
+  - Updated loss runs before binding (current ones will be 70 days old on Dec 15, 2026)
+  note: Counting from the effective date: refer. 5 loss runs older than 60 days at the effective date: Auto liability 2023-24, 2024-25, 2025-26 and cargo 2024-25, 2025-26: valued 70 days before the effective date
+
+DOC-02 refer
+  reason: Loss runs cover the expiring term and 2 of 3 prior years for auto liability; 1 of 3 prior years for cargo
+  - Full cargo loss run for 2023-24; the letter shows paid losses only, no open claims or reserves
+  - Loss runs from Lakeshore Mutual for 2022-23, liability and cargo
+  if Carrier = Granite Peak Specialty: refer
+  if Carrier = Midwest Freight Owners Association Inc: refer
+
+DOC-03 pass
+  reason: Returns for Q3 2025, Q4 2025, Q1 2026, Q2 2026 were sent
+  note: Counting from the effective date: refer. 1 of the 4 most recent IFTA quarters missing: IFTA return for Q3 2026
+
+DOC-04 flag
+  reason: MVRs for all 5 scheduled drivers, ordered within 90 days; Kevin Brandt drove in a reported claim but is not on the driver schedule
+  - Kevin Brandt: on a loss run, not scheduled; no MVR
+
+DOC-05 refer
+  reason: 4 of 4 scheduled units are incomplete
+  - 2017 Freightliner (SKR736): send a valid 17-character VIN and the stated value
+  - 2019 International (617093): send the stated value
+  - 2020 Volvo (248615): send the stated value
+  - 2022 Volvo (301742): send the stated value
+
+ELIG-01 unknown
+  reason: 2021 Peterbilt (735204), found only in loss history: vehicle type unknown. Scheduled units are tractors
+  - 2021 Peterbilt (735204)
+
+ELIG-02 flag
+  reason: California, from the mailing address (no garaging address was given). Under the other reading (where the trucks run, by IFTA miles, assumption A03): 56% of IFTA miles are in 23 states outside the program list (largest: Nevada 33,230 mi, Iowa 31,491 mi, Nebraska 30,373 mi, Indiana 28,816 mi, New Jersey 27,364 mi)
+  - Confirm where trucks are dispatched and garaged.
+  reading Where the trucks run, by IFTA miles: flag
+
+ELIG-03 n/a
+  reason: Not a Texas account
+
+ELIG-04 flag
+  reason: No prohibited cargo or operations declared (self-reported: no hazardous materials, no intermodal containers); appliance and household-goods loads can include lithium batteries
+  - Confirm no lithium battery cargo (appliances and electronics are hauled)
+
+ELIG-05 unknown
+  reason: Based in California (mailing address); IFTA shows miles in border states (California 108,516 mi, Arizona 40,392 mi, New Mexico 7,069 mi, Texas 3,392 mi). Distance from the Mexico border cannot be checked without a garaging address and routes
+  - Garaging address, and whether any terminal or regular route is within 50 miles of the Mexico border
+
+ELIG-06 unknown
+  reason: No FMCSA SAFER data in this prototype; production looks up USDOT 9481307 automatically
+
+ELIG-07 n/a
+  reason: Not a new venture (5 years in business)
+
+COV-01 pass
+  reason: No liability deductible requested (Do not offer)
+
+COV-02 flag
+  reason: Physical damage was requested; the program does not offer it
+  - Physical damage is not available in this program; tell the agent to place it elsewhere
+
+DRV-01 refer (potential decline)
+  reason: 1 scheduled driver does not meet the CDL requirement. An owner is listed as a driver; if the owner does not drive, exclude them by name. Also: Kevin Brandt, found only in loss history: driving status and license unknown. Potential decline: it depends on owner drives, which the documents disagree on.
+  - Devraj Sandhu holds a non-commercial license (class C)
+  if Owner drives = No: unknown
+  if Owner drives = Yes: decline
+
+DRV-02 unknown
+  reason: Kevin Brandt, found only in loss history: CDL experience unknown. Every driver with a CDL shows at least 2 years (stated experience or CDL issue date); Devraj Sandhu holds no CDL (see DRV-01)
+  - Kevin Brandt
+
+DRV-03 pass
+  reason: All drivers are 23 or older, under every value the documents give for date of birth
+  if Date of birth = Oct 3, 1991: pass
+  if Date of birth = Oct 30, 1991: pass
+
+DRV-04 n/a
+  reason: No drivers are 65 or older
+  if Date of birth = Oct 3, 1991: n/a
+  if Date of birth = Oct 30, 1991: n/a
+
+DRV-05 unknown
+  reason: Kevin Brandt, found only in loss history: driving status and license unknown. No driver exceeds 6 points in 3 years or 4 in 12 months. Note: Marcus Whitfield: 4 points on Jun 7, 2023, just outside the 3-year window
+  - Kevin Brandt
+
+DRV-06 unknown
+  reason: Kevin Brandt, found only in loss history: driving status and license unknown. No unacceptable driving history on the MVRs
+  - Kevin Brandt
+
+INS-01 refer
+  reason: 54 days without liability coverage in the 3 years before the application date
+  - Explain the 308-day gap from Feb 10, 2023 to Dec 15, 2023
+  note: Counting from the effective date: pass. Continuous liability coverage for the 3 years before the effective date
+
+INS-02 refer
+  reason: 3 listed terms without a complete loss run
+  - Full cargo loss run for 2023-24; the letter shows paid losses only, no open claims or reserves
+  - Loss runs from Lakeshore Mutual for 2022-23, liability and cargo
+  if Carrier = Granite Peak Specialty: refer
+  if Carrier = Midwest Freight Owners Association Inc: refer
+
+SEL-01 unknown
+  reason: Premium is not known at intake, so the $13,000 per unit test cannot run yet
+
+SEL-02 n/a
+  reason: No auto hauling, box trucks or transit vans
+
+DATA-01 refer
+  reason: 12 facts conflicting between documents, unresolved. Settled by code, not counted: Make: 2020 Volvo (248615) (VIN decode)
+  - Agency identity
+  - Carrier: Cargo 2023-2024
+  - Date of birth: Luis Morales
+  - Farthest territory (stated)
+  - Has vehicles not listed on the application
+  - Legal entity form
+  - Owner drives
+  - Physical damage carried before
+  - Power units
+  - Refrigerated operations
+  - Uninsured motorist limit
+  - Years of prior insurance
+
+ROUTE-01 pass
+  reason: Small Fleet underwriting under every count the documents give: 4 (vehicle schedule), 5 (quick quote form; vehicle schedule plus 1 found only in loss history), 6 (quick quote form plus 1 found only in loss history)
+  if Power units = 4 (vehicle schedule): Small Fleet underwriting
+  if Power units = 5 (quick quote form; vehicle schedule plus 1 found only in loss history): Small Fleet underwriting
+  if Power units = 6 (quick quote form plus 1 found only in loss history): Small Fleet underwriting
+
+ROUTE-02 refer
+  reason: Refer to Small Fleet underwriting. Potential decline pending DRV-01
+  - DRV-01 Every driver holds a valid CDL: 1 scheduled driver does not meet the CDL requirement. An owner is listed as a driver; if the owner does not drive, exclude them by name. Also: Kevin Brandt, found only in loss history: driving status and license unknown. Potential decline: it depends on owner drives, which the documents disagree on.
+  - APP-01 Application has a FEIN or SSN: No FEIN or SSN on the application
+  - DOC-02 Loss runs cover the expiring term and three prior years: Loss runs cover the expiring term and 2 of 3 prior years for auto liability; 1 of 3 prior years for cargo
+  - DOC-05 Vehicle schedule is complete: 4 of 4 scheduled units are incomplete
+  - INS-01 Three years of continuous coverage: 54 days without liability coverage in the 3 years before the application date
+  - INS-02 Losses reported for every prior term: 3 listed terms without a complete loss run
+  - DATA-01 Documents agree with each other: 12 facts conflicting between documents, unresolved. Settled by code, not counted: Make: 2020 Volvo (248615) (VIN decode)
+  - ELIG-01 Units are semi-tractors: 2021 Peterbilt (735204), found only in loss history: vehicle type unknown. Scheduled units are tractors
+  - ELIG-05 No operations within 50 miles of the Mexico border: Based in California (mailing address); IFTA shows miles in border states (California 108,516 mi, Arizona 40,392 mi, New Mexico 7,069 mi, Texas 3,392 mi). Distance from the Mexico border cannot be checked without a garaging address and routes
+  - DRV-02 Two years of CDL experience: Kevin Brandt, found only in loss history: CDL experience unknown. Every driver with a CDL shows at least 2 years (stated experience or CDL issue date); Devraj Sandhu holds no CDL (see DRV-01)
+  - DRV-05 Driver points within limits: Kevin Brandt, found only in loss history: driving status and license unknown. No driver exceeds 6 points in 3 years or 4 in 12 months. Note: Marcus Whitfield: 4 points on Jun 7, 2023, just outside the 3-year window
+  - DRV-06 No unacceptable driving history: Kevin Brandt, found only in loss history: driving status and license unknown. No unacceptable driving history on the MVRs
+  - To check at quote: ELIG-06 No serious SAFER violations
+  - To check at quote: SEL-01 Premium per unit or fleet size

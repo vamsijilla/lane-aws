@@ -1,0 +1,14 @@
+# Catalog extension: document types added after the main catalog. Each extension file carries
+# its own version tag in its prompts, so adding a type here leaves every existing extraction
+# prompt (and the cached answers to it) unchanged. Same format as field_catalog.yaml.
+
+version: 1
+
+doc_types:
+  driver_exclusion:
+    prompt: v2_extract_driver_exclusion
+    shapes: [pdf]
+    fields:
+      excluded_driver: {entity: driver, attribute: excluded, type: name, tier: decision, labels: [Excluded Driver, Driver to be excluded, Name of Driver, Driver Name], description: "Full name of the person excluded from driving, as printed", used_by: [DRV-01]}
+      letter_date: {entity: driver, attribute: excluded, type: date, tier: context, labels: [Date, Dated], used_by: [screen:drivers]}
+      signed_by: {entity: applicant, attribute: signature, type: name, tier: context, labels: [Signature, Signed, Named Insured Signature], description: "Who signed the exclusion; null if unsigned", used_by: [screen:drivers]}

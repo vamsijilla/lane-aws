@@ -1,0 +1,118 @@
+[before_quote] FEIN (or SSN for a sole proprietor) on the signed application
+
+[before_quote] Loss runs for the expiring term and the three prior years
+  - Full cargo loss run for 2023-24; the letter shows paid losses only, no open claims or reserves
+  - Loss runs from Lakeshore Mutual for 2022-23, liability and cargo
+
+[before_quote] Vehicle schedule with year, make, a 17-character VIN and stated value for every unit
+  - 2017 Freightliner (SKR736): send a valid 17-character VIN and the stated value
+  - 2019 International (617093): send the stated value
+  - 2020 Volvo (248615): send the stated value
+  - 2022 Volvo (301742): send the stated value
+
+[before_quote] Confirm the cargo hauled
+  - Confirm no lithium battery cargo (appliances and electronics are hauled)
+
+[before_quote] Garaging address and the routes or terminals used near the Mexico border, if any
+  - Garaging address, and whether any terminal or regular route is within 50 miles of the Mexico border
+
+[before_quote] Confirm who drives; a driver without a CDL must be excluded by name
+  - Devraj Sandhu holds a non-commercial license (class C)
+  - Does the owner drive? The documents show No and Yes. If not, name them as an excluded driver.
+
+[before_quote] Explanation of every lapse in coverage over 30 days
+  - Explain the 308-day gap from Feb 10, 2023 to Dec 15, 2023
+
+[before_quote] Clarification of the conflicting information listed
+  - How many years of prior commercial auto insurance does the business have? The documents show 5 and 3.8.
+  - Which carrier wrote the policy for Cargo 2023-2024? The documents show Granite Peak Specialty and Midwest Freight Owners Association Inc.
+  - What is the farthest state the trucks run to? The documents show TX and NJ.
+  - What is the legal entity form of the business? The documents show Corporation and LLC.
+  - Was physical damage carried on prior policies? The documents show Yes and No.
+  - Do you run refrigerated (reefer) units, and how many? The documents show No and Yes.
+  - The documents show two dates of birth for Luis Morales: Oct 3 and Oct 30. Which is correct?
+
+[before_quote] Explain the drivers below
+  - Does Kevin Brandt still drive? If so, send their MVR and documented CDL experience; if not, confirm they no longer drive.
+
+[before_quote] Explain the vehicles below
+  - 2021 Peterbilt (735204) appears in loss history. Is it still operated, is it a tractor or a straight truck, and why is it not scheduled?
+  - How many power units do you operate? The documents show 5 and 4.
+
+[before_quote] Optional: confirm these small differences, likely the same thing written two ways
+  - Which is right for agency identity: Bayline Insurance Agency Inc or Bayline Insurance Services Inc?
+  - Which is right for uninsured motorist limit: State Minimum or $30,000 / 60,000?
+
+[before_quote] Also helpful: answer the questions left blank on the application
+  - What is the date operating authority was granted?
+  - What is the first date in business?
+  - Can you fill in the historical premium and power units table on the commercial auto insurance application, Cobalt Mesa Transport Inc?
+  - Are all scheduled drivers employed by you in compliance with the English Language Proficiency requirements of Federal Regulations FMCSA 49 CFR § 391.11(b)(2)?
+
+[before_binding] Loss runs valued within the last 60 days
+  - Updated loss runs before binding (current ones will be 70 days old on Dec 15, 2026)
+
+[before_binding] The four most recent quarterly IFTA returns
+  - IFTA return for Q3 2026 before binding
+
+[before_binding] Sign the application
+  - The application is not signed.
+
+[inform] Physical damage is not available in this program; place it elsewhere if needed
+
+----
+Hi Daniel,
+
+Thank you for the submission for Cobalt Mesa Transport Inc. We have reviewed it and need the items below to continue.
+
+Needed before we can quote
+
+1. FEIN (or SSN for a sole proprietor) on the signed application.
+2. Loss runs for the expiring term and the three prior years.
+   - Full cargo loss run for 2023-24; the letter shows paid losses only, no open claims or reserves
+   - Loss runs from Lakeshore Mutual for 2022-23, liability and cargo
+3. Vehicle schedule with year, make, a 17-character VIN and stated value for every unit.
+   - 2017 Freightliner (SKR736): send a valid 17-character VIN and the stated value
+   - 2019 International (617093): send the stated value
+   - 2020 Volvo (248615): send the stated value
+   - 2022 Volvo (301742): send the stated value
+4. Confirm the cargo hauled.
+   - Confirm no lithium battery cargo (appliances and electronics are hauled)
+5. Garaging address and the routes or terminals used near the Mexico border, if any.
+   - Garaging address, and whether any terminal or regular route is within 50 miles of the Mexico border
+6. Confirm who drives; a driver without a CDL must be excluded by name.
+   - Devraj Sandhu holds a non-commercial license (class C)
+   - Does the owner drive? The documents show No and Yes. If not, name them as an excluded driver.
+7. Explanation of every lapse in coverage over 30 days.
+   - Explain the 308-day gap from Feb 10, 2023 to Dec 15, 2023
+8. Clarification of the conflicting information listed.
+   - How many years of prior commercial auto insurance does the business have? The documents show 5 and 3.8.
+   - Which carrier wrote the policy for Cargo 2023-2024? The documents show Granite Peak Specialty and Midwest Freight Owners Association Inc.
+   - What is the farthest state the trucks run to? The documents show TX and NJ.
+   - What is the legal entity form of the business? The documents show Corporation and LLC.
+   - Was physical damage carried on prior policies? The documents show Yes and No.
+   - Do you run refrigerated (reefer) units, and how many? The documents show No and Yes.
+   - The documents show two dates of birth for Luis Morales: Oct 3 and Oct 30. Which is correct?
+9. Explain the drivers below.
+   - Does Kevin Brandt still drive? If so, send their MVR and documented CDL experience; if not, confirm they no longer drive.
+10. Explain the vehicles below.
+   - 2021 Peterbilt (735204) appears in loss history. Is it still operated, is it a tractor or a straight truck, and why is it not scheduled?
+   - How many power units do you operate? The documents show 5 and 4.
+
+Needed before binding
+
+11. Loss runs valued within the last 60 days.
+   - Updated loss runs before binding (current ones will be 70 days old on Dec 15, 2026)
+12. The four most recent quarterly IFTA returns.
+   - IFTA return for Q3 2026 before binding
+13. Sign the application.
+   - The application is not signed.
+
+For your information
+
+14. Physical damage is not available in this program; place it elsewhere if needed.
+
+Once we have these, we will complete our review and come back to you.
+
+Thank you,
+Underwriting team

@@ -1,0 +1,7 @@
+name: corrupt
+what: One loss run PDF is truncated and cannot be opened.
+expect:
+  same_route: true
+  same_rules_except: [DOC-01, DOC-02, INS-02, DATA-01, INS-01]
+  unreadable_files: ["MTC 25-26.pdf"]
+  run_completes: true

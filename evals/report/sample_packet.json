@@ -1,0 +1,109 @@
+{
+  "gold": "sample_packet",
+  "submission_id": "c49b925a23e0476caf773c18a90d79aa",
+  "generated_at": "2026-11-01T22:48:22+00:00",
+  "metrics": [
+    {
+      "name": "Document classification",
+      "correct": 24,
+      "total": 24,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Splitting (files with several documents)",
+      "correct": 2,
+      "total": 2,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Supersession",
+      "correct": 1,
+      "total": 1,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Field accuracy",
+      "correct": 102,
+      "total": 102,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Conflict recall",
+      "correct": 13,
+      "total": 13,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Conflict precision",
+      "correct": 13,
+      "total": 13,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Missing-information recall",
+      "correct": 15,
+      "total": 15,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Rule outcomes",
+      "correct": 29,
+      "total": 29,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Route and recommendation",
+      "correct": 4,
+      "total": 4,
+      "misses": [],
+      "rate": 1.0
+    },
+    {
+      "name": "Expert finding coverage",
+      "correct": 18,
+      "total": 18,
+      "misses": [],
+      "rate": 1.0
+    }
+  ],
+  "figures": {
+    "pages_classified": 33,
+    "layout_memory": false,
+    "pages_by_layout": 0,
+    "pages_by_tier1": 13,
+    "layout_audited": 0,
+    "layout_audit_agreed": 0,
+    "facts": 732,
+    "grounding_rate": 0.992,
+    "findings": 17,
+    "findings_by_kind": {
+      "observation": 9,
+      "hypothesis": 5,
+      "recommendation": 3
+    },
+    "findings_cited": true,
+    "cost_usd_by_purpose": {
+      "extract_application": 0.0,
+      "extract_loss_history_letter": 0.0,
+      "extract_quote_form": 0.0,
+      "extract_driver_schedule": 0.0,
+      "extract_email_body": 0.0,
+      "draft_email": 0.008,
+      "extract_vehicle_schedule": 0.0,
+      "extract_drivers_license": 0.0,
+      "extract_mvr": 0.0,
+      "extract_loss_run": 0.0,
+      "extract_ifta_return": 0.0,
+      "classify_page": 0.0,
+      "analyze (latest)": 0.3411
+    }
+  }
+}

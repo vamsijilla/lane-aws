@@ -1,0 +1,245 @@
+# Gold set for the sample submission (Cobalt Mesa Transport). Built by hand from the source
+# documents (verified against the PDFs, sheets and scans), not from
+# pipeline output. Packet specifics live only here and in data/.
+#
+# Matching conventions (lane/evals/score.py):
+#   entity: kind plus a key or label substring.   values: any listed value counts as correct.
+#   conflicts/missing: matched by field label or missing-item code prefix; `or_missing` /
+#   `or_rule` accept the same fact surfaced another way.
+
+name: sample_packet
+email_subject_contains: Cobalt Mesa
+
+documents:
+  - {file: Email body, types: [email_body]}
+  - {file: AL 23-24.pdf, types: [loss_run]}
+  - {file: AL 24-25.pdf, types: [loss_run]}
+  - {file: AL 25-26.pdf, types: [loss_run]}
+  - {file: COBALT MESA TRANSPORT INC - KNIGHT.xlsx, types: [application, driver_schedule]}  # application + drivers stub; hidden Lookups sheet ignored
+  - {file: COBALT MESA TRANSPORT INC - QUOTE FORM.pdf, types: [quote_form]}
+  - {file: DRIVER LIST - COBALT MESA TRANSPORT INC.xlsx, types: [driver_schedule]}
+  - {file: MTC 23-24.pdf, types: [loss_history_letter]}  # filename says cargo run; content is a letter (a different format, not misnamed)
+  - {file: MTC 24-25.pdf, types: [loss_run]}
+  - {file: MTC 25-26.pdf, types: [loss_run]}
+  # 6 MVRs (Whitfield twice, older one superseded) and 2 license photos
+  - {file: MVR REPORT - COBALT MESA TRANSPORT INC.pdf, types: [mvr, mvr, mvr, mvr, drivers_license, mvr, mvr, drivers_license]}
+  - {file: Q1 2026.pdf, types: [ifta_return]}
+  - {file: Q2 2026.pdf, types: [ifta_return]}
+  - {file: Q3 2025.pdf, types: [ifta_return]}
+  - {file: Q4 2025.pdf, types: [ifta_return]}
+  - {file: VEHICLE LIST - COBALT MESA TRANSPORT INC.xlsx, types: [vehicle_schedule]}
+
+supersessions:
+  - {file: MVR REPORT - COBALT MESA TRANSPORT INC.pdf, type: mvr, subject_contains: Whitfield, superseded: 1}
+
+fields:
+  # applicant
+  - {entity: applicant, attribute: legal_name, values: [Cobalt Mesa Transport Inc, Cobalt Mesa Transport Inc.]}
+  - {entity: applicant, attribute: dot_number, values: ["9481307"]}
+  - {entity: applicant, attribute: mc_number, values: ["1987405", MC1987405, MC-1987405]}
+  - {entity: applicant, attribute: mailing_city, values: [Lathrop]}
+  - {entity: applicant, attribute: mailing_state, values: [CA]}
+  - {entity: applicant, attribute: mailing_zip, values: ["95330"]}
+  - {entity: applicant, attribute: contact_name, values: [Devraj Sandhu]}
+  - {entity: applicant, attribute: application_date, values: ["2026-10-22"]}
+  - {entity: applicant, attribute: effective_date, values: ["2026-12-15"]}
+  - {entity: applicant, attribute: years_experience, values: ["5"]}
+  - {entity: applicant, attribute: entity_form, state: conflict}
+  # coverage requested
+  - {entity: coverage_request, attribute: auto_liability_limit, values: ["1000000"]}
+  - {entity: coverage_request, attribute: cargo_limit, values: ["100000"]}
+  - {entity: coverage_request, attribute: physical_damage_requested, values: ["true"]}
+  # operations
+  - {entity: operations, attribute: telematics_share, values: ["100"]}
+  - {entity: operations, attribute: new_venture, values: ["false"]}
+  - {entity: operations, attribute: owner_drives, state: conflict}
+  - {entity: operations, attribute: refrigerated, state: conflict}
+  - {entity: operations, attribute: farthest_territory, state: conflict}
+  - {entity: fleet, attribute: power_units, state: conflict}
+  # drivers
+  - {entity: driver, match: C4471925, attribute: commercial_license, values: ["false"]}
+  - {entity: driver, match: C4471925, attribute: date_of_birth, values: ["1979-09-14"]}
+  - {entity: driver, match: W38215604720918, attribute: date_of_birth, values: ["1971-03-22"]}
+  - {entity: driver, match: V61930287415503, attribute: date_of_birth, values: ["1983-06-02"]}
+  - {entity: driver, match: M5520814, attribute: date_of_birth, state: conflict}
+  - {entity: driver, match: O7314062, attribute: date_of_birth, values: ["1987-02-17"]}
+  - {entity: driver, match: O7314062, attribute: hire_date, values: ["2026-10-19"]}
+  - {entity: driver, match: V61930287415503, attribute: hire_date, values: ["2024-09-03"]}
+  - {entity: driver, match: W38215604720918, attribute: hire_date, values: ["2024-05-13"]}
+  - {entity: driver, match: M5520814, attribute: hire_date, values: ["2025-12-01"]}
+  # vehicles
+  - {entity: vehicle, match: 4V4NC9EH4NN301742, attribute: year, values: ["2022"]}
+  - {entity: vehicle, match: 4V4NC9EH4NN301742, attribute: cost_new, values: ["82000"]}
+  - {entity: vehicle, match: 4V4NC9EH9LN248615, attribute: cost_new, values: ["48000"]}
+  - {entity: vehicle, match: 4V4NC9EH9LN248615, attribute: make, values: [VOLVO, Volvo]}  # settled by the VIN decode
+  - {entity: vehicle, match: 3HSDZAPR0KN617093, attribute: cost_new, values: ["41000"]}
+  - {entity: vehicle, match: 3AKJGLD59HSKR736, attribute: cost_new, values: ["22000"]}
+  - {entity: vehicle, match: 3AKJGLD59HSKR736, attribute: vin, state: invalid}
+  # losses
+  - {entity: claim, match: GA1093318, attribute: date_of_loss, values: ["2025-06-21"]}
+  - {entity: claim, match: GA1093318, attribute: date_reported, values: ["2025-07-18"]}
+  - {entity: claim, match: GA1093318, attribute: incurred, values: ["7454"]}
+  - {entity: claim, match: GA1092764, attribute: date_of_loss, values: ["2025-03-09"]}
+  - {entity: claim, match: GA1092764, attribute: date_reported, values: ["2025-03-31"]}
+  - {entity: claim, match: GA1092764, attribute: reserved, values: ["52500"]}
+  - {entity: claim, match: GA1092764, attribute: incurred, values: ["70005"]}
+  - {entity: claim, match: GA1092764, attribute: paid, values: ["17505"]}
+
+  # --- widened (verified against the source documents) ---
+  - {entity: applicant, attribute: mailing_address, values: ["4180 Tamarack Way"]}
+  - {entity: coverage_request, attribute: auto_liability_deductible, values: ["Do not offer"]}
+  - {entity: operations, attribute: owner_drives, state: conflict}
+  - {entity: driver, match: C4471925, attribute: license_number, values: ["C4471925"]}
+  - {entity: driver, match: W38215604720918, attribute: license_number, values: ["W38215604720918"]}
+  - {entity: driver, match: V61930287415503, attribute: license_number, values: ["V61930287415503"]}
+  - {entity: driver, match: M5520814, attribute: license_number, values: ["M5520814"]}
+  - {entity: driver, match: O7314062, attribute: license_number, values: ["O7314062"]}
+  - {entity: driver, match: C4471925, attribute: license_state, values: [CA]}
+  - {entity: driver, match: W38215604720918, attribute: license_state, values: [NJ]}
+  - {entity: driver, match: V61930287415503, attribute: license_state, values: [NJ]}
+  - {entity: driver, match: M5520814, attribute: license_state, values: [CA]}
+  - {entity: driver, match: O7314062, attribute: license_state, values: [CA]}
+  - {entity: driver, match: C4471925, attribute: license_class, values: [C]}
+  - {entity: driver, match: W38215604720918, attribute: license_class, values: [A]}
+  - {entity: driver, match: V61930287415503, attribute: license_class, values: [A]}
+  - {entity: driver, match: M5520814, attribute: license_class, values: [A]}
+  - {entity: driver, match: O7314062, attribute: license_class, values: [A]}
+  - {entity: driver, match: W38215604720918, attribute: commercial_license, values: ["true"]}
+  - {entity: driver, match: V61930287415503, attribute: commercial_license, values: ["true"]}
+  - {entity: driver, match: M5520814, attribute: commercial_license, values: ["true"]}
+  - {entity: driver, match: O7314062, attribute: commercial_license, values: ["true"]}
+  - {entity: vehicle, match: 4V4NC9EH9LN248615, attribute: year, values: ["2020"]}
+  - {entity: vehicle, match: 3HSDZAPR0KN617093, attribute: year, values: ["2019"]}
+  - {entity: vehicle, match: 3AKJGLD59HSKR736, attribute: year, values: ["2017"]}
+  - {entity: vehicle, match: 4V4NC9EH4NN301742, attribute: make, values: [VOLVO, Volvo]}
+  - {entity: vehicle, match: 3HSDZAPR0KN617093, attribute: make, values: [INTERNATIONAL, International]}
+  - {entity: vehicle, match: 3AKJGLD59HSKR736, attribute: make, values: [FREIGHTLINER, Freightliner]}
+  - {entity: claim, match: GA1093318, attribute: status, values: [Closed, CLOSED]}
+  - {entity: claim, match: GA1092764, attribute: status, values: [Open, OPEN]}
+  - {entity: claim, match: GA1093318, attribute: vin, values: [1XPBD49X5MD735204]}
+  - {entity: claim, match: GA1092764, attribute: vin, values: [4V4NC9EH9LN248615]}
+  - {entity: coverage_term, match: "auto_liability:2023", attribute: policy_number, values: [GAL7102318]}
+  - {entity: coverage_term, match: "auto_liability:2024", attribute: policy_number, values: [GAL8100457]}
+  - {entity: coverage_term, match: "auto_liability:2025", attribute: policy_number, values: [GAL9100219]}
+  - {entity: coverage_term, match: "cargo:2024", attribute: policy_number, values: [GMC2990344]}
+  - {entity: coverage_term, match: "cargo:2025", attribute: policy_number, values: [GMC3990512]}
+  - {entity: ifta_quarter, match: 2025-Q3, detail: total_miles, values: ["137594"]}
+  - {entity: ifta_quarter, match: 2025-Q4, detail: total_miles, values: ["130981"]}
+  - {entity: ifta_quarter, match: 2026-Q1, detail: total_miles, values: ["142087"]}
+  - {entity: ifta_quarter, match: 2026-Q2, detail: total_miles, values: ["103773"]}
+  - {entity: ifta_quarter, match: 2025-Q3, detail: taxable_gallons, values: ["22518"]}
+  - {entity: ifta_quarter, match: 2025-Q4, detail: taxable_gallons, values: ["22049"]}
+  - {entity: ifta_quarter, match: 2026-Q1, detail: taxable_gallons, values: ["23486"]}
+  - {entity: ifta_quarter, match: 2026-Q2, detail: taxable_gallons, values: ["16791"]}
+  - {entity: ifta_quarter, match: 2025-Q3, detail: total_due, values: ["2936.92"]}
+  - {entity: ifta_quarter, match: 2025-Q4, detail: total_due, values: ["2790.11"]}
+  - {entity: ifta_quarter, match: 2026-Q1, detail: total_due, values: ["3945.42"]}
+  - {entity: ifta_quarter, match: 2026-Q2, detail: total_due, values: ["2835.29"]}
+  - {entity: ifta_quarter, match: 2025-Q3, detail: penalty, values: ["0"]}
+  - {entity: ifta_quarter, match: 2025-Q4, detail: penalty, values: ["0"]}
+  - {entity: ifta_quarter, match: 2026-Q1, detail: penalty, values: ["346.42"]}
+  - {entity: ifta_quarter, match: 2026-Q2, detail: penalty, values: ["0"]}
+  - {entity: ifta_quarter, match: 2025-Q3, detail: interest, values: ["0"]}
+  - {entity: ifta_quarter, match: 2025-Q4, detail: interest, values: ["0"]}
+  - {entity: ifta_quarter, match: 2026-Q1, detail: interest, values: ["134.80"]}
+  - {entity: ifta_quarter, match: 2026-Q2, detail: interest, values: ["0"]}
+
+# Updated with the review of Nov 1, 2026: C06 (UM limit) is a low conflict; agency
+# name and phones are one "Agency identity" card (phones are multi-valued); the ownership change
+# is a note on the legal entity card, not a conflict; C14 is a rule outcome (COV-02).
+conflicts:
+  - {id: C01, label: Legal entity form}
+  - {id: C02, label: Agency identity}
+  - {id: C03, label: Power units}
+  - {id: C04, label: Owner drives}
+  - {id: C05, label: Refrigerated}
+  - {id: C06, label: Uninsured motorist limit}
+  - {id: C07, label: Farthest territory}
+  - {id: C08, label: "Make: 2020 Volvo"}
+  - {id: C09, label: "Date of birth: Luis Morales"}
+  - {id: C10, label: "Carrier: Cargo 2023"}
+  - {id: C11, label: vehicles not listed on the application, or_missing: VEH_UNLISTED}
+  # Added Nov 1, 2026 (evals/GOLD_CHANGES.md): real disagreements in the files
+  - {id: C13, label: Years of prior insurance}
+  - {id: C14, label: Physical damage carried before}
+# Real disagreements found beyond the list above; they count as correct, not as false alarms.
+conflicts_also_valid: []
+
+missing:
+  - {id: M-FEIN, codes: [APP_FEIN]}
+  - {id: M-STATED, codes: [VEH_STATED_VALUE]}
+  - {id: M-VIN4, codes: [VEH_VIN]}
+  # One per line of coverage: the 2022-23 term had no loss run for liability or for cargo
+  - {id: M-LR2223-AL, codes: ["LOSS_TERM:auto_liability"]}
+  - {id: M-LR2223-CARGO, codes: ["LOSS_TERM:cargo"]}
+  - {id: M-MTC2324, codes: [LOSS_PARTIAL]}
+  - {id: M-LAPSE, codes: [LAPSE]}
+  - {id: M-UNIT5, codes: [VEH_UNLISTED]}
+  - {id: M-BRANDT, codes: [DRV_UNLISTED]}
+  - {id: M-OWNER, rules: [DRV-01]}
+  - {id: M-GARAGE, codes: [APP_GARAGING]}
+  - {id: M-SIGN, codes: [APP_SIGNATURE]}
+  - {id: M-HIST, codes: [APP_HISTORY]}
+  - {id: M-ELP, codes: [Q_ENGLISH]}
+  - {id: M-AUTH, codes: [APP_AUTHORITY, APP_BUSINESS_START]}
+
+# With later corrections (DOC-01 flags the age at the effective date; ELIG-04 may
+# flag the lithium exposure in appliance loads).
+rules:
+  APP-01: [refer]
+  APP-02: [pass]
+  DOC-01: [flag]
+  DOC-02: [refer]
+  DOC-03: [pass]
+  DOC-04: [flag]  # Kevin Brandt drove in a reported claim but is not scheduled
+  DOC-05: [refer]
+  ELIG-01: [pass, unknown]
+  ELIG-02: [flag]  # A03: domicile (CA) decides; the 56% IFTA-miles reading only flags
+  ELIG-03: [n/a]
+  ELIG-04: [pass, flag]
+  ELIG-05: [unknown]
+  ELIG-06: [unknown]
+  ELIG-07: [n/a]
+  COV-01: [pass]
+  COV-02: [flag]
+  DRV-01: [refer]
+  DRV-02: [unknown]  # Kevin Brandt's CDL experience is unknown (no MVR or license)
+  DRV-03: [pass]
+  DRV-04: [n/a]
+  DRV-05: [unknown]  # Kevin Brandt drove in a claim; no MVR, so his points are unknown
+  DRV-06: [unknown]  # same: his driving history is unknown
+  INS-01: [refer]
+  INS-02: [refer]
+  SEL-01: [unknown]
+  SEL-02: [n/a]
+  ROUTE-01: [pass]
+  ROUTE-02: [refer]
+  DATA-01: [refer]
+
+route:
+  outcome: refer
+  team: small_fleet
+  potential_decline: true
+  potential_decline_rule: DRV-01
+
+# An expert's findings, with later additions. A finding covers a topic when its title or
+# body contains at least one word from every group.
+findings:
+  - {id: F01, topic: Open BI claim with large reserve, all: [[open, reserve], ["52,500", "52500", bodily, BI]]}
+  - {id: F02, topic: Late claim reporting, all: [[late, days, weeks, delay], [report]]}
+  - {id: F03, topic: Unscheduled driver and truck in a claim, all: [[Brandt, unscheduled, unlisted, not on the schedule, not scheduled]]}
+  - {id: F04, topic: Peterbilt may be the fifth unit, all: [[Peterbilt], [fifth, "5th", "5 units", five, unit count, power unit]]}
+  - {id: F05, topic: High claim frequency, all: [[frequency, two claims, 2 claims]]}
+  - {id: F06, topic: Long-haul profile vs farthest territory, all: [[miles, mileage], [long-haul, long haul, outside California, territory, Texas, TX]]}
+  - {id: F07, topic: Late IFTA filing penalty, all: [[penalty, interest], [IFTA, Q1, quarter]]}
+  - {id: F08, topic: Q2 mileage drop, all: [[drop, decline, fell, down, lower], [Q2, second quarter, mileage, miles]]}
+  - {id: F09, topic: No workers comp, all: [[workers, comp]]}
+  - {id: F10, topic: Cargo value above cargo limit, all: [["125,000", "125000", load value, cargo value], [limit, underinsur]]}
+  - {id: F11, topic: Refrigerated operations despite reefer false, all: [[reefer, refrigerat]]}
+  - {id: F12, topic: Inc vs LLC entity, all: [[LLC], [Inc, corporation, entity]]}
+  - {id: F13, topic: Telematics data request, all: [[telematics, ELD, safety score]]}
+  - {id: F14, topic: Unsigned application, all: [[sign]]}
+  - {id: F16, topic: Volkov downgrade, all: [[Volkov], [downgrade, clearance, medical]]}
+  - {id: F17, topic: Lakeshore probable cancellation, all: [[cancel, non-renew, nonrenew, terminated, ended early, mid-term], ["2023", Lakeshore, February, Feb]]}
+  - {id: F18, topic: Lithium battery exposure, all: [[lithium, batter]]}
+  - {id: F19, topic: Miles per truck vs no team driving, all: [[team], [miles, mileage, hours]]}
